@@ -10,11 +10,20 @@ Still in the works on coming uop with game ideas
 
 ## Tools
 
-###
-Godot Version 3.4.4 : https://godotengine.org/download
+### Game Engine
+- Godot Version 3.4.4 : https://godotengine.org/download
 
-###
-Github Projects: https://github.com/orgs/SummerGameProject/projects/1/views/1
+### Project Board
+- Github Projects: https://github.com/orgs/SummerGameProject/projects/1/views/1
+
+### Art
+- Pix2d (free): https://pix2d.com/
+- Aseprite ($19.99): https://www.aseprite.org/
+- Whatever works for you 
+
+## Work Flow
+- Create a new branch anytime you are adding anything to the game. Request a pull form someone you believe would be a good QA for the pull. Creating a new branch ensures we are making a sandbox environment where you can experiment with new ideas.
+- Claim any of the tasks on the project board that belong to you and place them in the to-do or done pile. This helps us keep track of what everyone is working on so we don't have three people working on three different pause menus.
 
 
 ## Authors
