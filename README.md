@@ -14,7 +14,7 @@ Still in the works on coming uop with game ideas
 - Godot Version 3.4.4 : https://godotengine.org/download
 
 ### Project Board
-- Github Projects: https://github.com/orgs/SummerGameProject/projects/1/views/1
+- Github Projects: https://github.com/SummerGameProject/SummerGame/projects
 
 ### Art
 - Pix2d (free): https://pix2d.com/
