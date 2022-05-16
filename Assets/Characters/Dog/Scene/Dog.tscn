@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Assets/Characters/Dog/Graphics/Square.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Characters/Dog/Scripts/DogController.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 16.0312
 
 [node name="Dog" type="KinematicBody2D"]
+position = Vector2( 165, 90 )
+script = ExtResource( 2 )
 
 [node name="DogCircleCollider2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
