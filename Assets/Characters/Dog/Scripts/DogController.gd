@@ -15,8 +15,24 @@ extends "res://Assets/Characters/CharacterController.gd"
 # attributes
 ##
 
+export var sprint_speed = 120 # default guess
+var is_sprinting = false
+
+var current_speed = walk_speed
+
 var x_input = 0
 var y_input = 0
+
+##
+# state machine
+##
+
+enum MovementState {
+	WALKING = 0,
+	SPRINTING = 1
+}
+
+var current_move_state = MovementState.WALKING
 
 ##
 # initializers
@@ -29,11 +45,21 @@ var y_input = 0
 func _process( delta ):
 	
 	get_player_input()
+	
+	if is_sprinting:
+		
+		current_move_state = MovementState.SPRINTING
+		current_speed = sprint_speed
+		
+	else:
+		
+		current_move_state = MovementState.WALKING
+		current_speed = walk_speed
 
 
 func _physics_process( delta ):
 	
-	velocity_change_by_components( x_input, y_input, delta )
+	move( delta )
 
 ##
 # behaviours
@@ -46,3 +72,53 @@ func get_player_input():
 	
 	x_input = Input.get_axis( "ui_left", "ui_right" )
 	y_input = Input.get_axis( "ui_up", "ui_down" )
+	
+	is_sprinting = Input.is_action_pressed( "sprint" )
+
+func move( delta ):
+	
+	velocity_change_by_components( x_input, y_input, delta, current_speed )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
