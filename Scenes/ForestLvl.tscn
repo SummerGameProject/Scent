@@ -3,7 +3,7 @@
 [ext_resource path="res://Assets/TileSets/forest_ground_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Assets/Characters/Dog/Scene/Dog.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Objects/Enviroment/Stump/Stump.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Assets/Objects/Enviroment/Bush/longBush.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Objects/Enviroment/Bush/LongBush.tscn" type="PackedScene" id=4]
 
 [node name="ForestLvl" type="Node"]
 
@@ -30,18 +30,14 @@ position = Vector2( 196, 31 )
 
 [node name="LongBushs" type="Node2D" parent="."]
 
-[node name="LongBush" type="Sprite" parent="LongBushs"]
-position = Vector2( 119, 144 )
-texture = ExtResource( 4 )
+[node name="LongBush" parent="LongBushs" instance=ExtResource( 4 )]
+position = Vector2( 118, 150 )
 
-[node name="LongBush2" type="Sprite" parent="LongBushs"]
-position = Vector2( 57, 53 )
-texture = ExtResource( 4 )
+[node name="LongBush2" parent="LongBushs" instance=ExtResource( 4 )]
+position = Vector2( 209, 139 )
 
-[node name="LongBush3" type="Sprite" parent="LongBushs"]
-position = Vector2( 234, 110 )
-texture = ExtResource( 4 )
+[node name="LongBush3" parent="LongBushs" instance=ExtResource( 4 )]
+position = Vector2( 106, 40 )
 
-[node name="LongBush4" type="Sprite" parent="LongBushs"]
-position = Vector2( 240, 158 )
-texture = ExtResource( 4 )
+[node name="LongBush4" parent="LongBushs" instance=ExtResource( 4 )]
+position = Vector2( 255, 58 )
