@@ -4,7 +4,6 @@
 [ext_resource path="res://Assets/Characters/Dog/Scripts/DogController.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 16 )
 
 [node name="Dog" type="KinematicBody2D"]
 position = Vector2( 150, 60 )
@@ -14,4 +13,5 @@ script = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="DogSprite2D" type="Sprite" parent="."]
+scale = Vector2( 0.625001, 0.625 )
 texture = ExtResource( 1 )

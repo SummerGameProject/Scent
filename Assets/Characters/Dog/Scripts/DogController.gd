@@ -7,65 +7,78 @@ extends "res://Assets/Characters/CharacterController.gd"
 # author(s): Num0Programmer
 ##
 
+
+class_name DogController
+
+
 ##
 # constant attributes
 ##
 
-##
-# attributes
-##
+# movement states
+const WALKING : int = 0
+const SPRINTING : int = 1
 
-export var sprint_speed = 120 # default guess
-var is_sprinting = false
-
-var current_speed = walk_speed
-
-var x_input = 0
-var y_input = 0
 
 ##
-# state machine
+# public attributes
 ##
 
-enum MovementState {
-	WALKING = 0,
-	SPRINTING = 1
-}
+# sprinting
+export( float ) var sprint_speed : float = 120 # default guess
 
-var current_move_state = MovementState.WALKING
+
+##
+# private attributes
+##
+
+# movement
+var current_speed : float = walk_speed
+
+var x_input : int = 0
+var y_input : int = 0
+
+
+# state control
+var is_sprinting : bool = false
+
+var current_move_state : int = WALKING
+
 
 ##
 # initializers
 ##
 
+
 ##
 # updaters
 ##
 
-func _process( delta ):
+func _process( _delta ) -> void:
 	
 	get_player_input()
 	
 	if is_sprinting:
 		
-		current_move_state = MovementState.SPRINTING
+		current_move_state = SPRINTING
 		current_speed = sprint_speed
 		
 	else:
 		
-		current_move_state = MovementState.WALKING
+		current_move_state = WALKING
 		current_speed = walk_speed
 
 
-func _physics_process( delta ):
+func _physics_process( _delta ) -> void:
 	
-	move( delta )
+	move()
+
 
 ##
 # behaviours
 ##
 
-func get_player_input():
+func get_player_input() -> void:
 	##
 	# listens for input from the player and updates associated variables
 	##
@@ -75,9 +88,10 @@ func get_player_input():
 	
 	is_sprinting = Input.is_action_pressed( "sprint" )
 
-func move( delta ):
+
+func move() -> void:
 	
-	velocity_change_by_components( x_input, y_input, delta, current_speed )
+	velocity_change_by_components( x_input, y_input, 0.80, current_speed )
 
 
 

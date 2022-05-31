@@ -13,31 +13,38 @@ extends KinematicBody2D
 # author(s): Num0Programmer
 ##
 
+
 ##
 # constant attributes
 ##
+
 
 ##
 # attributes
 ##
 
-export var walk_speed = 65 # the default speed for this character
+# movement
+export( float ) var walk_speed : float = 65 # the default speed for this character
 
-var velocity = Vector2.ZERO
+var velocity : Vector2 = Vector2.ZERO
+
 
 ##
 # initializers
 ##
 
+
 ##
 # updaters
 ##
+
 
 ##
 # behaviours
 ##
 
-func velocity_change_by_direct( wish_direct, time_step, speed = walk_speed ):
+func velocity_change_by_direct( wish_direct, time_step = 1,
+		speed = walk_speed ) -> void:
 	##
 	# changes the velocity of this character using a direction vector
 	# constructed by the user; it is up to the user to normalize the direction
@@ -53,12 +60,13 @@ func velocity_change_by_direct( wish_direct, time_step, speed = walk_speed ):
 	#         WALK_SPEED
 	##
 	
-	velocity = wish_direct * speed
+	velocity = wish_direct * speed * time_step
 	
-	move_and_collide( velocity * time_step )
+	velocity = move_and_slide( velocity )
 
-func velocity_change_by_components( x_comp, y_comp, time_step,
-		speed = walk_speed ):
+
+func velocity_change_by_components( x_comp, y_comp, time_step = 1,
+		speed = walk_speed ) -> void:
 	##
 	# changes the velocity of this character using the given x and y components;
 	# this function normalizes the components by default
@@ -76,6 +84,6 @@ func velocity_change_by_components( x_comp, y_comp, time_step,
 	
 	var wish_direct = Vector2( x_comp, y_comp ).normalized()
 	
-	velocity = wish_direct * speed
+	velocity = wish_direct * speed * time_step
 	
-	move_and_collide( velocity * time_step )
+	velocity = move_and_slide( velocity )

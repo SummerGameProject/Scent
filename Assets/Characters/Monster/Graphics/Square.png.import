@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Square.png-089a744eab0afcc958da115295f7f0f0.stex"
+path="res://.import/Square.png-ffda5bbdd1134c753e5295d3f4f78c30.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Characters/Dog/Graphics/Square.png"
-dest_files=[ "res://.import/Square.png-089a744eab0afcc958da115295f7f0f0.stex" ]
+source_file="res://Assets/Characters/Monster/Graphics/Square.png"
+dest_files=[ "res://.import/Square.png-ffda5bbdd1134c753e5295d3f4f78c30.stex" ]
 
 [params]
 
