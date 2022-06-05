@@ -94,13 +94,9 @@ func _process( _delta ) -> void:
 		
 		current_speed = walk_speed
 		
-		print( "Path size = ", path.size() )
 		if path.size() == 1:
 			
 			destination = get_interest_point()
-			
-			print( "New destination -> ( ", destination.x, ", ", destination.y,
-						" )" )
 	
 	get_path_to_destination()
 

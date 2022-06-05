@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/TileSets/forest_ground_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Assets/Characters/Dog/Scene/Dog.tscn" type="PackedScene" id=2]
@@ -23,16 +23,16 @@ collision_layer = 8
 collision_mask = 9
 
 [node name="Monster" parent="." instance=ExtResource( 3 )]
-position = Vector2( 160, 42 )
+position = Vector2( 197, 37 )
 view_dist = 20.0
 
 [node name="InterestPoints" type="Node2D" parent="."]
 
 [node name="InterestPoint1" type="Node2D" parent="InterestPoints"]
-position = Vector2( 18, 77 )
+position = Vector2( 82, 74 )
 
 [node name="InterestPoint2" type="Node2D" parent="InterestPoints"]
-position = Vector2( 292, 86 )
+position = Vector2( 244, 99 )
 
 [node name="InterestPoint3" type="Node2D" parent="InterestPoints"]
 position = Vector2( 161, 159 )
@@ -42,25 +42,25 @@ position = Vector2( 157, 17 )
 
 [node name="Stumps" type="Node2D" parent="."]
 
-[node name="Stump" parent="Stumps" instance=ExtResource( 3 )]
-position = Vector2( 56, 112 )
+[node name="Stump" parent="Stumps" instance=ExtResource( 4 )]
+position = Vector2( 274, 122 )
 
-[node name="Stump2" parent="Stumps" instance=ExtResource( 3 )]
-position = Vector2( 273, 146 )
+[node name="Stump2" parent="Stumps" instance=ExtResource( 4 )]
+position = Vector2( 35, 125 )
 
-[node name="Stump3" parent="Stumps" instance=ExtResource( 3 )]
-position = Vector2( 196, 31 )
+[node name="Stump3" parent="Stumps" instance=ExtResource( 4 )]
+position = Vector2( 250, 20 )
 
 [node name="LongBushs" type="Node2D" parent="."]
 
-[node name="LongBush" parent="LongBushs" instance=ExtResource( 4 )]
-position = Vector2( 118, 150 )
+[node name="LongBush" parent="LongBushs" instance=ExtResource( 5 )]
+position = Vector2( 239, 155 )
 
-[node name="LongBush2" parent="LongBushs" instance=ExtResource( 4 )]
-position = Vector2( 209, 139 )
+[node name="LongBush2" parent="LongBushs" instance=ExtResource( 5 )]
+position = Vector2( 90, 154 )
 
-[node name="LongBush3" parent="LongBushs" instance=ExtResource( 4 )]
-position = Vector2( 106, 40 )
+[node name="LongBush3" parent="LongBushs" instance=ExtResource( 5 )]
+position = Vector2( 267, 63 )
 
-[node name="LongBush4" parent="LongBushs" instance=ExtResource( 4 )]
-position = Vector2( 255, 58 )
+[node name="LongBush4" parent="LongBushs" instance=ExtResource( 5 )]
+position = Vector2( 28, 66 )
