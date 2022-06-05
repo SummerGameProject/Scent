@@ -8,6 +8,22 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "DogController",
+"language": "GDScript",
+"path": "res://Assets/Characters/Dog/Scripts/DogController.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "MonsterController",
+"language": "GDScript",
+"path": "res://Assets/Characters/Monster/Scripts/MonsterController.gd"
+} ]
+_global_script_class_icons={
+"DogController": "",
+"MonsterController": ""
+}
+
 [application]
 
 config/name="Summer-Game"
