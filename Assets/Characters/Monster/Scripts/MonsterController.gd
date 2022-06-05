@@ -34,8 +34,6 @@ export( float ) var view_dist : float = 30
 export( float ) var chase_time : float = 1
 export( float ) var search_time : float = 1
 
-export( Array ) var interest_points : Array
-
 
 ##
 # private attributes
@@ -53,6 +51,7 @@ var current_move_state : int = WANDERING
 var destination : Vector2 = Vector2( 0, 0 )
 
 var path : Array = []
+var interest_points : Array
 
 var nav_agent : Navigation2D = null
 
