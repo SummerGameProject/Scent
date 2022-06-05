@@ -7,6 +7,7 @@
 
 [node name="Dog" type="KinematicBody2D"]
 position = Vector2( 150, 60 )
+collision_layer = 6
 script = ExtResource( 2 )
 
 [node name="DogCollider2D" type="CollisionShape2D" parent="."]

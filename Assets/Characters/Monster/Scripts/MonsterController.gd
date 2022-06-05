@@ -29,7 +29,7 @@ export( float ) var chase_speed : float = 90
 
 
 # navigation
-export( float ) var view_dist : float = 20
+export( float ) var view_dist : float = 30
 
 export( float ) var chase_time : float = 1
 export( float ) var search_time : float = 1
@@ -59,6 +59,10 @@ var nav_agent : Navigation2D = null
 var rn_gener : RandomNumberGenerator = RandomNumberGenerator.new()
 
 
+# searching
+onready var los_arrow : RayCast2D = $LOSArrow
+
+
 # timers
 var chase_timer : float = 0
 var search_timer : float = 0
@@ -78,6 +82,8 @@ func _ready() -> void:
 	for point in interest_point_holder.get_child_count():
 		interest_points.append(
 					interest_point_holder.get_child( point ).global_position )
+	
+	print( "LOSArrow -> ", los_arrow )
 
 
 ##
@@ -85,6 +91,8 @@ func _ready() -> void:
 ##
 
 func _process( _delta ) -> void:
+	
+	check_for_dog()
 	
 	if current_move_state == CHASING:
 		
@@ -103,14 +111,19 @@ func _process( _delta ) -> void:
 func _physics_process( _delta ) -> void:
 	
 	move()
+	
+	los_arrow.set_cast_to( velocity.normalized() * view_dist )
 
 
 ##
 # behaviours
 ##
 
-func check_for_dog() -> bool:
-	return false
+func check_for_dog() -> void:
+	
+	if los_arrow.is_colliding():
+		
+		print( "Game Over" )
 
 
 func get_interest_point() -> Vector2:
