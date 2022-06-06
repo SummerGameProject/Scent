@@ -8,6 +8,7 @@
 [node name="Monster" type="KinematicBody2D"]
 position = Vector2( 163, 83 )
 script = ExtResource( 2 )
+character_name = "Monster"
 chase_speed = 120.0
 view_dist = 100.0
 
@@ -22,4 +23,3 @@ texture = ExtResource( 1 )
 [node name="LOSArrow" type="RayCast2D" parent="."]
 enabled = true
 collision_mask = 5
-collide_with_areas = true

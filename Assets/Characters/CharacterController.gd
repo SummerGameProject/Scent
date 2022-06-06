@@ -20,12 +20,22 @@ extends KinematicBody2D
 
 
 ##
-# attributes
+# public attributes
 ##
+
+# character name
+export( String ) var character_name : String = "Default"
+
 
 # movement
 export( float ) var walk_speed : float = 65 # the default speed for this character
 
+
+##
+# private attributes
+##
+
+# movement
 var velocity : Vector2 = Vector2.ZERO
 
 
@@ -42,6 +52,7 @@ var velocity : Vector2 = Vector2.ZERO
 ##
 # behaviours
 ##
+
 
 func velocity_change_by_direct( wish_direct, time_step = 1,
 		speed = walk_speed ) -> void:
