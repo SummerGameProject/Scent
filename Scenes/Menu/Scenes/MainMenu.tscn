@@ -1,0 +1,179 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://Animations/FadeToScene.tres" type="Animation" id=1]
+[ext_resource path="res://Animations/FadeToBlack.tres" type="Animation" id=2]
+[ext_resource path="res://Music and Sounds/Title Theme.mp3" type="AudioStream" id=3]
+[ext_resource path="res://Menu/Menu Resources/Buttons/OptionsButtonClicked.png" type="Texture" id=4]
+[ext_resource path="res://Menu/Menu Resources/Buttons/OptionsButtonHover.png" type="Texture" id=5]
+[ext_resource path="res://Menu/Menu Resources/Buttons/QuitButton.png" type="Texture" id=6]
+[ext_resource path="res://Menu/Menu Resources/Artwork/Title Logo.png" type="Texture" id=7]
+[ext_resource path="res://Menu/Menu Resources/Buttons/StartButton.png" type="Texture" id=8]
+[ext_resource path="res://Menu/Menu Resources/Artwork/Background.png" type="Texture" id=9]
+[ext_resource path="res://Menu/Menu Resources/Buttons/StartButtonClicked.png" type="Texture" id=10]
+[ext_resource path="res://Menu/Menu Resources/Buttons/StartButtonHover.png" type="Texture" id=11]
+[ext_resource path="res://Menu/Menu Resources/Buttons/OptionsButton.png" type="Texture" id=12]
+[ext_resource path="res://Menu/Menu Resources/Buttons/QuitButtonHover.png" type="Texture" id=13]
+[ext_resource path="res://Menu/Menu Resources/Buttons/QuitButtonClicked.png" type="Texture" id=14]
+[ext_resource path="res://Menu/Scenes/MainMenu.gd" type="Script" id=15]
+[ext_resource path="res://Fonts/Poco.ttf" type="DynamicFontData" id=16]
+[ext_resource path="res://Menu/Menu Resources/Buttons/BackButton.png" type="Texture" id=17]
+[ext_resource path="res://Menu/Menu Resources/Buttons/BlankMenuButton.png" type="Texture" id=18]
+[ext_resource path="res://Menu/Menu Resources/Buttons/BackButtonClicked.png" type="Texture" id=19]
+[ext_resource path="res://Menu/Menu Resources/Buttons/BackButtonHover.png" type="Texture" id=20]
+
+[sub_resource type="DynamicFont" id=2]
+size = 13
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+font_data = ExtResource( 16 )
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TransitionRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ) ]
+}
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 15 )
+
+[node name="Title Background" type="Sprite" parent="."]
+position = Vector2( 160, 90 )
+scale = Vector2( 1.56098, 1.41732 )
+texture = ExtResource( 9 )
+
+[node name="Title Logo" type="Sprite" parent="."]
+position = Vector2( 159, 40 )
+texture = ExtResource( 7 )
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="Menu" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -32.0
+margin_top = -87.0
+margin_right = 32.0
+
+[node name="StartButton" type="TextureButton" parent="Menu"]
+margin_right = 64.0
+margin_bottom = 16.0
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 11 )
+
+[node name="OptionsButton" type="TextureButton" parent="Menu"]
+margin_top = 20.0
+margin_right = 64.0
+margin_bottom = 36.0
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 5 )
+
+[node name="QuitButton" type="TextureButton" parent="Menu"]
+margin_top = 40.0
+margin_right = 64.0
+margin_bottom = 56.0
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 14 )
+texture_hover = ExtResource( 13 )
+
+[node name="Options" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -32.0
+margin_top = -87.0
+margin_right = 32.0
+rect_pivot_offset = Vector2( 17, 52 )
+
+[node name="VolumeBackground" type="TextureButton" parent="Options"]
+margin_right = 64.0
+margin_bottom = 16.0
+texture_normal = ExtResource( 18 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="VolumeText" type="RichTextLabel" parent="Options/VolumeBackground"]
+margin_left = 5.0
+margin_top = -4.0
+margin_right = 69.0
+margin_bottom = 19.0
+custom_fonts/normal_font = SubResource( 2 )
+text = " Volume"
+
+[node name="SliderBackground" type="TextureButton" parent="Options"]
+margin_top = 20.0
+margin_right = 64.0
+margin_bottom = 36.0
+texture_normal = ExtResource( 18 )
+flip_v = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="VolumeSlider" type="HSlider" parent="Options/SliderBackground"]
+margin_left = 1.0
+margin_right = 63.0
+margin_bottom = 16.0
+min_value = -30.0
+max_value = 0.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="BackButton" type="TextureButton" parent="Options"]
+margin_top = 40.0
+margin_right = 64.0
+margin_bottom = 56.0
+rect_pivot_offset = Vector2( 13, 9 )
+texture_normal = ExtResource( 17 )
+texture_pressed = ExtResource( 19 )
+texture_hover = ExtResource( 20 )
+
+[node name="TransitionRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+
+[node name="Fade" type="AnimationPlayer" parent="TransitionRect"]
+root_node = NodePath("../..")
+anims/FadeToBlack = ExtResource( 2 )
+anims/FadeToScene = ExtResource( 1 )
+anims/RESET = SubResource( 1 )
+
+[connection signal="pressed" from="Menu/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="Menu/OptionsButton" to="." method="_on_OptionsButton_pressed"]
+[connection signal="pressed" from="Menu/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="value_changed" from="Options/SliderBackground/VolumeSlider" to="." method="_on_VolumeSlider_value_changed"]
+[connection signal="pressed" from="Options/BackButton" to="." method="_on_BackButton_pressed"]
