@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BackButtonHover.png-0132d539e4e6b12a9a2a76dd799c3ddd.stex"
+path="res://.import/BackButtonHover.png-753b6c15ae5299ce29d57eb724031070.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Menu/Menu Resources/Buttons/BackButtonHover.png"
-dest_files=[ "res://.import/BackButtonHover.png-0132d539e4e6b12a9a2a76dd799c3ddd.stex" ]
+source_file="res://Scenes/Menu/Menu Resources/Buttons/BackButtonHover.png"
+dest_files=[ "res://.import/BackButtonHover.png-753b6c15ae5299ce29d57eb724031070.stex" ]
 
 [params]
 

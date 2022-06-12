@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/QuitButton.png-db045aa7fd8e21ec741631f16f999f81.stex"
+path="res://.import/dandelion.png-1769eaf45f69670a5b109fc7a11e72bd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Menu/Menu Resources/Buttons/QuitButton.png"
-dest_files=[ "res://.import/QuitButton.png-db045aa7fd8e21ec741631f16f999f81.stex" ]
+source_file="res://Assets/Objects/Enviroment/Boundary_Dandelion/dandelion.png"
+dest_files=[ "res://.import/dandelion.png-1769eaf45f69670a5b109fc7a11e72bd.stex" ]
 
 [params]
 

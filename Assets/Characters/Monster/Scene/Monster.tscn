@@ -16,8 +16,8 @@ view_dist = 100.0
 shape = SubResource( 1 )
 
 [node name="MonsterSprite2D" type="Sprite" parent="."]
-position = Vector2( 0, -3.8147e-06 )
-scale = Vector2( 0.625001, 0.625 )
+position = Vector2( 0, 9.53672e-07 )
+scale = Vector2( 0.625, 0.625 )
 texture = ExtResource( 1 )
 
 [node name="LOSArrow" type="RayCast2D" parent="."]
