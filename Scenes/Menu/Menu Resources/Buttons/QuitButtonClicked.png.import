@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Square.png-089a744eab0afcc958da115295f7f0f0.stex"
+path="res://.import/QuitButtonClicked.png-de2d76e2c2117d9cd1945d3f3f154eb7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Characters/Dog/Graphics/Square.png"
-dest_files=[ "res://.import/Square.png-089a744eab0afcc958da115295f7f0f0.stex" ]
+source_file="res://Menu/Menu Resources/Buttons/QuitButtonClicked.png"
+dest_files=[ "res://.import/QuitButtonClicked.png-de2d76e2c2117d9cd1945d3f3f154eb7.stex" ]
 
 [params]
 

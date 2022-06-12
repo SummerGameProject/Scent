@@ -29,17 +29,19 @@ export( float ) var chase_speed : float = 90
 
 
 # navigation
-export( float ) var view_dist : float = 20
+export( float ) var view_dist : float = 30
 
 export( float ) var chase_time : float = 1
 export( float ) var search_time : float = 1
-
-export( Array ) var interest_points : Array
 
 
 ##
 # private attributes
 ##
+
+# game manager reference
+onready var game_manager : Node = get_node_or_null( "/root/ForestLvl" )
+
 
 # movement
 var current_speed : float = walk_speed
@@ -52,11 +54,16 @@ var current_move_state : int = WANDERING
 # navigation
 var destination : Vector2 = Vector2( 0, 0 )
 
-var path : Array = []
+var path : Array
+var interest_points : Array
 
 var nav_agent : Navigation2D = null
 
 var rn_gener : RandomNumberGenerator = RandomNumberGenerator.new()
+
+
+# searching
+onready var los_arrow : RayCast2D = $LOSArrow
 
 
 # timers
@@ -70,14 +77,12 @@ var search_timer : float = 0
 
 func _ready() -> void:
 	
-	var interest_point_holder = get_node_or_null(
-									"/root/ForestLvl/InterestPoints" )
+	var interest_point_holder = get_node_or_null( "/root/ForestLvl/InterestPoints" )
 	
 	nav_agent = get_node_or_null( "/root/ForestLvl/Navigation" )
 	
 	for point in interest_point_holder.get_child_count():
-		interest_points.append(
-					interest_point_holder.get_child( point ).global_position )
+		interest_points.append( interest_point_holder.get_child( point ).global_position )
 
 
 ##
@@ -85,6 +90,8 @@ func _ready() -> void:
 ##
 
 func _process( _delta ) -> void:
+	
+	check_for_dog()
 	
 	if current_move_state == CHASING:
 		
@@ -94,33 +101,38 @@ func _process( _delta ) -> void:
 		
 		current_speed = walk_speed
 		
-		print( "Path size = ", path.size() )
 		if path.size() == 1:
 			
 			destination = get_interest_point()
-			
-			print( "New destination -> ( ", destination.x, ", ", destination.y,
-						" )" )
 	
 	get_path_to_destination()
 
 func _physics_process( _delta ) -> void:
 	
 	move()
+	
+	los_arrow.set_cast_to( velocity.normalized() * view_dist )
 
 
 ##
 # behaviours
 ##
 
-func check_for_dog() -> bool:
-	return false
+func check_for_dog() -> void:
+	
+	# get object the ray collided with
+	var obj := los_arrow.get_collider()
+	
+	# check if the object is the "Dog"
+	if obj != null and obj.get_name() == "Dog":
+		
+		# notify game manager the game is over
+		game_manager.set_game_over( true )
 
 
 func get_interest_point() -> Vector2:
 	
-	var rand_interest_point = rn_gener.randi_range( 0,
-										interest_points.size() - 1 )
+	var rand_interest_point = rn_gener.randi_range( 0, interest_points.size() - 1 )
 	
 	return interest_points[ rand_interest_point ]
 
@@ -143,9 +155,6 @@ func move() -> void:
 			path.pop_front()
 	
 	velocity_change_by_direct( move_direct, 0.80, current_speed )
-
-
-
 
 
 

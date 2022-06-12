@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Square.png-089a744eab0afcc958da115295f7f0f0.stex"
+path="res://.import/BlankMenuButton.png-286fd081b9a73ed947f1f10317679c6d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Characters/Dog/Graphics/Square.png"
-dest_files=[ "res://.import/Square.png-089a744eab0afcc958da115295f7f0f0.stex" ]
+source_file="res://Menu/Menu Resources/Buttons/BlankMenuButton.png"
+dest_files=[ "res://.import/BlankMenuButton.png-286fd081b9a73ed947f1f10317679c6d.stex" ]
 
 [params]
 

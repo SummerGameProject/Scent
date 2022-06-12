@@ -8,6 +8,7 @@
 [node name="Dog" type="KinematicBody2D"]
 position = Vector2( 150, 60 )
 script = ExtResource( 2 )
+character_name = "Dog"
 
 [node name="DogCollider2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
