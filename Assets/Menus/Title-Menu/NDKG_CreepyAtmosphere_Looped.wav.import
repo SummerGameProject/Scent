@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/NDKG_CreepyAtmosphere_Looped.wav-3eb34257b3bc6fa401f7b320997462bd.sample"
+
+[deps]
+
+source_file="res://Assets/Menus/Title-Menu/NDKG_CreepyAtmosphere_Looped.wav"
+dest_files=[ "res://.import/NDKG_CreepyAtmosphere_Looped.wav-3eb34257b3bc6fa401f7b320997462bd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

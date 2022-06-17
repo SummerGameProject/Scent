@@ -1,0 +1,93 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Assets/Fonts/PixelRPG_6.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/Menus/Title-Menu/TestLogo.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Menus/Title-Menu/Scenes/NewGameButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Menus/Title-Menu/Scenes/ContinueButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Menus/Title-Menu/Scenes/OptionsButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Menus/Title-Menu/Scenes/FadeIn.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Menus/Title-Menu/Scripts/title_screen.gd" type="Script" id=7]
+[ext_resource path="res://Assets/Menus/Title-Menu/NDKG_CreepyAtmosphere_Looped.wav" type="AudioStream" id=8]
+
+[node name="TitleScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 7 )
+
+[node name="Menu" type="VBoxContainer" parent="."]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 304.0
+margin_bottom = 177.0
+rect_scale = Vector2( 0.999279, 0.896286 )
+
+[node name="Logo" type="TextureRect" parent="Menu"]
+margin_right = 288.0
+margin_bottom = 9.0
+texture = ExtResource( 2 )
+stretch_mode = 4
+
+[node name="CenterRow" type="HBoxContainer" parent="Menu"]
+margin_top = 13.0
+margin_right = 288.0
+margin_bottom = 85.0
+size_flags_vertical = 3
+
+[node name="Buttons" type="VBoxContainer" parent="Menu/CenterRow"]
+margin_right = 142.0
+margin_bottom = 72.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 4
+alignment = 1
+
+[node name="NewGameButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 3 )]
+margin_top = 20.0
+margin_right = 142.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 40, 6 )
+theme = null
+
+[node name="ContinueButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 4 )]
+margin_top = 32.0
+margin_right = 142.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 6 )
+theme = null
+
+[node name="OptionsButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 5 )]
+margin_top = 44.0
+margin_right = 142.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 40, 6 )
+theme = null
+
+[node name="CenterContainer" type="CenterContainer" parent="Menu/CenterRow"]
+margin_left = 146.0
+margin_right = 288.0
+margin_bottom = 72.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Characters" type="TextureRect" parent="Menu/CenterRow/CenterContainer"]
+margin_left = 71.0
+margin_top = 36.0
+margin_right = 71.0
+margin_bottom = 36.0
+
+[node name="VersionLabel" type="Label" parent="Menu"]
+margin_top = 89.0
+margin_right = 288.0
+margin_bottom = 161.0
+size_flags_vertical = 7
+custom_fonts/font = ExtResource( 1 )
+text = "Version 1.0
+Cosmic Boneyard"
+
+[node name="FadeIn" parent="." instance=ExtResource( 6 )]
+visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[connection signal="fade_finished" from="FadeIn" to="." method="_on_FadeIn_fade_finished"]

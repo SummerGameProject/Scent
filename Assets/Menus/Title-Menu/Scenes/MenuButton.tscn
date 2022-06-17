@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Fonts/PixelRPG_1.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/Themes/DefaultTheme.tres" type="Theme" id=2]
+[ext_resource path="res://Assets/Menus/Title-Menu/Scripts/MenuButton.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Fonts/PixelRPG_6.tres" type="DynamicFont" id=4]
+
+[node name="MenuButton" type="Button"]
+margin_right = 20.0
+margin_bottom = 8.0
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+flat = true
+script = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="."]
+margin_right = 34.0
+margin_bottom = 6.0
+rect_min_size = Vector2( 20, 6 )
+custom_colors/font_color_shadow = Color( 0.247059, 0.247059, 0.247059, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = ExtResource( 4 )
+text = "Label"
