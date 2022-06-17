@@ -6,6 +6,10 @@ extends Node
 # Author(s): Num0Programmer
 ##
 
+
+class_name GameOverScreen
+
+
 ##
 # constants
 ##
@@ -59,4 +63,4 @@ func on_main_menu_btn_pressed() -> void:
 
 func on_replay_btn_pressed() -> void:
 	
-	get_tree().change_scene( "res://Scenes/ForestLvl.tscn" )
+	get_tree().change_scene( "res://Scenes/ForestLvl.tscn" ) # left as a literal until I know where "replaying" will put the player

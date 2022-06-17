@@ -27,12 +27,13 @@ const CHASING : int = 1
 # chasing
 export( float ) var chase_speed : float = 90
 
+export( float ) var reach : float = 15
+
 
 # navigation
 export( float ) var view_dist : float = 30
 
-export( float ) var chase_time : float = 1
-export( float ) var search_time : float = 1
+export( float ) var interest_time : float = 1
 
 
 ##
@@ -64,11 +65,6 @@ var rn_gener : RandomNumberGenerator = RandomNumberGenerator.new()
 
 # searching
 onready var los_arrow : RayCast2D = $LOSArrow
-
-
-# timers
-var chase_timer : float = 0
-var search_timer : float = 0
 
 
 ##
@@ -126,8 +122,22 @@ func check_for_dog() -> void:
 	# check if the object is the "Dog"
 	if obj != null and obj.get_name() == "Dog":
 		
-		# notify game manager the game is over
-		game_manager.set_game_over( true )
+		# change state to CHASING
+		current_move_state = CHASING
+		
+		# set destination to dog's last known destination
+		destination = obj.global_position
+		
+		# check if the dog is close enough to defeat
+		if global_position.distance_to( obj.global_position ) <= reach:
+			
+			game_manager.goto_game_over_screen()
+		
+	# otherwise, assume dog has not been seen
+	else:
+		
+		# change state to WANDERING
+		current_move_state = WANDERING
 
 
 func get_interest_point() -> Vector2:
