@@ -14,6 +14,8 @@ class_name GameManager
 # constants
 ##
 
+const GAME_OVER_SCREEN_PATH = "res://Scenes/GameOverScreen.tscn"
+
 
 ##
 # public attributes
@@ -23,9 +25,6 @@ class_name GameManager
 ##
 # private attributes
 ##
-
-# game state
-var game_over : bool = false
 
 
 ##
@@ -37,17 +36,11 @@ var game_over : bool = false
 # updaters
 ##
 
-func _process( _delta ) -> void:
-	
-	if game_over:
-		
-		print( "Monster has caught the player" )
-
 
 ##
 # behaviours
 ##
 
-func set_game_over( state : bool ) -> void:
+func goto_game_over_screen() -> void:
 	
-	game_over = state
+	get_tree().change_scene( GAME_OVER_SCREEN_PATH )

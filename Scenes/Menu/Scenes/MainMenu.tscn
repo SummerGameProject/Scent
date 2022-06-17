@@ -1,25 +1,24 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=22 format=2]
 
-[ext_resource path="res://Animations/FadeToScene.tres" type="Animation" id=1]
-[ext_resource path="res://Animations/FadeToBlack.tres" type="Animation" id=2]
-[ext_resource path="res://Music and Sounds/Title Theme.mp3" type="AudioStream" id=3]
-[ext_resource path="res://Menu/Menu Resources/Buttons/OptionsButtonClicked.png" type="Texture" id=4]
-[ext_resource path="res://Menu/Menu Resources/Buttons/OptionsButtonHover.png" type="Texture" id=5]
-[ext_resource path="res://Menu/Menu Resources/Buttons/QuitButton.png" type="Texture" id=6]
-[ext_resource path="res://Menu/Menu Resources/Artwork/Title Logo.png" type="Texture" id=7]
-[ext_resource path="res://Menu/Menu Resources/Buttons/StartButton.png" type="Texture" id=8]
-[ext_resource path="res://Menu/Menu Resources/Artwork/Background.png" type="Texture" id=9]
-[ext_resource path="res://Menu/Menu Resources/Buttons/StartButtonClicked.png" type="Texture" id=10]
-[ext_resource path="res://Menu/Menu Resources/Buttons/StartButtonHover.png" type="Texture" id=11]
-[ext_resource path="res://Menu/Menu Resources/Buttons/OptionsButton.png" type="Texture" id=12]
-[ext_resource path="res://Menu/Menu Resources/Buttons/QuitButtonHover.png" type="Texture" id=13]
-[ext_resource path="res://Menu/Menu Resources/Buttons/QuitButtonClicked.png" type="Texture" id=14]
-[ext_resource path="res://Menu/Scenes/MainMenu.gd" type="Script" id=15]
+[ext_resource path="res://Assets/Animations/FadeToScene.tres" type="Animation" id=1]
+[ext_resource path="res://Assets/Animations/FadeToBlack.tres" type="Animation" id=2]
+[ext_resource path="res://Scenes/Menu/Menu Resources/Buttons/OptionsButtonClicked.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Menu/Menu Resources/Buttons/OptionsButtonHover.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/Menu/Menu Resources/Buttons/QuitButton.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/Menu/Menu Resources/Artwork/Title Logo.png" type="Texture" id=7]
+[ext_resource path="res://Scenes/Menu/Menu Resources/Buttons/StartButton.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/Menu/Menu Resources/Artwork/Background.png" type="Texture" id=9]
+[ext_resource path="res://Scenes/Menu/Menu Resources/Buttons/StartButtonClicked.png" type="Texture" id=10]
+[ext_resource path="res://Scenes/Menu/Menu Resources/Buttons/StartButtonHover.png" type="Texture" id=11]
+[ext_resource path="res://Scenes/Menu/Menu Resources/Buttons/OptionsButton.png" type="Texture" id=12]
+[ext_resource path="res://Scenes/Menu/Menu Resources/Buttons/QuitButtonHover.png" type="Texture" id=13]
+[ext_resource path="res://Scenes/Menu/Menu Resources/Buttons/QuitButtonClicked.png" type="Texture" id=14]
+[ext_resource path="res://Scenes/Menu/Scenes/MainMenu.gd" type="Script" id=15]
 [ext_resource path="res://Fonts/Poco.ttf" type="DynamicFontData" id=16]
-[ext_resource path="res://Menu/Menu Resources/Buttons/BackButton.png" type="Texture" id=17]
-[ext_resource path="res://Menu/Menu Resources/Buttons/BlankMenuButton.png" type="Texture" id=18]
-[ext_resource path="res://Menu/Menu Resources/Buttons/BackButtonClicked.png" type="Texture" id=19]
-[ext_resource path="res://Menu/Menu Resources/Buttons/BackButtonHover.png" type="Texture" id=20]
+[ext_resource path="res://Scenes/Menu/Menu Resources/Buttons/BackButton.png" type="Texture" id=17]
+[ext_resource path="res://Scenes/Menu/Menu Resources/Buttons/BlankMenuButton.png" type="Texture" id=18]
+[ext_resource path="res://Scenes/Menu/Menu Resources/Buttons/BackButtonClicked.png" type="Texture" id=19]
+[ext_resource path="res://Scenes/Menu/Menu Resources/Buttons/BackButtonHover.png" type="Texture" id=20]
 
 [sub_resource type="DynamicFont" id=2]
 size = 13
@@ -71,7 +70,6 @@ position = Vector2( 159, 40 )
 texture = ExtResource( 7 )
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
 
 [node name="Menu" type="VBoxContainer" parent="."]
 anchor_left = 0.5
