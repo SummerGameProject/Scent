@@ -79,6 +79,8 @@ func _ready() -> void:
 	
 	for point in interest_point_holder.get_child_count():
 		interest_points.append( interest_point_holder.get_child( point ).global_position )
+	
+	destination = get_interest_point()
 
 
 ##
@@ -98,8 +100,8 @@ func _process( _delta ) -> void:
 		
 		current_speed = walk_speed
 		
-		# check for no path or that the path is almost gone
-		if path.size() == 0 or path.size() == 1:
+		# check for path almost exhausted
+		if path.size() == 1:
 			
 			destination = get_interest_point()
 	
