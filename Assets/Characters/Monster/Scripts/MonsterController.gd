@@ -49,7 +49,7 @@ var current_speed : float = walk_speed
 
 
 # movement state
-var current_move_state : int = WANDERING
+var current_state : int = WANDERING
 
 
 # navigation
@@ -79,6 +79,8 @@ func _ready() -> void:
 	
 	for point in interest_point_holder.get_child_count():
 		interest_points.append( interest_point_holder.get_child( point ).global_position )
+	
+	destination = get_interest_point()
 
 
 ##
@@ -87,21 +89,24 @@ func _ready() -> void:
 
 func _process( _delta ) -> void:
 	
-	check_for_dog()
+	current_state = check_for_dog()
 	
-	if current_move_state == CHASING:
+	# check for CHASING state
+	if current_state == CHASING:
 		
 		current_speed = chase_speed
 		
-	else: # assuming state is WANDERING
+	else: # assuming in WANDERING
 		
 		current_speed = walk_speed
 		
+		# check for path almost exhausted
 		if path.size() == 1:
 			
 			destination = get_interest_point()
 	
 	get_path_to_destination()
+
 
 func _physics_process( _delta ) -> void:
 	
@@ -114,16 +119,13 @@ func _physics_process( _delta ) -> void:
 # behaviours
 ##
 
-func check_for_dog() -> void:
+func check_for_dog() -> int:
 	
 	# get object the ray collided with
 	var obj := los_arrow.get_collider()
 	
 	# check if the object is the "Dog"
 	if obj != null and obj.get_name() == "Dog":
-		
-		# change state to CHASING
-		current_move_state = CHASING
 		
 		# set destination to dog's last known destination
 		destination = obj.global_position
@@ -133,11 +135,11 @@ func check_for_dog() -> void:
 			
 			game_manager.goto_game_over_screen()
 		
-	# otherwise, assume dog has not been seen
-	else:
+		# return CHASING
+		return CHASING
 		
-		# change state to WANDERING
-		current_move_state = WANDERING
+	# return WANDERING
+	return WANDERING
 
 
 func get_interest_point() -> Vector2:
@@ -150,6 +152,7 @@ func get_interest_point() -> Vector2:
 func get_path_to_destination() -> void:
 	
 	if nav_agent != null:
+		
 		path = nav_agent.get_simple_path( global_position, destination, false )
 
 
