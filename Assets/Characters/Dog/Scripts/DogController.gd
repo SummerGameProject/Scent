@@ -18,7 +18,7 @@ class_name DogController
 # movement states
 const WALKING : int = 0
 const SPRINTING : int = 1
-
+const IDLE : int = 2
 
 ##
 # public attributes
@@ -44,6 +44,7 @@ var is_sprinting : bool = false
 
 var current_move_state : int = WALKING
 
+onready var animated_sprite :=$AnimatedSprite
 
 ##
 # initializers
@@ -63,10 +64,15 @@ func _process( _delta ) -> void:
 		current_move_state = SPRINTING
 		current_speed = sprint_speed
 		
-	else:
+	elif x_input != 0 or y_input != 0:
 		
 		current_move_state = WALKING
 		current_speed = walk_speed
+		
+	else:
+		
+		current_move_state = IDLE
+		animated_sprite.play("idle_r")
 
 
 func _physics_process( _delta ) -> void:
