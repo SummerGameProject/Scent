@@ -110,7 +110,31 @@ func move_state( time_step : float ) -> void:
 		
 		current_speed = sprint_speed
 	
-	animated_sprite.play( "walk_down" )
+	match move_direct:
+		
+		Vector2.UP:
+			
+			# play animation for walking in northern direction
+			pass
+		
+		Vector2.RIGHT:
+			
+			# play animation for walking in eastern direction
+			
+			# set sprite scale to ( 1, 1 )
+			animated_sprite.global_scale = Vector2( 1, 1 )
+		
+		Vector2.LEFT:
+			
+			# play animation for walking in western direction
+			
+			# set sprite scale to ( -1, 1 )
+			animated_sprite.global_scale = Vector2( -1, 1 )
+		
+		Vector2.DOWN:
+			
+			# play animation for walking in southern direction
+			animated_sprite.play( "walk_down" )
 	
 	velocity_change_by_direct( move_direct, 0.80, current_speed )
 	
