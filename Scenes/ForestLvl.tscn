@@ -47,7 +47,7 @@ position = Vector2( 25, 42 )
 position = Vector2( 298, 89 )
 
 [node name="InterestPoint3" type="Node2D" parent="InterestPoints"]
-position = Vector2( 89, 137 )
+position = Vector2( 87, 143 )
 
 [node name="InterestPoint4" type="Node2D" parent="InterestPoints"]
 position = Vector2( 152, 24 )
@@ -77,7 +77,7 @@ collision_layer = 4
 collision_mask = 3
 
 [node name="LongBush2" parent="LongBushs" instance=ExtResource( 7 )]
-position = Vector2( 111, 119 )
+position = Vector2( 114, 118 )
 collision_layer = 4
 collision_mask = 3
 

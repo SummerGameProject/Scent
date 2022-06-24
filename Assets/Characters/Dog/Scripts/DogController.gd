@@ -15,10 +15,11 @@ class_name DogController
 # constant attributes
 ##
 
-# movement states
-const IDLE : int = 0
-const WALKING : int = 1
-const SPRINTING : int = 2
+# stats
+enum {
+	IDLE = 0,
+	MOVE = 1
+}
 
 ##
 # public attributes
@@ -35,14 +36,13 @@ export( float ) var sprint_speed : float = 120 # default guess
 # movement
 var current_speed : float = walk_speed
 
-var x_input : float = 0
-var y_input : float = 0
+var move_direct : Vector2 = Vector2.ZERO
 
 
 # state control
 var is_sprinting : bool = false
 
-var current_state : int = WALKING
+var state = IDLE
 
 onready var animated_sprite : AnimatedSprite = $AnimatedSprite
 
@@ -55,78 +55,92 @@ onready var animated_sprite : AnimatedSprite = $AnimatedSprite
 # updaters
 ##
 
-func _process( _delta ) -> void:
+func _physics_process( _delta : float ) -> void:
 	
-	get_player_input()
-	current_state = change_state()
-	
-	# check for SPRINTING state
-	if current_state == SPRINTING:
+	match state:
 		
-		# change dog's current speed to sprinting speed
-		current_speed = sprint_speed
+		MOVE:
+			
+			move_state( _delta )
 		
-		# play sprinting animation
-		
-	# otherwise, check for WALKING state
-	elif current_state == WALKING:
-		
-		# change dog's current speed to walking speed
-		current_speed = walk_speed
-		
-		# play walking animation
-		
-	# otherwise, assume IDLE state
-	else:
-		
-		# play idle animation
-		animated_sprite.play( "idle_r" )
-
-
-func _physics_process( _delta ) -> void:
-	
-	move()
+		IDLE:
+			
+			idle_state()
 
 
 ##
 # behaviours
 ##
 
-func change_state() -> int:
+
+func get_move_direct() -> Vector2:
 	##
-	# assesses the user's input and dog's attributes to determine the dog's state
+	# returns normalized direction Vector2
 	##
 	
-	# check x input not equal to 0 or y input not equal to 0
-	if x_input != 0 or y_input != 0:
+	var received_direct : Vector2 = Vector2.ZERO
+	
+	received_direct.x = Input.get_axis( "ui_left", "ui_right" )
+	received_direct.y = Input.get_axis( "ui_up", "ui_down" )
+	
+	return received_direct.normalized()
+
+
+##
+# states
+##
+
+func idle_state() -> void:
+	
+	animated_sprite.play( "idle_r" )
+	
+	if get_move_direct() != Vector2.ZERO:
 		
-		# check for sprinting
-		if is_sprinting:
+		state = MOVE
+
+
+func move_state( time_step : float ) -> void:
+	
+	var current_speed : float = walk_speed
+	
+	
+	move_direct = get_move_direct()
+	
+	if Input.is_action_pressed( "sprint" ):
+		
+		current_speed = sprint_speed
+	
+	match move_direct:
+		
+		Vector2.UP:
 			
-			# return SPRINTING
-			return SPRINTING
+			# play animation for walking in northern direction
+			pass
+		
+		Vector2.RIGHT:
 			
-		# return WALKING
-		return WALKING
+			# play animation for walking in eastern direction
+			
+			# set sprite scale to ( 1, 1 )
+			animated_sprite.global_scale = Vector2( 1, 1 )
+		
+		Vector2.LEFT:
+			
+			# play animation for walking in western direction
+			
+			# set sprite scale to ( -1, 1 )
+			animated_sprite.global_scale = Vector2( -1, 1 )
+		
+		Vector2.DOWN:
+			
+			# play animation for walking in southern direction
+			animated_sprite.play( "walk_down" )
 	
-	# return IDLE
-	return IDLE
-
-
-func get_player_input() -> void:
-	##
-	# listens for input from the player and updates associated variables
-	##
+	velocity_change_by_direct( move_direct, 0.80, current_speed )
 	
-	x_input = Input.get_axis( "ui_left", "ui_right" )
-	y_input = Input.get_axis( "ui_up", "ui_down" )
-	
-	is_sprinting = Input.is_action_pressed( "sprint" )
-
-
-func move() -> void:
-	
-	velocity_change_by_components( x_input, y_input, 0.80, current_speed )
+	if move_direct == Vector2.ZERO:
+		
+		state = IDLE
 
 
 

@@ -54,14 +54,14 @@ var velocity : Vector2 = Vector2.ZERO
 ##
 
 
-func velocity_change_by_direct( wish_direct, time_step = 1,
-		speed = walk_speed ) -> void:
+func velocity_change_by_direct( move_direct : Vector2, time_step : float = 1,
+		speed : float = walk_speed ) -> void:
 	##
 	# changes the velocity of this character using a direction vector
 	# constructed by the user; it is up to the user to normalize the direction
 	# vector
 	#
-	# wish_direct : a vector which describes the direction the player's input
+	# move_direct : a vector which describes the direction the player's input
 	#               amounts to
 	#
 	# time_step : the time interval the velocity should be multiplied by; most
@@ -71,13 +71,13 @@ func velocity_change_by_direct( wish_direct, time_step = 1,
 	#         WALK_SPEED
 	##
 	
-	velocity = wish_direct * speed * time_step
+	velocity = move_direct * speed
 	
-	velocity = move_and_slide( velocity )
+	velocity = move_and_slide( velocity * time_step )
 
 
-func velocity_change_by_components( x_comp, y_comp, time_step = 1,
-		speed = walk_speed ) -> void:
+func velocity_change_by_components( x_comp : float, y_comp : float,
+		time_step : float = 1, speed : float = walk_speed ) -> void:
 	##
 	# changes the velocity of this character using the given x and y components;
 	# this function normalizes the components by default
@@ -93,8 +93,8 @@ func velocity_change_by_components( x_comp, y_comp, time_step = 1,
 	#         WALK_SPEED
 	##
 	
-	var wish_direct = Vector2( x_comp, y_comp ).normalized()
+	var move_direct = Vector2( x_comp, y_comp ).normalized()
 	
-	velocity = wish_direct * speed * time_step
+	velocity = move_direct * speed
 	
-	velocity = move_and_slide( velocity )
+	velocity = move_and_slide( velocity * time_step )
