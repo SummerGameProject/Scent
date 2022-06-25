@@ -115,21 +115,23 @@ func move_state( time_step : float ) -> void:
 		Vector2.UP:
 			
 			# play animation for walking in northern direction
-			pass
+			animated_sprite.play( "walk_up" )
 		
 		Vector2.RIGHT:
 			
 			# play animation for walking in eastern direction
+			animated_sprite.play( "walk_right" )
 			
 			# set sprite scale to ( 1, 1 )
-			animated_sprite.global_scale = Vector2( 1, 1 )
+			# animated_sprite.global_scale = Vector2( 1, 1 )
 		
 		Vector2.LEFT:
 			
 			# play animation for walking in western direction
+			animated_sprite.play( "walk_left" )
 			
 			# set sprite scale to ( -1, 1 )
-			animated_sprite.global_scale = Vector2( -1, 1 )
+			# animated_sprite.global_scale = Vector2( -1, 1 )
 		
 		Vector2.DOWN:
 			
