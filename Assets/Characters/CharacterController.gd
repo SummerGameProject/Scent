@@ -53,7 +53,6 @@ var velocity : Vector2 = Vector2.ZERO
 # behaviours
 ##
 
-
 func velocity_change_by_direct( move_direct : Vector2, time_step : float = 1,
 		speed : float = walk_speed ) -> void:
 	##

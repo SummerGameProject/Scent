@@ -7,6 +7,7 @@
 
 [node name="Dog" type="KinematicBody2D"]
 position = Vector2( 150, 60 )
+collision_mask = 6
 script = ExtResource( 2 )
 character_name = "Dog"
 
@@ -20,5 +21,5 @@ current = true
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 3 )
 animation = "idle_r"
-frame = 4
+frame = 2
 playing = true
