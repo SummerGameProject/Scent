@@ -33,9 +33,6 @@ export( float ) var sprint_speed : float = 120 # default guess
 # private attributes
 ##
 
-# movement
-var current_speed : float = walk_speed
-
 var move_direct : Vector2 = Vector2.ZERO
 
 
@@ -49,6 +46,11 @@ onready var animated_sprite : AnimatedSprite = $AnimatedSprite
 ##
 # initializers
 ##
+
+func _ready() -> void:
+	
+	sprint_speed *= GameManager.TILE_SIZE
+	walk_speed *= GameManager.TILE_SIZE
 
 
 ##
@@ -123,22 +125,22 @@ func move_state( time_step : float ) -> void:
 			animated_sprite.play( "walk_right" )
 			
 			# set sprite scale to ( 1, 1 )
-			# animated_sprite.global_scale = Vector2( 1, 1 )
+			animated_sprite.global_scale = Vector2( 1, 1 )
 		
 		Vector2.LEFT:
 			
 			# play animation for walking in western direction
-			animated_sprite.play( "walk_left" )
+			animated_sprite.play( "walk_right" )
 			
 			# set sprite scale to ( -1, 1 )
-			# animated_sprite.global_scale = Vector2( -1, 1 )
+			animated_sprite.global_scale = Vector2( -1, 1 )
 		
 		Vector2.DOWN:
 			
 			# play animation for walking in southern direction
 			animated_sprite.play( "walk_down" )
 	
-	velocity_change_by_direct( move_direct, 0.80, current_speed )
+	velocity_change_by_direct( move_direct, time_step, current_speed )
 	
 	if move_direct == Vector2.ZERO:
 		

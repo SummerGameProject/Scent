@@ -14,6 +14,7 @@ class_name GameManager
 # constants
 ##
 
+const TILE_SIZE : int = 16
 const GAME_OVER_SCREEN_PATH = "res://Scenes/GameOverScreen.tscn"
 
 

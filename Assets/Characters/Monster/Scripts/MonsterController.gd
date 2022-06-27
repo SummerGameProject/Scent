@@ -64,6 +64,9 @@ var rn_gener : RandomNumberGenerator = RandomNumberGenerator.new()
 # searching
 onready var los_arrow : RayCast2D = $LOSArrow
 
+# sprite reference
+onready var animated_sprite : Sprite = $MonsterSprite2D # will have to change this before the game will work properly
+
 
 ##
 # initializers
@@ -72,6 +75,10 @@ onready var los_arrow : RayCast2D = $LOSArrow
 func _ready() -> void:
 	
 	var interest_point_holder = get_node_or_null( "/root/ForestLvl/InterestPoints" )
+	
+	
+	chase_speed *= GameManager.TILE_SIZE
+	walk_speed *= GameManager.TILE_SIZE
 	
 	nav_agent = get_node_or_null( "/root/ForestLvl/Navigation" )
 	
@@ -139,13 +146,64 @@ func get_path_to_destination() -> PoolVector2Array:
 	return nav_agent.get_simple_path( global_position, destination, false )
 
 
+func update_path() -> Vector2:
+	
+	var move_direct : Vector2 = Vector2.ZERO
+	
+	move_direct = global_position.direction_to( path[ 1 ] )
+	
+	if global_position == path[ 0 ]:
+		path.pop_front()
+	
+	los_arrow.set_cast_to( move_direct * view_dist )
+	
+	return move_direct
+
+
+func update_sprite( heading : Vector2, string_state : String ) -> void:
+	##
+	# assesses the direction this object is facing/moving and determines which animations
+	# to play and how to scale the sprite
+	#
+	# heading : the direction this object is facing/moving
+	##
+	
+	match heading:
+		
+		Vector2.UP:
+			
+			# play animation for walking in northern direction
+			print( string_state + "_up")
+			pass
+		
+		Vector2.RIGHT:
+			
+			# play animation for walking in eastern direction
+			print( string_state + "_right")
+			
+			# set sprite scale to ( 1, 1 )
+			pass
+		
+		Vector2.LEFT:
+			
+			# play animation for walking in eastern direction
+			print( string_state + "_left")
+			
+			# set sprite scale to ( -1, 1 )
+			pass
+		
+		Vector2.DOWN:
+			
+			# play animation for walking in southern direction
+			print( string_state + "_down")
+			pass
+
+
 ##
 # states
 ##
 
 func chase_state( time_step : float ) -> void:
-	
-	print( "chase_state called" )
 	
 	var dog_found : bool = false
 	var move_direct : Vector2 = Vector2.ZERO
@@ -153,18 +211,15 @@ func chase_state( time_step : float ) -> void:
 	
 	if path.size() > 0:
 		
-		move_direct = global_position.direction_to( path[ 1 ] )
-		
-		if global_position == path[ 0 ]:
-			path.pop_front()
+		move_direct = update_path()
 		
 		if path.size() == 1:
 			
 			dog_found = check_for_dog()
 	
-	velocity_change_by_direct( move_direct, 0.80, chase_speed )
+	velocity_change_by_direct( move_direct, time_step, chase_speed )
 	
-	los_arrow.set_cast_to( move_direct * view_dist )
+	update_sprite( move_direct, "chase" )
 	
 	if not dog_found:
 		
@@ -173,25 +228,20 @@ func chase_state( time_step : float ) -> void:
 
 func wander_state( time_step : float ) -> void:
 	
-	print( "wander_state called" )
-	
 	var move_direct : Vector2 = Vector2.ZERO
 	
 	
 	if path.size() > 0:
 		
-		move_direct = global_position.direction_to( path[ 1 ] )
-		
-		if global_position == path[ 0 ]:
-			path.pop_front()
+		move_direct = update_path()
 		
 		if path.size() == 1:
 			
 			destination = get_interest_point()
 	
-	velocity_change_by_direct( move_direct, 0.80 )
+	velocity_change_by_direct( move_direct, time_step )
 	
-	los_arrow.set_cast_to( move_direct * view_dist )
+	update_sprite( move_direct, "wander" )
 	
 	if check_for_dog():
 		
