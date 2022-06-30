@@ -38,6 +38,9 @@ export( float ) var walk_speed : float = 65 # the default speed for this charact
 # movement
 var velocity : Vector2 = Vector2.ZERO
 
+# graphics
+onready var anim_sprite : AnimatedSprite
+
 
 ##
 # initializers
@@ -52,6 +55,45 @@ var velocity : Vector2 = Vector2.ZERO
 ##
 # behaviours
 ##
+
+func sprite_anim_handler( heading : Vector2, state : String ) -> void:
+	##
+	# assesses the direction this object is facing/moving and determines which animations
+	# to play and how to scale the sprite
+	#
+	# heading : the direction this object is facing/moving
+	#
+	# state : movement state of the sprite which points to a certain animation
+	##
+	
+	match heading:
+		
+		Vector2.UP:
+			
+			# play animation for walking in northern direction
+			anim_sprite.play( state + "_up" )
+		
+		Vector2.RIGHT:
+			
+			# play animation for walking in eastern direction
+			anim_sprite.play( state + "_right" )
+			
+			# set sprite scale to ( 1, 1 )
+			anim_sprite.global_scale = Vector2( 1, 1 )
+		
+		Vector2.LEFT:
+			
+			# play animation for walking in western direction
+			anim_sprite.play( state + "_right" )
+			
+			# set sprite scale to ( -1, 1 )
+			anim_sprite.global_scale = Vector2( -1, 1 )
+		
+		Vector2.DOWN:
+			
+			# play animation for walking in southern direction
+			anim_sprite.play( state + "_down" )
+
 
 func velocity_change_by_direct( move_direct : Vector2, time_step : float = 1,
 		speed : float = walk_speed ) -> void:

@@ -160,45 +160,6 @@ func update_path() -> Vector2:
 	return move_direct
 
 
-func update_sprite( heading : Vector2, string_state : String ) -> void:
-	##
-	# assesses the direction this object is facing/moving and determines which animations
-	# to play and how to scale the sprite
-	#
-	# heading : the direction this object is facing/moving
-	##
-	
-	match heading:
-		
-		Vector2.UP:
-			
-			# play animation for walking in northern direction
-			print( string_state + "_up")
-			pass
-		
-		Vector2.RIGHT:
-			
-			# play animation for walking in eastern direction
-			print( string_state + "_right")
-			
-			# set sprite scale to ( 1, 1 )
-			pass
-		
-		Vector2.LEFT:
-			
-			# play animation for walking in eastern direction
-			print( string_state + "_left")
-			
-			# set sprite scale to ( -1, 1 )
-			pass
-		
-		Vector2.DOWN:
-			
-			# play animation for walking in southern direction
-			print( string_state + "_down")
-			pass
-
-
 ##
 # states
 ##
@@ -219,7 +180,7 @@ func chase_state( time_step : float ) -> void:
 	
 	velocity_change_by_direct( move_direct, time_step, chase_speed )
 	
-	update_sprite( move_direct, "chase" )
+	#sprite_anim_handler( move_direct, "chase" )
 	
 	if not dog_found:
 		
@@ -241,7 +202,7 @@ func wander_state( time_step : float ) -> void:
 	
 	velocity_change_by_direct( move_direct, time_step )
 	
-	update_sprite( move_direct, "wander" )
+	#sprite_anim_handler( move_direct, "wander" )
 	
 	if check_for_dog():
 		

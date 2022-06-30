@@ -41,7 +41,6 @@ var is_sprinting : bool = false
 
 var state = IDLE
 
-onready var animated_sprite : AnimatedSprite = $AnimatedSprite
 
 ##
 # initializers
@@ -51,6 +50,8 @@ func _ready() -> void:
 	
 	sprint_speed *= GameManager.TILE_SIZE
 	walk_speed *= GameManager.TILE_SIZE
+	
+	anim_sprite = $AnimatedSprite
 
 
 ##
@@ -94,7 +95,7 @@ func get_move_direct() -> Vector2:
 
 func idle_state() -> void:
 	
-	animated_sprite.play( "idle_r" )
+	anim_sprite.play( "idle_r" )
 	
 	if get_move_direct() != Vector2.ZERO:
 		
@@ -111,34 +112,6 @@ func move_state( time_step : float ) -> void:
 	if Input.is_action_pressed( "sprint" ):
 		
 		current_speed = sprint_speed
-	
-	match move_direct:
-		
-		Vector2.UP:
-			
-			# play animation for walking in northern direction
-			animated_sprite.play( "walk_up" )
-		
-		Vector2.RIGHT:
-			
-			# play animation for walking in eastern direction
-			animated_sprite.play( "walk_right" )
-			
-			# set sprite scale to ( 1, 1 )
-			animated_sprite.global_scale = Vector2( 1, 1 )
-		
-		Vector2.LEFT:
-			
-			# play animation for walking in western direction
-			animated_sprite.play( "walk_right" )
-			
-			# set sprite scale to ( -1, 1 )
-			animated_sprite.global_scale = Vector2( -1, 1 )
-		
-		Vector2.DOWN:
-			
-			# play animation for walking in southern direction
-			animated_sprite.play( "walk_down" )
 	
 	velocity_change_by_direct( move_direct, time_step, current_speed )
 	
