@@ -18,7 +18,8 @@ class_name DogController
 # stats
 enum {
 	IDLE = 0,
-	MOVE = 1
+	WALK = 1,
+	SPRINT = 2
 }
 
 ##
@@ -26,19 +27,14 @@ enum {
 ##
 
 # sprinting
-export( float ) var sprint_speed : float = 120 # default guess
+export( float ) var sprint_speed : float = 120
 
 
 ##
 # private attributes
 ##
 
-var move_direct : Vector2 = Vector2.ZERO
-
-
 # state control
-var is_sprinting : bool = false
-
 var state = IDLE
 
 
@@ -62,9 +58,13 @@ func _physics_process( _delta : float ) -> void:
 	
 	match state:
 		
-		MOVE:
+		WALK:
 			
-			move_state( _delta )
+			walk_state( _delta )
+		
+		SPRINT:
+			
+			sprint_state( _delta )
 		
 		IDLE:
 			
@@ -99,25 +99,41 @@ func idle_state() -> void:
 	
 	if get_move_direct() != Vector2.ZERO:
 		
-		state = MOVE
+		state = WALK
 
 
-func move_state( time_step : float ) -> void:
+func walk_state( time_step : float ) -> void:
 	
-	var current_speed : float = walk_speed
+	var move_direct = get_move_direct()
 	
+	sprite_anim_handler( move_direct, "walk" )
 	
-	move_direct = get_move_direct()
-	
-	if Input.is_action_pressed( "sprint" ):
-		
-		current_speed = sprint_speed
-	
-	velocity_change_by_direct( move_direct, time_step, current_speed )
+	velocity_change_by_direct( move_direct, time_step )
 	
 	if move_direct == Vector2.ZERO:
 		
 		state = IDLE
+		
+	elif Input.is_action_pressed( "sprint" ):
+		
+		state = SPRINT
+
+
+func sprint_state( time_step : float ) -> void:
+	
+	var move_direct = get_move_direct()
+	
+	sprite_anim_handler( move_direct, "run" )
+	
+	velocity_change_by_direct( move_direct, time_step, sprint_speed )
+	
+	if move_direct == Vector2.ZERO:
+		
+		state = IDLE
+		
+	elif Input.is_action_just_released( "sprint" ):
+		
+		state = WALK
 
 
 
