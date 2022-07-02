@@ -39,7 +39,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Summer-Game"
-run/main_scene="res://Scenes/TestScene.tscn"
+run/main_scene="res://Scenes/ForestLvl.tscn"
 config/icon="res://Assets/icon.png"
 
 [display]

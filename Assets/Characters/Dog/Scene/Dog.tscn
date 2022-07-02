@@ -4,7 +4,7 @@
 [ext_resource path="res://Assets/Animations/dog_anim/Dog_movement.tres" type="SpriteFrames" id=3]
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 33.0606
+radius = 24.0832
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -28,7 +28,7 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 3 )
 animation = "idle_r"
-frame = 3
+frame = 1
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
