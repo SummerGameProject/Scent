@@ -19,7 +19,8 @@ class_name DogController
 enum {
 	IDLE = 0,
 	WALK = 1,
-	SPRINT = 2
+	SPRINT = 2,
+	HIDING = 3
 }
 
 ##
@@ -34,8 +35,16 @@ export( float ) var sprint_speed : float = 120
 # private attributes
 ##
 
+var can_hide : bool = false
+
 # state control
 var state = IDLE
+
+onready var hide_radius : Area2D = $HidingRadius
+
+
+# signals
+signal sprinting( position )
 
 
 ##
@@ -66,6 +75,10 @@ func _physics_process( _delta : float ) -> void:
 			
 			sprint_state( _delta )
 		
+		HIDING:
+			
+			hiding_state()
+		
 		IDLE:
 			
 			idle_state()
@@ -89,9 +102,30 @@ func get_move_direct() -> Vector2:
 	return received_direct.normalized()
 
 
+func start_hiding() -> void:
+	##
+	# handles setting up the Dog for hiding; including setting the state
+	##
+	
+	anim_sprite.visible = false
+	$DogCollider2D.disabled = true
+	
+	state = HIDING
+
+
 ##
 # states
 ##
+
+func hiding_state() -> void:
+	
+	if Input.is_action_just_released( "hide" ):
+		
+		anim_sprite.visible = true
+		$DogCollider2D.disabled = false
+		
+		state = IDLE
+
 
 func idle_state() -> void:
 	
@@ -100,23 +134,10 @@ func idle_state() -> void:
 	if get_move_direct() != Vector2.ZERO:
 		
 		state = WALK
-
-
-func walk_state( time_step : float ) -> void:
-	
-	var move_direct = get_move_direct()
-	
-	sprite_anim_handler( move_direct, "walk" )
-	
-	velocity_change_by_direct( move_direct, time_step )
-	
-	if move_direct == Vector2.ZERO:
 		
-		state = IDLE
+	elif Input.is_action_just_pressed( "hide" ) and can_hide:
 		
-	elif Input.is_action_pressed( "sprint" ):
-		
-		state = SPRINT
+		start_hiding()
 
 
 func sprint_state( time_step : float ) -> void:
@@ -134,47 +155,43 @@ func sprint_state( time_step : float ) -> void:
 	elif Input.is_action_just_released( "sprint" ):
 		
 		state = WALK
+		
+	elif Input.is_action_just_pressed( "hide" ) and can_hide:
+		
+		start_hiding()
 
 
+func walk_state( time_step : float ) -> void:
+	
+	var move_direct = get_move_direct()
+	
+	sprite_anim_handler( move_direct, "walk" )
+	
+	velocity_change_by_direct( move_direct, time_step )
+	
+	if move_direct == Vector2.ZERO:
+		
+		state = IDLE
+		
+	elif Input.is_action_pressed( "sprint" ):
+		
+		state = SPRINT
+		
+	elif Input.is_action_just_pressed( "hide" ) and can_hide:
+		
+		start_hiding()
 
 
+##
+# events
+##
 
 
+func _on_HidingRadius_body_shape_entered( body_rid, body, body_shape_index, local_shape_index ):
+	
+	can_hide = true
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func _on_HidingRadius_body_shape_exited( body_rid, body, body_shape_index, local_shape_index ):
+	
+	can_hide = false

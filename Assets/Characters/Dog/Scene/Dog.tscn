@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/Characters/Dog/Scripts/DogController.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Animations/dog_anim/Dog_movement.tres" type="SpriteFrames" id=3]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 33.0606
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -11,15 +14,25 @@ collision_mask = 6
 script = ExtResource( 2 )
 character_name = "Dog"
 
+[node name="HidingRadius" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="Collider" type="CollisionShape2D" parent="HidingRadius"]
+shape = SubResource( 2 )
+
 [node name="DogCollider2D" type="CollisionShape2D" parent="."]
 scale = Vector2( 0.7, 0.7 )
 shape = SubResource( 1 )
-
-[node name="Camera2D" type="Camera2D" parent="."]
-current = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 3 )
 animation = "idle_r"
 frame = 3
 playing = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[connection signal="body_shape_entered" from="HidingRadius" to="." method="_on_HidingRadius_body_shape_entered"]
+[connection signal="body_shape_exited" from="HidingRadius" to="." method="_on_HidingRadius_body_shape_exited"]
