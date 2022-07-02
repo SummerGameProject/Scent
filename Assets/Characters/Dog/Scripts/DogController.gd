@@ -39,6 +39,11 @@ export( float ) var sprint_speed : float = 120
 var state = IDLE
 
 
+# signals
+
+signal sprinting( position )
+
+
 ##
 # initializers
 ##
@@ -66,6 +71,10 @@ func _physics_process( _delta : float ) -> void:
 		SPRINT:
 			
 			sprint_state( _delta )
+		
+		HIDING:
+			
+			hiding_state()
 		
 		IDLE:
 			
@@ -95,7 +104,12 @@ func get_move_direct() -> Vector2:
 ##
 
 func hiding_state() -> void:
-	pass
+	
+	if Input.is_action_just_released( "hide" ):
+		
+		anim_sprite.visible = true
+		
+		state = IDLE
 
 
 func idle_state() -> void:
@@ -105,6 +119,12 @@ func idle_state() -> void:
 	if get_move_direct() != Vector2.ZERO:
 		
 		state = WALK
+		
+	elif Input.is_action_just_pressed( "hide" ):
+		
+		anim_sprite.visible = false
+		
+		state = HIDING
 
 
 func sprint_state( time_step : float ) -> void:
@@ -122,6 +142,12 @@ func sprint_state( time_step : float ) -> void:
 	elif Input.is_action_just_released( "sprint" ):
 		
 		state = WALK
+		
+	elif Input.is_action_just_pressed( "hide" ):
+		
+		anim_sprite.visible = false
+		
+		state = HIDING
 
 
 func walk_state( time_step : float ) -> void:
@@ -139,3 +165,9 @@ func walk_state( time_step : float ) -> void:
 	elif Input.is_action_pressed( "sprint" ):
 		
 		state = SPRINT
+		
+	elif Input.is_action_just_pressed( "hide" ):
+		
+		anim_sprite.visible = false
+		
+		state = HIDING
