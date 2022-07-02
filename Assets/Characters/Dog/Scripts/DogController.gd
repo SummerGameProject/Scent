@@ -36,6 +36,8 @@ export( float ) var sprint_speed : float = 120
 ##
 
 var can_hide : bool = false
+var hidden_mod : String = "#676767"
+var orig_mod : String = "#ffffff"
 
 # state control
 var state = IDLE
@@ -107,7 +109,7 @@ func start_hiding() -> void:
 	# handles setting up the Dog for hiding; including setting the state
 	##
 	
-	anim_sprite.visible = false
+	anim_sprite.modulate = hidden_mod
 	$DogCollider2D.disabled = true
 	
 	state = HIDING
@@ -121,7 +123,8 @@ func hiding_state() -> void:
 	
 	if Input.is_action_just_released( "hide" ):
 		
-		anim_sprite.visible = true
+
+		anim_sprite.modulate = orig_mod
 		$DogCollider2D.disabled = false
 		
 		state = IDLE
