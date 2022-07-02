@@ -120,6 +120,7 @@ hide={
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Monster"
 2d_physics/layer_3="Environment"
+2d_physics/layer_4="Hiding"
 
 [physics]
 
