@@ -36,6 +36,9 @@ export( float ) var sprint_speed : float = 120
 ##
 
 var can_hide : bool = false
+
+var hiding_pos : Vector2 = Vector2.ZERO
+
 var hidden_mod : String = "#676767"
 var orig_mod : String = "#ffffff"
 
@@ -110,7 +113,10 @@ func start_hiding() -> void:
 	##
 	
 	anim_sprite.modulate = hidden_mod
+	anim_sprite.play( "idle_r" ) # would play some other "hiding" animation probably; this is filler
 	$DogCollider2D.disabled = true
+	
+	global_position = hiding_pos
 	
 	state = HIDING
 
@@ -193,6 +199,9 @@ func walk_state( time_step : float ) -> void:
 func _on_HidingRadius_body_shape_entered( body_rid, body, body_shape_index, local_shape_index ):
 	
 	can_hide = true
+	
+	hiding_pos = body.global_position
+	hiding_pos.y -= 5
 
 
 func _on_HidingRadius_body_shape_exited( body_rid, body, body_shape_index, local_shape_index ):
