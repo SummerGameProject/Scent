@@ -57,37 +57,30 @@ position = Vector2( 152, 24 )
 
 [node name="Stump" parent="Stumps" instance=ExtResource( 4 )]
 position = Vector2( 171, 69 )
-collision_layer = 4
 collision_mask = 3
 
 [node name="Stump2" parent="Stumps" instance=ExtResource( 4 )]
 position = Vector2( 122, 167 )
-collision_layer = 4
 collision_mask = 3
 
 [node name="Stump3" parent="Stumps" instance=ExtResource( 4 )]
 position = Vector2( 315, 36 )
-collision_layer = 4
 collision_mask = 3
 
 [node name="LongBushs" type="Node2D" parent="."]
 
 [node name="LongBush" parent="LongBushs" instance=ExtResource( 7 )]
 position = Vector2( 271, 149 )
-collision_layer = 4
 collision_mask = 3
 
 [node name="LongBush2" parent="LongBushs" instance=ExtResource( 7 )]
 position = Vector2( 114, 118 )
-collision_layer = 4
 collision_mask = 3
 
 [node name="LongBush3" parent="LongBushs" instance=ExtResource( 7 )]
 position = Vector2( 272, 54 )
-collision_layer = 4
 collision_mask = 3
 
 [node name="LongBush4" parent="LongBushs" instance=ExtResource( 7 )]
 position = Vector2( 33, 70 )
-collision_layer = 4
 collision_mask = 3

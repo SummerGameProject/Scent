@@ -35,12 +35,15 @@ export( float ) var sprint_speed : float = 120
 # private attributes
 ##
 
+var can_hide : bool = false
+
 # state control
 var state = IDLE
 
+onready var hide_radius : Area2D = $HidingRadius
+
 
 # signals
-
 signal sprinting( position )
 
 
@@ -105,6 +108,7 @@ func start_hiding() -> void:
 	##
 	
 	anim_sprite.visible = false
+	$DogCollider2D.disabled = true
 	
 	state = HIDING
 
@@ -118,6 +122,7 @@ func hiding_state() -> void:
 	if Input.is_action_just_released( "hide" ):
 		
 		anim_sprite.visible = true
+		$DogCollider2D.disabled = false
 		
 		state = IDLE
 
@@ -130,7 +135,7 @@ func idle_state() -> void:
 		
 		state = WALK
 		
-	elif Input.is_action_just_pressed( "hide" ):
+	elif Input.is_action_just_pressed( "hide" ) and can_hide:
 		
 		start_hiding()
 
@@ -151,7 +156,7 @@ func sprint_state( time_step : float ) -> void:
 		
 		state = WALK
 		
-	elif Input.is_action_just_pressed( "hide" ):
+	elif Input.is_action_just_pressed( "hide" ) and can_hide:
 		
 		start_hiding()
 
@@ -172,6 +177,21 @@ func walk_state( time_step : float ) -> void:
 		
 		state = SPRINT
 		
-	elif Input.is_action_just_pressed( "hide" ):
+	elif Input.is_action_just_pressed( "hide" ) and can_hide:
 		
 		start_hiding()
+
+
+##
+# events
+##
+
+
+func _on_HidingRadius_body_shape_entered( body_rid, body, body_shape_index, local_shape_index ):
+	
+	can_hide = true
+
+
+func _on_HidingRadius_body_shape_exited( body_rid, body, body_shape_index, local_shape_index ):
+	
+	can_hide = false
