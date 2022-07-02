@@ -19,7 +19,8 @@ class_name DogController
 enum {
 	IDLE = 0,
 	WALK = 1,
-	SPRINT = 2
+	SPRINT = 2,
+	HIDING = 3
 }
 
 ##
@@ -93,6 +94,10 @@ func get_move_direct() -> Vector2:
 # states
 ##
 
+func hiding_state() -> void:
+	pass
+
+
 func idle_state() -> void:
 	
 	anim_sprite.play( "idle_r" )
@@ -100,23 +105,6 @@ func idle_state() -> void:
 	if get_move_direct() != Vector2.ZERO:
 		
 		state = WALK
-
-
-func walk_state( time_step : float ) -> void:
-	
-	var move_direct = get_move_direct()
-	
-	sprite_anim_handler( move_direct, "walk" )
-	
-	velocity_change_by_direct( move_direct, time_step )
-	
-	if move_direct == Vector2.ZERO:
-		
-		state = IDLE
-		
-	elif Input.is_action_pressed( "sprint" ):
-		
-		state = SPRINT
 
 
 func sprint_state( time_step : float ) -> void:
@@ -136,45 +124,18 @@ func sprint_state( time_step : float ) -> void:
 		state = WALK
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func walk_state( time_step : float ) -> void:
+	
+	var move_direct = get_move_direct()
+	
+	sprite_anim_handler( move_direct, "walk" )
+	
+	velocity_change_by_direct( move_direct, time_step )
+	
+	if move_direct == Vector2.ZERO:
+		
+		state = IDLE
+		
+	elif Input.is_action_pressed( "sprint" ):
+		
+		state = SPRINT
