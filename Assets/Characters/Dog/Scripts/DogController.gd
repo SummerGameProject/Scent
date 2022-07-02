@@ -99,6 +99,16 @@ func get_move_direct() -> Vector2:
 	return received_direct.normalized()
 
 
+func start_hiding() -> void:
+	##
+	# handles setting up the Dog for hiding; including setting the state
+	##
+	
+	anim_sprite.visible = false
+	
+	state = HIDING
+
+
 ##
 # states
 ##
@@ -122,9 +132,7 @@ func idle_state() -> void:
 		
 	elif Input.is_action_just_pressed( "hide" ):
 		
-		anim_sprite.visible = false
-		
-		state = HIDING
+		start_hiding()
 
 
 func sprint_state( time_step : float ) -> void:
@@ -145,9 +153,7 @@ func sprint_state( time_step : float ) -> void:
 		
 	elif Input.is_action_just_pressed( "hide" ):
 		
-		anim_sprite.visible = false
-		
-		state = HIDING
+		start_hiding()
 
 
 func walk_state( time_step : float ) -> void:
@@ -168,6 +174,4 @@ func walk_state( time_step : float ) -> void:
 		
 	elif Input.is_action_just_pressed( "hide" ):
 		
-		anim_sprite.visible = false
-		
-		state = HIDING
+		start_hiding()
