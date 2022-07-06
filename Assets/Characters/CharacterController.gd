@@ -28,7 +28,7 @@ export( String ) var character_name : String = "Default"
 
 
 # movement
-export( float ) var walk_speed : float = 65 # the default speed for this character
+export( float ) var walk_speed : float = 150 # the default speed for this character
 
 
 ##
