@@ -30,12 +30,9 @@ tile_data = PoolIntArray( -655338, 0, 0, -655337, 0, 0, -655328, 0, 0, -655311, 
 
 [node name="Dog" parent="." instance=ExtResource( 2 )]
 position = Vector2( 304, 172 )
-walk_speed = 150.0
-sprint_speed = 200.0
 
 [node name="Monster" parent="." instance=ExtResource( 3 )]
 position = Vector2( 197, 37 )
-walk_speed = 150.0
 chase_speed = 200.0
 reach = 30.0
 

@@ -28,7 +28,7 @@ enum {
 ##
 
 # sprinting
-export( float ) var sprint_speed : float = 120
+export( float ) var sprint_speed : float = 350
 
 
 ##
