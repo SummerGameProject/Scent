@@ -29,7 +29,7 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 3 )
 animation = "idle_r"
-frame = 2
+frame = 5
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -38,6 +38,7 @@ current = true
 [node name="Light2D" type="Light2D" parent="."]
 scale = Vector2( 8, 8 )
 texture = ExtResource( 1 )
+color = Color( 0.690196, 0.690196, 0.690196, 1 )
 
 [connection signal="body_shape_entered" from="HidingRadius" to="." method="_on_HidingRadius_body_shape_entered"]
 [connection signal="body_shape_exited" from="HidingRadius" to="." method="_on_HidingRadius_body_shape_exited"]
