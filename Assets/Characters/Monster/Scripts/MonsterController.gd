@@ -65,7 +65,7 @@ var rn_gener : RandomNumberGenerator = RandomNumberGenerator.new()
 onready var los_arrow : RayCast2D = $LOSArrow
 
 # sprite reference
-onready var animated_sprite : Sprite = $MonsterSprite2D # will have to change this before the game will work properly
+#onready var anim_sprite : AnimatedSprite = $AnimatedSprite # will have to change this before the game will work properly
 
 
 ##
@@ -86,6 +86,8 @@ func _ready() -> void:
 		interest_points.append( interest_point_holder.get_child( point ).global_position )
 	
 	destination = get_interest_point()
+	
+	anim_sprite = $AnimatedSprite
 
 
 ##
@@ -181,6 +183,7 @@ func chase_state( time_step : float ) -> void:
 	velocity_change_by_direct( move_direct, time_step, chase_speed )
 	
 	#sprite_anim_handler( move_direct, "chase" )
+	anim_sprite.play( "mon_walk_down" )
 	
 	if not dog_found:
 		
@@ -190,7 +193,6 @@ func chase_state( time_step : float ) -> void:
 func wander_state( time_step : float ) -> void:
 	
 	var move_direct : Vector2 = Vector2.ZERO
-	
 	
 	if path.size() > 0:
 		
@@ -202,7 +204,8 @@ func wander_state( time_step : float ) -> void:
 	
 	velocity_change_by_direct( move_direct, time_step )
 	
-	#sprite_anim_handler( move_direct, "wander" )
+	#sprite_anim_handler( move_direct, "mon_walk" )
+	anim_sprite.play( "mon_walk_down" )
 	
 	if check_for_dog():
 		
