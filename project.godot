@@ -24,6 +24,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Assets/Menus/GameOver/GameOverScreen.gd"
 }, {
+"base": "Reference",
+"class": "GutHookScript",
+"language": "GDScript",
+"path": "res://addons/gut/hook_script.gd"
+}, {
+"base": "Node",
+"class": "GutTest",
+"language": "GDScript",
+"path": "res://addons/gut/test.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "MonsterController",
 "language": "GDScript",
@@ -33,6 +43,8 @@ _global_script_class_icons={
 "DogController": "",
 "GameManager": "",
 "GameOverScreen": "",
+"GutHookScript": "",
+"GutTest": "",
 "MonsterController": ""
 }
 
@@ -49,6 +61,10 @@ window/size/height=180
 window/size/test_width=1280
 window/size/test_height=720
 window/stretch/mode="2d"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/gut/plugin.cfg" )
 
 [importer_defaults]
 
