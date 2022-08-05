@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
+[ext_resource path="res://Assets/Lighting/LightingShape.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Characters/Dog/Scripts/DogController.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Animations/dog_anim/Dog_movement.tres" type="SpriteFrames" id=3]
 
@@ -33,6 +34,11 @@ playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+
+[node name="Light2D" type="Light2D" parent="."]
+scale = Vector2( 8, 8 )
+texture = ExtResource( 1 )
+color = Color( 0.835294, 0.831373, 0.831373, 1 )
 
 [connection signal="body_shape_entered" from="HidingRadius" to="." method="_on_HidingRadius_body_shape_entered"]
 [connection signal="body_shape_exited" from="HidingRadius" to="." method="_on_HidingRadius_body_shape_exited"]

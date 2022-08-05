@@ -81,3 +81,6 @@ collision_mask = 3
 [node name="LongBush4" parent="LongBushs" instance=ExtResource( 7 )]
 position = Vector2( 33, 70 )
 collision_mask = 3
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.0313726, 0.0313726, 0.0313726, 1 )
