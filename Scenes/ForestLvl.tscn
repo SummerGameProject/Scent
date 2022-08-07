@@ -83,9 +83,14 @@ collision_mask = 3
 position = Vector2( 33, 70 )
 collision_mask = 3
 
+
 [node name="Note" parent="." instance=ExtResource( 8 )]
 pause_mode = 2
 position = Vector2( 415, 164 )
 
 [connection signal="body_entered" from="Note" to="Note" method="_on_Note_body_entered"]
 [connection signal="body_exited" from="Note" to="Note" method="_on_Note_body_exited"]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.0313726, 0.0313726, 0.0313726, 1 )
+
