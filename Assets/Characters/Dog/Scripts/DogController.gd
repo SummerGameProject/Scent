@@ -4,7 +4,7 @@ extends "res://Assets/Characters/CharacterController.gd"
 # A frontend to the CharacterController which is specifically tied to the Dog
 # character and moving this node based on input from the player
 #
-# author(s): Num0Programmer
+# author(s): Num0Programmer, z$
 ##
 
 
@@ -20,7 +20,8 @@ enum {
 	IDLE = 0,
 	WALK = 1,
 	SPRINT = 2,
-	HIDING = 3
+	HIDING = 3,
+	READING = 4,
 }
 
 ##
@@ -38,6 +39,8 @@ export( float ) var sprint_speed : float = 350
 var can_hide : bool = false
 
 var hiding_pos : Vector2 = Vector2.ZERO
+
+var reading_pos : Vector2 = Vector2.ZERO
 
 var hidden_mod : String = "#676767"
 var orig_mod : String = "#ffffff"
@@ -87,7 +90,11 @@ func _physics_process( _delta : float ) -> void:
 		IDLE:
 			
 			idle_state()
-
+			
+		READING:
+			
+			reading_state()
+		
 
 ##
 # behaviours
@@ -147,7 +154,9 @@ func idle_state() -> void:
 	elif Input.is_action_just_pressed( "hide" ) and can_hide:
 		
 		start_hiding()
-
+		
+	elif Input.is_action_just_pressed("ui_accept") && Global.can_read:
+		state = READING
 
 func sprint_state( time_step : float ) -> void:
 	
@@ -168,6 +177,20 @@ func sprint_state( time_step : float ) -> void:
 	elif Input.is_action_just_pressed( "hide" ) and can_hide:
 		
 		start_hiding()
+		
+	elif Input.is_action_just_pressed("ui_accept") && Global.can_read:
+		state = READING
+
+func reading_state():
+	# make the dogs position the notes position
+	global_position = reading_pos
+		
+	# otherwise check if the dog is allowed to move
+	if Global.can_move:
+	
+		# return to the idle state
+		idle_state()
+	
 
 
 func walk_state( time_step : float ) -> void:
@@ -189,6 +212,9 @@ func walk_state( time_step : float ) -> void:
 	elif Input.is_action_just_pressed( "hide" ) and can_hide:
 		
 		start_hiding()
+		
+	elif Input.is_action_just_pressed("ui_accept") && Global.can_read:
+		state = READING
 
 
 ##
@@ -196,7 +222,7 @@ func walk_state( time_step : float ) -> void:
 ##
 
 
-func _on_HidingRadius_body_shape_entered( body_rid, body, body_shape_index, local_shape_index ):
+func _on_HidingRadius_body_shape_entered( _body_rid, body, _body_shape_index, _local_shape_index ):
 	
 	can_hide = true
 	
@@ -204,10 +230,34 @@ func _on_HidingRadius_body_shape_entered( body_rid, body, body_shape_index, loca
 	hiding_pos.y -= 5
 
 
-func _on_HidingRadius_body_shape_exited( body_rid, body, body_shape_index, local_shape_index ):
+func _on_HidingRadius_body_shape_exited( _body_rid, _body, _body_shape_index, _local_shape_index ):
 	
 	can_hide = false
 
-# Default test for test runner
+
+# function for when the hiding area of the dog enters another area
+func _on_InteractBox_area_entered(area):
+	# check to see if the area it entered is a Note area
+	if(area.name == "Note"):
+		
+		# set the reading_pos to the notes area position
+		reading_pos = area.global_position
+		
+		# set global can read to true
+		Global.can_read = true
+
+# function for when the hiding area of the dog exits another area
+func _on_InteractBox_area_exited(area):
+	# check to see if the area it entered is a Note area
+	if(area.name == "Note"):
+		
+		# set global can read to false
+		Global.can_read = false
+		
+##
+# tests
+##
+
+# default test for GUT
 func default_test():
 	return "bananas"
