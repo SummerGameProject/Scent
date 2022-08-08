@@ -16,8 +16,9 @@ class_name MonsterController
 
 # states
 enum {
-	WANDER = 0,
-	CHASE = 1
+	IDLE = 0,
+	WANDER = 1,
+	CHASE = 2
 }
 
 
@@ -47,7 +48,7 @@ onready var game_manager : Node = get_node_or_null( "/root/ForestLvl" )
 
 
 # movement state
-var state = WANDER
+var state = IDLE
 
 
 # navigation
@@ -82,7 +83,7 @@ onready var stinger : AudioStreamPlayer = $ChaseStinger
 
 func _ready() -> void:
 	
-	var interest_point_holder = get_node_or_null( "/root/ForestLvl/InterestPoints" )
+	var interest_point_holder = get_node_or_null( "/root/ForestLvl/InterestPoints" ) # fix this to work for any scene
 	
 	
 	chase_speed *= GameManager.TILE_SIZE
@@ -106,13 +107,20 @@ func _physics_process( _delta ) -> void:
 	
 	match state:
 		
+		IDLE:
+			
+			idle_state()
+			print( "State: IDLE" )
+		
 		WANDER:
 			
 			wander_state( _delta )
+			print( "State: WANDER" )
 		
 		CHASE:
 			
 			chase_state( _delta )
+			print( "State: CHASE" )
 	
 	path = get_path_to_destination()
 	check_foot_step()
@@ -190,7 +198,7 @@ func update_path() -> Vector2:
 
 func chase_state( time_step : float ) -> void:
 	
-	var dog_found : bool = false
+	var dog_found : bool = true
 	var move_direct : Vector2 = Vector2.ZERO
 	
 	if path.size() > 0:
@@ -203,12 +211,18 @@ func chase_state( time_step : float ) -> void:
 	
 	velocity_change_by_direct( move_direct, time_step, chase_speed )
 	
-	#sprite_anim_handler( move_direct, "chase" )
-	anim_sprite.play( "mon_walk_down" )
+	sprite_anim_handler( move_direct, "mon_run" )
+	#anim_sprite.play( "mon_walk_down" )
 	
 	if not dog_found:
 		
 		state = WANDER
+
+
+func idle_state():
+	
+	sprite_anim_handler( Vector2.ZERO, "mon_idle" )
+	state = WANDER
 
 
 func wander_state( time_step : float ) -> void:
@@ -225,8 +239,8 @@ func wander_state( time_step : float ) -> void:
 	
 	velocity_change_by_direct( move_direct, time_step )
 	
-	#sprite_anim_handler( move_direct, "mon_walk" )
-	anim_sprite.play( "mon_walk_down" )
+	sprite_anim_handler( move_direct, "mon_walk" )
+	#anim_sprite.play( "mon_walk_down" )
 	
 	if check_for_dog():
 		
