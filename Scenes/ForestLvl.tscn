@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/TileSets/forest_ground_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Assets/Characters/Dog/Scene/DogNoLight.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Assets/Objects/Enviroment/Bush/LongBush.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Assets/Objects/Note/Note.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Assets/Music/CreepyAtmosphere_Looped.wav" type="AudioStream" id=9]
+[ext_resource path="res://Scenes/SceneChangeArea.tscn" type="PackedScene" id=10]
 
 [node name="ForestLvl" type="Node"]
 script = ExtResource( 6 )
@@ -91,3 +92,7 @@ position = Vector2( 415, 164 )
 [node name="BackGroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
 autoplay = true
+
+[node name="SceneChangeArea" parent="." instance=ExtResource( 10 )]
+position = Vector2( 861, 336 )
+next_level = "res://Scenes/ForestLvl_Night.tscn"

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Assets/TileSets/Forest_ground_tileset_night.tres" type="TileSet" id=1]
 [ext_resource path="res://Assets/Objects/Enviroment/Boundary_Tree_Night/BoundTreeNight.tres" type="TileSet" id=2]
+[ext_resource path="res://Assets/Characters/Dog/Scene/Dog.tscn" type="PackedScene" id=3]
 
 [node name="Node2D" type="Node2D"]
 
@@ -23,3 +24,6 @@ tile_data = PoolIntArray( -1966034, 0, 0, -1966033, 0, 0, -1966032, 0, 0, -19004
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
+
+[node name="Dog" parent="." instance=ExtResource( 3 )]
+position = Vector2( 57, 28 )
