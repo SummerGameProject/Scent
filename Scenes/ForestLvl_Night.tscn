@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/TileSets/Forest_ground_tileset_night.tres" type="TileSet" id=1]
 [ext_resource path="res://Assets/Characters/Dog/Scene/Dog.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Assets/Objects/Enviroment/Boundary_Tree_Night/BoundTreeNight.tres" type="TileSet" id=5]
 [ext_resource path="res://Assets/GameManagement/GameManager.gd" type="Script" id=6]
 [ext_resource path="res://Assets/Objects/Enviroment/Bush/LongBush.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/Objects/Note/Note.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/Music/CreepyAtmosphere_Looped.wav" type="AudioStream" id=9]
 
 [node name="ForestLvl" type="Node"]
 script = ExtResource( 6 )
@@ -30,6 +32,9 @@ tile_data = PoolIntArray( -1900362, 0, 0, -1900346, 0, 0, -1834846, 0, 0, -18348
 
 [node name="Dog" parent="." instance=ExtResource( 2 )]
 position = Vector2( 304, 172 )
+
+[node name="Note" parent="." instance=ExtResource( 8 )]
+position = Vector2( 468, 305 )
 
 [node name="Monster" parent="." instance=ExtResource( 3 )]
 position = Vector2( 197, 37 )
@@ -101,3 +106,11 @@ position = Vector2( 2472, 999 )
 
 [node name="LongBush10" parent="LongBushs" instance=ExtResource( 7 )]
 position = Vector2( 2255, 1378 )
+
+[node name="BackGroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -4.245
+autoplay = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
