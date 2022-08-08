@@ -3,7 +3,7 @@ extends "res://Assets/Characters/CharacterController.gd"
 ##
 #
 #
-# author(s): Num0Programmer
+# author(s): Num0Programmer, z$
 ##
 
 
@@ -64,6 +64,14 @@ var rn_gener : RandomNumberGenerator = RandomNumberGenerator.new()
 # searching
 onready var los_arrow : RayCast2D = $LOSArrow
 
+# foot steps
+onready var foot_step : AudioStreamPlayer2D = $FootStep
+onready var timer : Timer = $Timer
+var foot_step_timing : int = 0.6
+
+# chase stinger
+onready var stinger : AudioStreamPlayer = $ChaseStinger
+
 # sprite reference
 #onready var anim_sprite : AnimatedSprite = $AnimatedSprite # will have to change this before the game will work properly
 
@@ -107,6 +115,7 @@ func _physics_process( _delta ) -> void:
 			chase_state( _delta )
 	
 	path = get_path_to_destination()
+	check_foot_step()
 
 
 ##
@@ -135,6 +144,12 @@ func check_for_dog() -> bool:
 	# return WANDERING
 	return false
 
+# checks if a foot step should be played
+func check_foot_step():
+	
+	# check if the velocity is greater then 0 and
+	if velocity.length() != 0 && timer.time_left <= 0 :
+		play_foot_step(foot_step_timing)
 
 func get_interest_point() -> Vector2:
 	
@@ -147,6 +162,13 @@ func get_path_to_destination() -> PoolVector2Array:
 	
 	return nav_agent.get_simple_path( global_position, destination, false )
 
+# function for playing sound effect of monsters walk
+func play_foot_step(step_timing):
+	# plays sound effect 
+	foot_step.play()
+	
+	# starts timer
+	timer.start(step_timing)
 
 func update_path() -> Vector2:
 	
@@ -170,7 +192,6 @@ func chase_state( time_step : float ) -> void:
 	
 	var dog_found : bool = false
 	var move_direct : Vector2 = Vector2.ZERO
-	
 	
 	if path.size() > 0:
 		
@@ -210,25 +231,3 @@ func wander_state( time_step : float ) -> void:
 	if check_for_dog():
 		
 		state = CHASE
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

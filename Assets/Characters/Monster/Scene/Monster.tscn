@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/Animations/Monster_Animations/Mon_movement.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Assets/Characters/Monster/Scripts/MonsterController.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Sounds/Retro FootStep Metal 01.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Sounds/horror_01_stinger_violin_01.wav" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -24,7 +26,16 @@ collision_mask = 5
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 1 )
 animation = "mon_idle"
-
-frame = 2
-
+frame = 3
 playing = true
+
+[node name="FootStep" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = -12.027
+max_distance = 100.0
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ChaseStinger" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )

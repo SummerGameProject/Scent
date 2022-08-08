@@ -45,10 +45,24 @@ var reading_pos : Vector2 = Vector2.ZERO
 var hidden_mod : String = "#676767"
 var orig_mod : String = "#ffffff"
 
+# Both of these anim times are my best guesses. I'm hoping we use an animation
+# player in the future so we can easily tell how long a cycle is
+var walk_anim_time : float = 0.6
+var sprint_anim_time : float = 0.5
+
+# pitch ranges for movement. used in the play_foot_step func to give steps
+# a little bit of randomness to their pitches
+var walk_pitch_range : Vector2 = Vector2(1.3, 1.5)
+var sprint_pitch_range : Vector2 = Vector2(1.8, 2)
+
+
 # state control
 var state = IDLE
 
 onready var hide_radius : Area2D = $HidingRadius
+onready var foot_step : AudioStreamPlayer2D = $FootStep
+onready var hide_sound : AudioStreamPlayer2D = $HidingSound
+onready var timer : Timer = $Timer
 
 
 # signals
@@ -121,6 +135,7 @@ func start_hiding() -> void:
 	
 	anim_sprite.modulate = hidden_mod
 	anim_sprite.play( "idle_r" ) # would play some other "hiding" animation probably; this is filler
+	hide_sound.play()
 	$DogCollider2D.disabled = true
 	
 	global_position = hiding_pos
@@ -166,6 +181,8 @@ func sprint_state( time_step : float ) -> void:
 	
 	velocity_change_by_direct( move_direct, time_step, sprint_speed )
 	
+	check_foot_step()
+	
 	if move_direct == Vector2.ZERO:
 		
 		state = IDLE
@@ -201,6 +218,8 @@ func walk_state( time_step : float ) -> void:
 	
 	velocity_change_by_direct( move_direct, time_step )
 	
+	check_foot_step()
+	
 	if move_direct == Vector2.ZERO:
 		
 		state = IDLE
@@ -215,7 +234,25 @@ func walk_state( time_step : float ) -> void:
 		
 	elif Input.is_action_just_pressed("ui_accept") && Global.can_read:
 		state = READING
+		
+func check_foot_step():
 
+	# check if the velocity is greater then 0 and
+	if velocity.length() != 0 && timer.time_left <= 0 :
+		
+		# check if we are walking
+		if state == WALK:
+			play_foot_step(walk_anim_time, walk_pitch_range)
+			
+		# otherwise we are sprinting
+		else:
+			# play a foot step if it is
+			play_foot_step(sprint_anim_time, sprint_pitch_range)
+		
+func play_foot_step(timing, pitch_range):
+	foot_step.pitch_scale = rand_range(pitch_range.x,pitch_range.y)
+	foot_step.play()
+	timer.start(timing)
 
 ##
 # events

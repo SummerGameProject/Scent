@@ -15,6 +15,7 @@ onready var PageText = $Text
 onready var PageName = $Name
 onready var PagePortrait = $Portrait
 onready var animationPlayer = $PageOutline/Indicator/AnimationPlayer
+onready var PageTurningAudio = $PageTurningAudio
 func _ready():
 	PageTimer.wait_time = textSpeed
 	Page = getPage()
@@ -76,6 +77,9 @@ func nextPhrase() -> void:
 		
 		# exit
 		return
+	
+	# play page turning sound
+	PageTurningAudio.play()
 	
 	# this is used just incase the user decides to reread the note
 	visible = true
