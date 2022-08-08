@@ -42,16 +42,16 @@ reach = 30.0
 [node name="InterestPoints" type="Node2D" parent="."]
 
 [node name="InterestPoint1" type="Node2D" parent="InterestPoints"]
-position = Vector2( 25, 42 )
+position = Vector2( 82, 62 )
 
 [node name="InterestPoint2" type="Node2D" parent="InterestPoints"]
-position = Vector2( 298, 89 )
+position = Vector2( 468, 114 )
 
 [node name="InterestPoint3" type="Node2D" parent="InterestPoints"]
-position = Vector2( 87, 143 )
+position = Vector2( 178, 457 )
 
 [node name="InterestPoint4" type="Node2D" parent="InterestPoints"]
-position = Vector2( 152, 24 )
+position = Vector2( 837, 433 )
 
 [node name="Stumps" type="Node2D" parent="."]
 
