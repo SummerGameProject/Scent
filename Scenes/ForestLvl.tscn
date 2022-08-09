@@ -37,8 +37,6 @@ position = Vector2( 340, 126 )
 
 [node name="Monster" parent="." instance=ExtResource( 3 )]
 position = Vector2( 197, 37 )
-chase_speed = 200.0
-reach = 30.0
 
 [node name="InterestPoints" type="Node2D" parent="."]
 

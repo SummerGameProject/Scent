@@ -69,6 +69,7 @@ var rn_gener : RandomNumberGenerator = RandomNumberGenerator.new()
 
 # searching
 var chase_timer : float = 0
+onready var attack_area : Area2D = $Area2D
 onready var los_arrow : RayCast2D = $LOSArrow
 
 # foot steps
@@ -226,11 +227,6 @@ func chase_state( time_step : float ) -> void:
 	var dog_position : Vector2 = scene_root.get_dog_position()
 	var move_direct : Vector2 = Vector2.ZERO
 	
-	# check if dog is within reach
-	if global_position.distance_to( dog_position ) <= reach:
-		# goto game over screen
-		scene_root.goto_game_over_screen()
-	
 	# check chase_timer greater than 0
 	if chase_timer > 0:
 		
@@ -281,3 +277,13 @@ func wander_state( time_step : float ) -> void:
 		
 		state = CHASE
 		chase_timer = chase_time
+
+
+##
+# events
+##
+
+func _on_Area2D_body_entered( body ):
+	
+	if body.name == "Dog":
+		scene_root.goto_game_over_screen()
