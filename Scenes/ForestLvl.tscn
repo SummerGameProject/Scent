@@ -87,10 +87,10 @@ position = Vector2( 33, 70 )
 collision_mask = 3
 
 [node name="Note" parent="." instance=ExtResource( 8 )]
-pause_mode = 2
 position = Vector2( 415, 164 )
 
 [node name="BackGroundMusic" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
 stream = ExtResource( 9 )
 autoplay = true
 
