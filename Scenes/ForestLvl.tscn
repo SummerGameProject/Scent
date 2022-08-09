@@ -51,7 +51,7 @@ position = Vector2( 468, 114 )
 position = Vector2( 178, 457 )
 
 [node name="InterestPoint4" type="Node2D" parent="InterestPoints"]
-position = Vector2( 837, 433 )
+position = Vector2( 529, 436 )
 
 [node name="Stumps" type="Node2D" parent="."]
 

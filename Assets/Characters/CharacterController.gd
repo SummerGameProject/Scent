@@ -95,6 +95,27 @@ func sprite_anim_handler( heading : Vector2, state : String ) -> void:
 			anim_sprite.play( state + "_down" )
 
 
+func new_sprite_handler( heading : Vector2, state : String ):
+	
+	if heading == Vector2.UP:
+		
+		anim_sprite.play( state + "_up" )
+		
+	elif heading.x > 0:
+		
+		anim_sprite.play( state + "_right" )
+		anim_sprite.global_scale = Vector2( 1, 1 )
+		
+	elif heading.x < 0:
+		
+		anim_sprite.play( state + "_right" )
+		anim_sprite.global_scale = Vector2( -1, 1 )
+		
+	else: # assume heading is equal to ( 0, 1 )
+		
+		anim_sprite.play( state + "_down" )
+
+
 func velocity_change_by_direct( move_direct : Vector2, time_step : float = 1,
 		speed : float = walk_speed ) -> void:
 	##
