@@ -258,8 +258,7 @@ func play_foot_step(timing, pitch_range):
 # events
 ##
 
-
-func _on_HidingRadius_body_shape_entered( _body_rid, body, _body_shape_index, _local_shape_index ):
+func _on_HidingRadius_body_entered( body ):
 	
 	can_hide = true
 	
@@ -267,8 +266,7 @@ func _on_HidingRadius_body_shape_entered( _body_rid, body, _body_shape_index, _l
 	hiding_pos.y -= 5
 
 
-func _on_HidingRadius_body_shape_exited( _body_rid, _body, _body_shape_index, _local_shape_index ):
-	
+func _on_HidingRadius_body_exited( body ):
 	can_hide = false
 
 
