@@ -56,7 +56,7 @@ onready var anim_sprite : AnimatedSprite
 # behaviours
 ##
 
-func sprite_anim_handler( heading : Vector2, state : String ) -> void:
+func sprite_anim_handler( heading : Vector2, state : String ):
 	##
 	# assesses the direction this object is facing/moving and determines which animations
 	# to play and how to scale the sprite
@@ -65,37 +65,6 @@ func sprite_anim_handler( heading : Vector2, state : String ) -> void:
 	#
 	# state : movement state of the sprite which points to a certain animation
 	##
-	
-	match heading:
-		
-		Vector2.UP:
-			
-			# play animation for walking in northern direction
-			anim_sprite.play( state + "_up" )
-		
-		Vector2.RIGHT:
-			
-			# play animation for walking in eastern direction
-			anim_sprite.play( state + "_right" )
-			
-			# set sprite scale to ( 1, 1 )
-			anim_sprite.global_scale = Vector2( 1, 1 )
-		
-		Vector2.LEFT:
-			
-			# play animation for walking in western direction
-			anim_sprite.play( state + "_right" )
-			
-			# set sprite scale to ( -1, 1 )
-			anim_sprite.global_scale = Vector2( -1, 1 )
-		
-		Vector2.DOWN:
-			
-			# play animation for walking in southern direction
-			anim_sprite.play( state + "_down" )
-
-
-func new_sprite_handler( heading : Vector2, state : String ):
 	
 	if heading == Vector2.UP:
 		

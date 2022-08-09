@@ -235,7 +235,7 @@ func chase_state( time_step : float ) -> void:
 	
 	velocity_change_by_direct( move_direct, time_step, chase_speed )
 	
-	new_sprite_handler( move_direct, "mon_run" )
+	sprite_anim_handler( move_direct, "mon_run" )
 	
 	if not dog_found:
 		
@@ -262,7 +262,7 @@ func wander_state( time_step : float ) -> void:
 	
 	velocity_change_by_direct( move_direct, time_step )
 	
-	new_sprite_handler( move_direct, "mon_walk" )
+	sprite_anim_handler( move_direct, "mon_walk" )
 	
 	if check_for_dog():
 		
