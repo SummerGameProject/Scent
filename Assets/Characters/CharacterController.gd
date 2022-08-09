@@ -66,33 +66,23 @@ func sprite_anim_handler( heading : Vector2, state : String ) -> void:
 	# state : movement state of the sprite which points to a certain animation
 	##
 	
-	match heading:
+	if heading == Vector2.UP:
 		
-		Vector2.UP:
-			
-			# play animation for walking in northern direction
-			anim_sprite.play( state + "_up" )
+		anim_sprite.play( state + "_up" )
 		
-		Vector2.RIGHT:
-			
-			# play animation for walking in eastern direction
-			anim_sprite.play( state + "_right" )
-			
-			# set sprite scale to ( 1, 1 )
-			anim_sprite.global_scale = Vector2( 1, 1 )
+	elif heading.x > 0:
 		
-		Vector2.LEFT:
-			
-			# play animation for walking in western direction
-			anim_sprite.play( state + "_right" )
-			
-			# set sprite scale to ( -1, 1 )
-			anim_sprite.global_scale = Vector2( -1, 1 )
+		anim_sprite.play( state + "_right" )
+		anim_sprite.global_scale = Vector2( 1, 1 )
 		
-		Vector2.DOWN:
-			
-			# play animation for walking in southern direction
-			anim_sprite.play( state + "_down" )
+	elif heading.x < 0:
+		
+		anim_sprite.play( state + "_right" )
+		anim_sprite.global_scale = Vector2( -1, 1 )
+		
+	else: # assume heading is equal to ( 0, 1 )
+		
+		anim_sprite.play( state + "_down" )
 
 
 func velocity_change_by_direct( move_direct : Vector2, time_step : float = 1,

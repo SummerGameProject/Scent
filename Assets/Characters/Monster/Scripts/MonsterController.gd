@@ -133,17 +133,14 @@ func _physics_process( _delta ) -> void:
 		IDLE:
 			
 			idle_state()
-			print( "State: IDLE" )
 		
 		WANDER:
 			
 			wander_state( _delta )
-			print( "State: WANDER" )
 		
 		CHASE:
 			
 			chase_state( _delta )
-			print( "State: CHASE" )
 	
 	path = get_path_to_destination()
 	check_foot_step()
@@ -175,12 +172,14 @@ func check_for_dog() -> bool:
 	# return WANDERING
 	return false
 
+
 # checks if a foot step should be played
 func check_foot_step():
 	
 	# check if the velocity is greater then 0 and
 	if velocity.length() != 0 && timer.time_left <= 0 :
 		play_foot_step(foot_step_timing)
+
 
 func get_interest_point() -> Vector2:
 	
@@ -193,6 +192,7 @@ func get_path_to_destination() -> PoolVector2Array:
 	
 	return nav_agent.get_simple_path( global_position, destination, false )
 
+
 # function for playing sound effect of monsters walk
 func play_foot_step(step_timing):
 	# plays sound effect 
@@ -200,6 +200,7 @@ func play_foot_step(step_timing):
 	
 	# starts timer
 	timer.start(step_timing)
+
 
 func update_path() -> Vector2:
 	
@@ -212,7 +213,7 @@ func update_path() -> Vector2:
 	
 	los_arrow.set_cast_to( move_direct * view_dist )
 	
-	return move_direct
+	return move_direct.normalized()
 
 
 ##
@@ -235,7 +236,6 @@ func chase_state( time_step : float ) -> void:
 	velocity_change_by_direct( move_direct, time_step, chase_speed )
 	
 	sprite_anim_handler( move_direct, "mon_run" )
-	#anim_sprite.play( "mon_walk_down" )
 	
 	if not dog_found:
 		
@@ -244,7 +244,7 @@ func chase_state( time_step : float ) -> void:
 
 func idle_state():
 	
-	sprite_anim_handler( Vector2.ZERO, "mon_idle" )
+	anim_sprite.play( "mon_idle" )
 	state = WANDER
 
 
@@ -263,7 +263,6 @@ func wander_state( time_step : float ) -> void:
 	velocity_change_by_direct( move_direct, time_step )
 	
 	sprite_anim_handler( move_direct, "mon_walk" )
-	#anim_sprite.play( "mon_walk_down" )
 	
 	if check_for_dog():
 		
