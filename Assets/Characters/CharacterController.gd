@@ -56,7 +56,7 @@ onready var anim_sprite : AnimatedSprite
 # behaviours
 ##
 
-func sprite_anim_handler( heading : Vector2, state : String ):
+func sprite_anim_handler( heading : Vector2, state : String ) -> void:
 	##
 	# assesses the direction this object is facing/moving and determines which animations
 	# to play and how to scale the sprite
