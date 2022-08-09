@@ -20,6 +20,7 @@ script = ExtResource( 2 )
 character_name = "Dog"
 
 [node name="HidingRadius" type="Area2D" parent="."]
+collision_layer = 0
 collision_mask = 8
 
 [node name="Collider" type="CollisionShape2D" parent="HidingRadius"]
@@ -37,7 +38,7 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 3 )
 animation = "idle_r"
-frame = 4
+frame = 7
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -58,6 +59,8 @@ volume_db = -15.0
 [node name="HidingSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
 
+[connection signal="body_entered" from="HidingRadius" to="." method="_on_HidingRadius_body_entered"]
+[connection signal="body_exited" from="HidingRadius" to="." method="_on_HidingRadius_body_exited"]
 [connection signal="body_shape_entered" from="HidingRadius" to="." method="_on_HidingRadius_body_shape_entered"]
 [connection signal="body_shape_exited" from="HidingRadius" to="." method="_on_HidingRadius_body_shape_exited"]
 [connection signal="area_entered" from="InteractBox" to="." method="_on_InteractBox_area_entered"]
