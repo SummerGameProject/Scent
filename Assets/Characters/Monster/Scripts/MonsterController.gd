@@ -32,6 +32,8 @@ export( float ) var chase_speed : float = 90
 
 export( float ) var reach : float = 15
 
+export( float ) var chase_time : float = 10
+
 
 # navigation
 export( float ) var view_dist : float = 30
@@ -66,6 +68,7 @@ var rn_gener : RandomNumberGenerator = RandomNumberGenerator.new()
 
 
 # searching
+var chase_timer : float = 0
 onready var los_arrow : RayCast2D = $LOSArrow
 
 # foot steps
@@ -75,9 +78,6 @@ var foot_step_timing : int = 0.6
 
 # chase stinger
 onready var stinger : AudioStreamPlayer = $ChaseStinger
-
-# sprite reference
-#onready var anim_sprite : AnimatedSprite = $AnimatedSprite # will have to change this before the game will work properly
 
 
 ##
@@ -123,7 +123,13 @@ func _ready() -> void:
 # updaters
 ##
 
-func _physics_process( _delta ) -> void:
+func _process( delta ) -> void:
+	
+	if chase_timer > 0:
+		chase_timer -= delta
+
+
+func _physics_process( delta ) -> void:
 	
 	if not run_scene:
 		return
@@ -136,11 +142,11 @@ func _physics_process( _delta ) -> void:
 		
 		WANDER:
 			
-			wander_state( _delta )
+			wander_state( delta )
 		
 		CHASE:
 			
-			chase_state( _delta )
+			chase_state( delta )
 	
 	path = get_path_to_destination()
 	check_foot_step()
@@ -160,11 +166,6 @@ func check_for_dog() -> bool:
 		
 		# set destination to dog's last known destination
 		destination = obj.global_position
-		
-		# check if the dog is close enough to defeat
-		if global_position.distance_to( obj.global_position ) <= reach:
-			
-			scene_root.goto_game_over_screen()
 		
 		# return CHASING
 		return true
@@ -222,23 +223,35 @@ func update_path() -> Vector2:
 
 func chase_state( time_step : float ) -> void:
 	
-	var dog_found : bool = true
+	var dog_position : Vector2 = scene_root.get_dog_position()
 	var move_direct : Vector2 = Vector2.ZERO
 	
-	if path.size() > 0:
+	# check if dog is within reach
+	if global_position.distance_to( dog_position ) <= reach:
+		# goto game over screen
+		scene_root.goto_game_over_screen()
+	
+	# check chase_timer greater than 0
+	if chase_timer > 0:
 		
-		move_direct = update_path()
+		# update destination with dog's current position
+		destination = dog_position
 		
-		if path.size() == 1:
+		if path.size() > 0:
 			
-			dog_found = check_for_dog()
-	
-	velocity_change_by_direct( move_direct, time_step, chase_speed )
-	
-	sprite_anim_handler( move_direct, "mon_run" )
-	
-	if not dog_found:
+			# update move_direct
+			move_direct = update_path()
 		
+		# change velocity
+		velocity_change_by_direct( move_direct, time_step, chase_speed )
+		
+		# animated sprite
+		sprite_anim_handler( move_direct, "mon_run" )
+		
+	# otherwise, check for no dog
+	elif not check_for_dog():
+		
+		# set state to WANDER
 		state = WANDER
 
 
@@ -267,3 +280,4 @@ func wander_state( time_step : float ) -> void:
 	if check_for_dog():
 		
 		state = CHASE
+		chase_timer = chase_time

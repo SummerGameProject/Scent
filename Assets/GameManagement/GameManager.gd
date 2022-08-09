@@ -32,6 +32,8 @@ const GAME_OVER_SCREEN_PATH = "res://Scenes/GameOverScreen.tscn"
 # initializers
 ##
 
+onready var dog := $Dog
+
 
 ##
 # updaters
@@ -41,6 +43,10 @@ const GAME_OVER_SCREEN_PATH = "res://Scenes/GameOverScreen.tscn"
 ##
 # behaviours
 ##
+
+func get_dog_position() -> Vector2:
+	return dog.global_position
+
 
 func goto_game_over_screen() -> void:
 	
