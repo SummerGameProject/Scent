@@ -80,7 +80,7 @@ func sprite_anim_handler( heading : Vector2, state : String ) -> void:
 		anim_sprite.play( state + "_right" )
 		anim_sprite.global_scale = Vector2( -1, 1 )
 		
-	else: # assume heading is equal to ( 0, 1 )
+	elif heading == Vector2.DOWN: # assume heading is equal to ( 0, 1 )
 		
 		anim_sprite.play( state + "_down" )
 

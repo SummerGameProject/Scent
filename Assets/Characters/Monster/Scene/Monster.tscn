@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Animations/Monster_Animations/Mon_movement.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Assets/Characters/Monster/Scripts/MonsterController.gd" type="Script" id=2]
@@ -7,13 +7,17 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 
+[sub_resource type="CircleShape2D" id=2]
+radius = 25.0799
+
 [node name="Monster" type="KinematicBody2D"]
 position = Vector2( 163, 83 )
 collision_layer = 2
 collision_mask = 5
 script = ExtResource( 2 )
 character_name = "Monster"
-chase_speed = 120.0
+chase_speed = 200.0
+reach = 30.0
 view_dist = 100.0
 
 [node name="MonsterSquareCollider2D" type="CollisionShape2D" parent="."]
@@ -26,7 +30,7 @@ collision_mask = 5
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 1 )
 animation = "mon_idle"
-frame = 0
+frame = 1
 playing = true
 
 [node name="FootStep" type="AudioStreamPlayer2D" parent="."]
@@ -39,3 +43,11 @@ one_shot = true
 
 [node name="ChaseStinger" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
