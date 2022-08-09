@@ -17,7 +17,10 @@ func _ready():
 
 
 func _on_SceneChangeArea_body_shape_entered(_body_rid, body, _body_shape_index, _local_shape_index):
+	var error_code
 	# check if the body is the dogs
 	if(body.name == "Dog"):
 		# change scene to next level
-		get_tree().change_scene(next_level )
+		error_code = get_tree().change_scene(next_level )
+		if error_code != 0:
+			print("ERROR: ", error_code)
