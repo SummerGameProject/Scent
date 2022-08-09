@@ -90,15 +90,21 @@ func _ready() -> void:
 		
 		print( "Cannot run while 'Monster' is root" )
 		run_scene = false
-		
-	else:
-		
-		var interest_point_holder = get_node_or_null( "/root/" + scene_root.name + "/InterestPoints" )
+	
+	
+	var interest_point_holder = get_node_or_null( "/root/" + scene_root.name + "/InterestPoints" )
+	
+	if interest_point_holder != null and interest_point_holder.get_child_count() > 0:
 		
 		chase_speed *= GameManager.TILE_SIZE
 		walk_speed *= GameManager.TILE_SIZE
 		
 		nav_agent = get_node_or_null( "/root/" + scene_root.name + "/Navigation" )
+		
+		if nav_agent == null:
+			
+			print( "Cannot follow paths without a Navigation2D node" )
+			run_scene = false
 		
 		for point in interest_point_holder.get_child_count():
 			interest_points.append( interest_point_holder.get_child( point ).global_position )
@@ -106,6 +112,11 @@ func _ready() -> void:
 		destination = get_interest_point()
 		
 		anim_sprite = $AnimatedSprite
+		
+	else:
+		
+		print( "Cannot generate paths without InterestPoints" )
+		run_scene = false
 
 
 ##
