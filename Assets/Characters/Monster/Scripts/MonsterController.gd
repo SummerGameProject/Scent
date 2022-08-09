@@ -43,8 +43,11 @@ export( float ) var interest_time : float = 1
 # private attributes
 ##
 
+var run_scene : bool = true
+
 # game manager reference
-onready var game_manager : Node = get_node_or_null( "/root/ForestLvl" )
+onready var scene_root : Node = get_tree().root.get_child( 1 )
+# gets the scene tree root; in the Monster's case the scene_root would be "Monster"
 
 
 # movement state
@@ -83,20 +86,26 @@ onready var stinger : AudioStreamPlayer = $ChaseStinger
 
 func _ready() -> void:
 	
-	var interest_point_holder = get_node_or_null( "/root/ForestLvl/InterestPoints" ) # fix this to work for any scene
-	
-	
-	chase_speed *= GameManager.TILE_SIZE
-	walk_speed *= GameManager.TILE_SIZE
-	
-	nav_agent = get_node_or_null( "/root/ForestLvl/Navigation" )
-	
-	for point in interest_point_holder.get_child_count():
-		interest_points.append( interest_point_holder.get_child( point ).global_position )
-	
-	destination = get_interest_point()
-	
-	anim_sprite = $AnimatedSprite
+	if scene_root.name == name:
+		
+		print( "Cannot run while 'Monster' is root" )
+		run_scene = false
+		
+	else:
+		
+		var interest_point_holder = get_node_or_null( "/root/" + scene_root.name + "/InterestPoints" )
+		
+		chase_speed *= GameManager.TILE_SIZE
+		walk_speed *= GameManager.TILE_SIZE
+		
+		nav_agent = get_node_or_null( "/root/" + scene_root.name + "/Navigation" )
+		
+		for point in interest_point_holder.get_child_count():
+			interest_points.append( interest_point_holder.get_child( point ).global_position )
+		
+		destination = get_interest_point()
+		
+		anim_sprite = $AnimatedSprite
 
 
 ##
@@ -104,6 +113,9 @@ func _ready() -> void:
 ##
 
 func _physics_process( _delta ) -> void:
+	
+	if not run_scene:
+		return
 	
 	match state:
 		
@@ -144,7 +156,7 @@ func check_for_dog() -> bool:
 		# check if the dog is close enough to defeat
 		if global_position.distance_to( obj.global_position ) <= reach:
 			
-			game_manager.goto_game_over_screen()
+			scene_root.goto_game_over_screen()
 		
 		# return CHASING
 		return true
