@@ -244,7 +244,7 @@ func chase_state( time_step : float ) -> void:
 
 func idle_state():
 	
-	sprite_anim_handler( Vector2.ZERO, "mon_idle" )
+	anim_sprite.play( "mon_idle" )
 	state = WANDER
 
 
