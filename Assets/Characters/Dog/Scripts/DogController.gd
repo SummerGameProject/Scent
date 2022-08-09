@@ -66,7 +66,7 @@ onready var timer : Timer = $Timer
 
 
 # signals
-signal sprinting( position )
+# signal sprinting( position )
 
 
 ##
