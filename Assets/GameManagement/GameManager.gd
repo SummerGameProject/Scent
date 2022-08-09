@@ -44,4 +44,6 @@ const GAME_OVER_SCREEN_PATH = "res://Scenes/GameOverScreen.tscn"
 
 func goto_game_over_screen() -> void:
 	
-	get_tree().change_scene( GAME_OVER_SCREEN_PATH )
+	var error_code = get_tree().change_scene( GAME_OVER_SCREEN_PATH )
+	if error_code != 0:
+		print("ERROR: ", error_code)
