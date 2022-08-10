@@ -1,11 +1,11 @@
 extends "res://Assets/Characters/CharacterController.gd"
 
-##
-# A frontend to the CharacterController which is specifically tied to the Dog
-# character and moving this node based on input from the player
-#
-# author(s): Num0Programmer, z$
-##
+"""
+A frontend to the CharacterController which is specifically tied to the Dog
+character and moving this node based on input from the player
+
+author(s): Num0Programmer, z$
+"""
 
 
 class_name DogController
@@ -114,7 +114,6 @@ func _physics_process( _delta : float ) -> void:
 ##
 # behaviours
 ##
-
 
 func get_move_direct() -> Vector2:
 	##
