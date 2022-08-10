@@ -1,60 +1,71 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Assets/Themes/DefaultTheme.tres" type="Theme" id=1]
+[ext_resource path="res://Assets/Themes/SilverTheme-menu.tres" type="Theme" id=1]
 [ext_resource path="res://Assets/Menus/PauseMenu/PauseMenu.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Menus/PauseMenu/pasued.png" type="Texture" id=3]
+
+[sub_resource type="ImageTexture" id=1]
 
 [node name="PauseMenu" type="Control"]
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 30.0
-margin_top = 29.0
-margin_right = -20.0
-margin_bottom = -22.0
+rect_scale = Vector2( 0.999977, 0.999949 )
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="Background" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 0.333333 )
+color = Color( 0.243137, 0.137255, 0.172549, 1 )
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 85.0
-margin_top = 18.0
-margin_right = 185.0
-margin_bottom = 111.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 304.0
+margin_bottom = 164.0
 custom_constants/separation = 10
 
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer"]
+margin_right = 288.0
+margin_bottom = 60.0
+texture = ExtResource( 3 )
+
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+visible = false
+margin_top = 10.0
 margin_right = 100.0
-margin_bottom = 17.0
+margin_bottom = 33.0
 text = "Paused"
 align = 1
 valign = 1
 
 [node name="Control" type="Control" parent="CenterContainer/VBoxContainer"]
-margin_top = 27.0
-margin_right = 100.0
-margin_bottom = 27.0
+margin_top = 70.0
+margin_right = 288.0
+margin_bottom = 70.0
 
 [node name="ResumeButton" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 37.0
-margin_right = 100.0
-margin_bottom = 60.0
+margin_top = 80.0
+margin_right = 288.0
+margin_bottom = 109.0
 rect_min_size = Vector2( 100, 0 )
+size_flags_vertical = 0
 text = "Resume"
+icon = SubResource( 1 )
+flat = true
 
 [node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer"]
 pause_mode = 2
-margin_top = 70.0
-margin_right = 100.0
-margin_bottom = 93.0
+margin_top = 119.0
+margin_right = 288.0
+margin_bottom = 148.0
 text = "Quit"
+flat = true
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ResumeButton" to="." method="_on_ResumeButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
