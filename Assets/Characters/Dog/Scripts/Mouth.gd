@@ -41,7 +41,7 @@ func _physics_process( _delta ) -> void:
 	
 	if item != null:
 		
-		item.global_position = item.global_position.move_toward( global_position, _delta )
+		item.global_position = global_position
 
 
 func drop( delta : float ) -> void:
@@ -51,7 +51,8 @@ func drop( delta : float ) -> void:
 	rand_pos.x = rn_gener.randf_range( global_position.x - 0.7, global_position.x + 0.7 )
 	rand_pos.y = rn_gener.randf_range( global_position.y - 0.7, global_position.y + 0.7 )
 	
-	item.global_position = item.global_position.move_toward( rand_pos, delta )
+	item.global_position = item.global_position.move_toward( rand_pos, delta * GameManager.TILE_SIZE )
+	item.get_child( 0 ).disabled = false
 	
 	item = null
 
@@ -59,6 +60,7 @@ func drop( delta : float ) -> void:
 func pickup() -> void:
 	
 	item = nearby_item
+	item.get_child( 0 ).disabled = true
 	item.global_position = global_position
 
 
