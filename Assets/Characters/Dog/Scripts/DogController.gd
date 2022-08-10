@@ -266,7 +266,7 @@ func _on_HidingRadius_body_entered( body ):
 	hiding_pos.y -= 5
 
 
-func _on_HidingRadius_body_exited( body ):
+func _on_HidingRadius_body_exited( _body ):
 	can_hide = false
 
 
