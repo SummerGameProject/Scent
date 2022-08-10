@@ -110,6 +110,7 @@ func _physics_process( _delta : float ) -> void:
 			reading_state()
 		
 
+
 ##
 # behaviours
 ##
@@ -151,7 +152,6 @@ func hiding_state() -> void:
 	
 	if Input.is_action_just_released( "hide" ):
 		
-
 		anim_sprite.modulate = orig_mod
 		$DogCollider2D.disabled = false
 		
@@ -172,6 +172,7 @@ func idle_state() -> void:
 		
 	elif Input.is_action_just_pressed("ui_accept") && Global.can_read:
 		state = READING
+
 
 func sprint_state( time_step : float ) -> void:
 	
@@ -198,6 +199,7 @@ func sprint_state( time_step : float ) -> void:
 	elif Input.is_action_just_pressed("ui_accept") && Global.can_read:
 		state = READING
 
+
 func reading_state():
 	# make the dogs position the notes position
 	global_position = reading_pos
@@ -207,7 +209,6 @@ func reading_state():
 	
 		# return to the idle state
 		idle_state()
-	
 
 
 func walk_state( time_step : float ) -> void:
@@ -234,9 +235,10 @@ func walk_state( time_step : float ) -> void:
 		
 	elif Input.is_action_just_pressed("ui_accept") && Global.can_read:
 		state = READING
-		
-func check_foot_step():
 
+
+func check_foot_step():
+	
 	# check if the velocity is greater then 0 and
 	if velocity.length() != 0 && timer.time_left <= 0 :
 		
@@ -248,7 +250,8 @@ func check_foot_step():
 		else:
 			# play a foot step if it is
 			play_foot_step(sprint_anim_time, sprint_pitch_range)
-		
+
+
 func play_foot_step(timing, pitch_range):
 	foot_step.pitch_scale = rand_range(pitch_range.x,pitch_range.y)
 	foot_step.play()
