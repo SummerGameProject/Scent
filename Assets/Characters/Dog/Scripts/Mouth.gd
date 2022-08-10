@@ -39,7 +39,7 @@ func _process( _delta ) -> void:
 			
 			swap( _delta )
 			
-		else:
+		elif item != null:
 			
 			drop( _delta )
 
