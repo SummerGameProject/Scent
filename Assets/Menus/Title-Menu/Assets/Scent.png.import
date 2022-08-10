@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Scent.png-1b72687a3cbda37fda4b70f50910231e.stex"
+path="res://.import/Scent.png-dd33572788fb75789140c1e958fcb288.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Menus/Title-Menu/Scent.png"
-dest_files=[ "res://.import/Scent.png-1b72687a3cbda37fda4b70f50910231e.stex" ]
+source_file="res://Assets/Menus/Title-Menu/Assets/Scent.png"
+dest_files=[ "res://.import/Scent.png-dd33572788fb75789140c1e958fcb288.stex" ]
 
 [params]
 
