@@ -11,6 +11,8 @@ func set_is_paused(value):
 	is_paused = value
 	get_tree().paused = is_paused
 	visible = is_paused
+	$CenterContainer/VBoxContainer/ResumeButton.grab_focus()
+	print("focused")
 
 
 func _on_ResumeButton_pressed():
