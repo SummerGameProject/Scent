@@ -49,7 +49,7 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 3 )
 animation = "idle_r"
-frame = 3
+frame = 6
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]

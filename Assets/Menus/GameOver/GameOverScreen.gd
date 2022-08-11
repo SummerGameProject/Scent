@@ -36,7 +36,7 @@ onready var main_menu_btn : Button = $MainMenuBtn
 ##
 
 func _ready():
-	
+	$ReplayBtn.grab_focus()
 	exit_btn.connect( "button_down", self, "on_exit_btn_pressed" )
 	replay_btn.connect( "button_down", self, "on_replay_btn_pressed" )
 	main_menu_btn.connect( "button_down", self, "on_main_menu_btn_pressed" )
@@ -52,15 +52,12 @@ func _ready():
 ##
 
 func on_exit_btn_pressed() -> void:
-	
 	get_tree().quit()
 
 
 func on_main_menu_btn_pressed() -> void:
-	
-	print( "Main Menu is not hooked up yet!" )
+	get_tree().change_scene("res://Assets/Menus/Title-Menu/Scenes/TitleScreen.tscn")
 
 
 func on_replay_btn_pressed() -> void:
-	
 	get_tree().change_scene( "res://Scenes/ForestLvl.tscn" ) # left as a literal until I know where "replaying" will put the player
