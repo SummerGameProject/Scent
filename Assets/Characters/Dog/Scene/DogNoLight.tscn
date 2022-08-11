@@ -4,6 +4,9 @@
 
 [node name="Dog" instance=ExtResource( 1 )]
 
+[node name="DogCollider2D" parent="." index="3"]
+position = Vector2( 0, 4.5 )
+
 [node name="AnimatedSprite" parent="." index="4"]
 frame = 0
 

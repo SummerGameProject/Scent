@@ -30,7 +30,6 @@ collision_mask = 5
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 1 )
 animation = "mon_idle"
-frame = 1
 playing = true
 
 [node name="FootStep" type="AudioStreamPlayer2D" parent="."]

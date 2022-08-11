@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" load_steps=2 format=2]
 
-[ext_resource path="res://Assets/Objects/Enviroment/Boundary_Tree_Night/boundTree_night.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Objects/Enviroment/Tree/tree-night/boundTree_night.png" type="Texture" id=1]
 
 [resource]
 0/name = "boundTree_night.png 0"
