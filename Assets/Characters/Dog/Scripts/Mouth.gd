@@ -17,7 +17,7 @@ export( float ) var drop_radius : float = 5
 var item : Node2D = null
 var nearby_item : Node2D = null
 
-var rn_gener : RandomNumberGenerator = RandomNumberGenerator.new() 
+var rn_gener : RandomNumberGenerator = RandomNumberGenerator.new()
 
 
 # methods
@@ -81,7 +81,13 @@ func swap( delta : float ) -> void:
 
 func _on_PickupRadius_body_entered( _body ):
 	nearby_item = _body
+	
+	if _body.name == "Lantern":
+		get_parent().get_light().enabled = false
 
 
 func _on_PickupRadius_body_exited( _body ):
 	nearby_item = null
+	
+	if _body.name == "Lantern":
+		get_parent().get_light().enabled = true

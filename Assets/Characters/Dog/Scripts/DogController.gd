@@ -256,6 +256,7 @@ func play_foot_step(timing, pitch_range):
 	foot_step.play()
 	timer.start(timing)
 
+
 ##
 # events
 ##
@@ -290,7 +291,16 @@ func _on_InteractBox_area_exited(area):
 		
 		# set global can read to false
 		Global.can_read = false
-		
+
+
+##
+# getters and setters
+##
+
+func get_light() -> Node:
+	return $Light2D
+
+
 ##
 # tests
 ##
