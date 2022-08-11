@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/TileSets/Forest_ground_tileset_night.tres" type="TileSet" id=1]
 [ext_resource path="res://Assets/Objects/Enviroment/Boundary_Tree_Night/BoundTreeNight.tres" type="TileSet" id=2]
 [ext_resource path="res://Scenes/SceneChangeArea.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Characters/Dog/Scene/Dog.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/Objects/Lantern/Lantern2.tscn" type="PackedScene" id=5]
 
 [node name="Node2D" type="Node2D"]
 
@@ -32,6 +31,3 @@ position = Vector2( 167, 85 )
 [node name="SceneChangeArea" parent="." instance=ExtResource( 3 )]
 position = Vector2( 2592, 453 )
 next_level = "res://Scenes/ForestLvl_third.tscn"
-
-[node name="Lantern" parent="." instance=ExtResource( 5 )]
-position = Vector2( 213, 119 )
