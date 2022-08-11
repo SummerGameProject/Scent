@@ -4,8 +4,8 @@
 
 [node name="Dog" instance=ExtResource( 1 )]
 
-[node name="AnimatedSprite" parent="." index="3"]
-frame = 2
+[node name="AnimatedSprite" parent="." index="4"]
+frame = 0
 
-[node name="Light2D" parent="." index="5"]
+[node name="Light2D" parent="." index="6"]
 visible = false

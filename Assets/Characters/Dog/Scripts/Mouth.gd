@@ -51,7 +51,7 @@ func _physics_process( _delta ) -> void:
 		item.global_position = global_position
 
 
-func drop( delta : float ) -> void:
+func drop( _delta : float ) -> void:
 	
 	var rand_pos : Vector2 = Vector2.ZERO
 	
