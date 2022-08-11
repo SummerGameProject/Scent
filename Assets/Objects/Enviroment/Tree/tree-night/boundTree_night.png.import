@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/boundTree_night.png-41f05cf16841d4834e769385815784ac.stex"
+path="res://.import/boundTree_night.png-78162cb523508a9f92da5b1e8214372e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Objects/Enviroment/Boundary_Tree_Night/boundTree_night.png"
-dest_files=[ "res://.import/boundTree_night.png-41f05cf16841d4834e769385815784ac.stex" ]
+source_file="res://Assets/Objects/Enviroment/Tree/tree-night/boundTree_night.png"
+dest_files=[ "res://.import/boundTree_night.png-78162cb523508a9f92da5b1e8214372e.stex" ]
 
 [params]
 

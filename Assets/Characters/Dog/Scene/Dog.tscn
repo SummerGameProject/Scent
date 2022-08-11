@@ -16,9 +16,10 @@ radius = 24.0832
 radius = 30.2655
 
 [sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 6.07143 )
 
 [node name="Dog" type="KinematicBody2D"]
-position = Vector2( 150, 60 )
+position = Vector2( 0, 1 )
 collision_mask = 6
 script = ExtResource( 2 )
 character_name = "Dog"
@@ -43,13 +44,14 @@ collision_mask = 16
 shape = SubResource( 4 )
 
 [node name="DogCollider2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -1.75 )
 scale = Vector2( 0.7, 0.7 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -9 )
 frames = ExtResource( 3 )
 animation = "idle_r"
-frame = 6
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
