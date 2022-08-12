@@ -12,7 +12,7 @@ func set_is_paused(value):
 	get_tree().paused = is_paused
 	visible = is_paused
 	$CenterContainer/VBoxContainer/ResumeButton.grab_focus()
-	print("focused")
+	$AnimationPlayer.play("alive")
 
 
 func _on_ResumeButton_pressed():
