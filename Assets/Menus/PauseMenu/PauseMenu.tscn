@@ -7,24 +7,12 @@
 [sub_resource type="Animation" id=2]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("../Paused-Sprite:frame")
+tracks/0/path = NodePath("PausedTitle/Paused-Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Paused-Sprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -36,24 +24,12 @@ resource_name = "alive"
 length = 0.56
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("../Paused-Sprite:frame")
+tracks/0/path = NodePath("PausedTitle/Paused-Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"update": 1,
-"values": [  ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Paused-Sprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
@@ -75,11 +51,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.243137, 0.137255, 0.172549, 1 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="PausedTitle" type="Node2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PausedTitle"]
+root_node = NodePath("../..")
 anims/RESET = SubResource( 2 )
 anims/alive = SubResource( 3 )
 
-[node name="Paused-Sprite" type="Sprite" parent="."]
+[node name="Paused-Sprite" type="Sprite" parent="PausedTitle"]
 position = Vector2( 155.004, 31.0016 )
 texture = ExtResource( 3 )
 hframes = 2
