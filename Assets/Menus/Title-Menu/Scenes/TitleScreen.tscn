@@ -12,12 +12,36 @@
 [sub_resource type="Animation" id=1]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("AnimationPlayer/Scent-sheet:frame")
+tracks/0/path = NodePath("../AnimationPlayer/Scent-sheet:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Scent-sheet:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ScentLogo/Scent-sheet:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -29,7 +53,7 @@ resource_name = "alive"
 length = 0.5
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("AnimationPlayer/Scent-sheet:frame")
+tracks/0/path = NodePath("ScentLogo/Scent-sheet:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -67,15 +91,6 @@ rect_scale = Vector2( 0.999279, 0.896286 )
 visible = false
 margin_right = 288.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Menu"]
-anims/RESET = SubResource( 1 )
-anims/alive = SubResource( 2 )
-
-[node name="Scent-sheet" type="Sprite" parent="Menu/AnimationPlayer"]
-position = Vector2( 159, 35 )
-texture = ExtResource( 1 )
-hframes = 2
-
 [node name="Logo" type="TextureRect" parent="Menu"]
 margin_right = 320.0
 stretch_mode = 4
@@ -83,6 +98,20 @@ stretch_mode = 4
 [node name="LeafFalling" parent="Menu" instance=ExtResource( 2 )]
 position = Vector2( -16.0115, -17.8514 )
 scale = Vector2( 1.00072, 1.11572 )
+
+[node name="ScentLogo" type="Node2D" parent="Menu"]
+scale = Vector2( 1, 1 )
+
+[node name="Scent-sheet" type="Sprite" parent="Menu/ScentLogo"]
+position = Vector2( 160.115, -33.4715 )
+scale = Vector2( 1.00072, 1.11572 )
+texture = ExtResource( 1 )
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Menu/ScentLogo"]
+root_node = NodePath("../..")
+anims/RESET = SubResource( 1 )
+anims/alive = SubResource( 2 )
 
 [node name="CenterRow" type="HBoxContainer" parent="Menu"]
 margin_top = 4.0
@@ -132,10 +161,9 @@ Cosmic Boneyard"
 align = 1
 valign = 1
 
-[node name="FadeIn" parent="." instance=ExtResource( 6 )]
-visible = false
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
+
+[node name="FadeIn" parent="." instance=ExtResource( 6 )]
 
 [connection signal="fade_finished" from="FadeIn" to="." method="_on_FadeIn_fade_finished"]
