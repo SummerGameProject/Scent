@@ -100,7 +100,6 @@ position = Vector2( -16.0115, -17.8514 )
 scale = Vector2( 1.00072, 1.11572 )
 
 [node name="ScentLogo" type="Node2D" parent="Menu"]
-scale = Vector2( 1, 1 )
 
 [node name="Scent-sheet" type="Sprite" parent="Menu/ScentLogo"]
 position = Vector2( 160.115, -33.4715 )
