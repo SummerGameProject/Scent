@@ -1,4 +1,4 @@
-extends Control
+extends Node2D
 
 export var PagePath = ""
 export(float) var textSpeed = 0.05

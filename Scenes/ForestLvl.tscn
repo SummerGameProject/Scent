@@ -49,6 +49,9 @@ position = Vector2( 340, 126 )
 [node name="Monster" parent="." instance=ExtResource( 3 )]
 position = Vector2( 197, 37 )
 
+[node name="Note" parent="." instance=ExtResource( 8 )]
+position = Vector2( 415, 164 )
+
 [node name="InterestPoints" type="Node2D" parent="."]
 
 [node name="InterestPoint1" type="Node2D" parent="InterestPoints"]
@@ -204,6 +207,3 @@ position = Vector2( 694, 328 )
 
 [node name="Tree-Day23" parent="Trees" instance=ExtResource( 12 )]
 position = Vector2( 693, 321 )
-
-[node name="Note" parent="." instance=ExtResource( 8 )]
-position = Vector2( 415, 164 )
