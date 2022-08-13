@@ -64,6 +64,10 @@ config/icon="res://Assets/icon.png"
 
 Global="*res://Scripts/auto_load.gd"
 
+[debug]
+
+gdscript/warnings/return_value_discarded=false
+
 [display]
 
 window/size/width=320
