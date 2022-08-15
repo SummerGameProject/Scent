@@ -6,6 +6,9 @@
 
 [node name="ForestLvl_Boss" type="YSort"]
 
+[node name="Dog" parent="." instance=ExtResource( 3 )]
+position = Vector2( 57, 28 )
+
 [node name="Navigation2D" type="Navigation2D" parent="."]
 
 [node name="forestground" type="TileMap" parent="Navigation2D"]
@@ -24,6 +27,3 @@ tile_data = PoolIntArray( -1966034, 0, 0, -1966033, 0, 0, -1966032, 0, 0, -19004
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
-
-[node name="Dog" parent="." instance=ExtResource( 3 )]
-position = Vector2( 57, 28 )
