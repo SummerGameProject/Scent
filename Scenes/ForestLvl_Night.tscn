@@ -74,22 +74,18 @@ collision_mask = 3
 
 [node name="LongBush" parent="LongBushs" instance=ExtResource( 7 )]
 position = Vector2( 271, 149 )
-collision_layer = 4
 collision_mask = 3
 
 [node name="LongBush2" parent="LongBushs" instance=ExtResource( 7 )]
 position = Vector2( 111, 119 )
-collision_layer = 4
 collision_mask = 3
 
 [node name="LongBush3" parent="LongBushs" instance=ExtResource( 7 )]
 position = Vector2( 272, 54 )
-collision_layer = 4
 collision_mask = 3
 
 [node name="LongBush4" parent="LongBushs" instance=ExtResource( 7 )]
 position = Vector2( 33, 70 )
-collision_layer = 4
 collision_mask = 3
 
 [node name="LongBush5" parent="LongBushs" instance=ExtResource( 7 )]
