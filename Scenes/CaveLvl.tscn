@@ -5,7 +5,7 @@
 [ext_resource path="res://Scenes/SceneChangeArea.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Characters/Dog/Scene/Dog.tscn" type="PackedScene" id=4]
 
-[node name="Node2D" type="Node2D"]
+[node name="CaveLvl" type="Node2D"]
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
 
