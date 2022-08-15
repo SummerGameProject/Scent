@@ -115,23 +115,24 @@ anims/alive = SubResource( 2 )
 [node name="CenterRow" type="HBoxContainer" parent="Menu"]
 margin_top = 4.0
 margin_right = 320.0
-margin_bottom = 62.0
+margin_bottom = 57.0
 size_flags_vertical = 3
 alignment = 1
 
 [node name="Buttons" type="VBoxContainer" parent="Menu/CenterRow"]
 margin_left = 134.0
 margin_right = 186.0
-margin_bottom = 58.0
+margin_bottom = 16.0
 size_flags_vertical = 0
 theme = ExtResource( 5 )
 custom_constants/separation = 0
 alignment = 1
 
 [node name="startButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 4 )]
-margin_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_right = 52.0
-margin_bottom = 29.0
+margin_bottom = 8.0
 rect_min_size = Vector2( 52, 0 )
 focus_neighbour_bottom = NodePath("../optionsButton")
 size_flags_horizontal = 4
@@ -140,9 +141,12 @@ align = 0
 scene_to_load = "res://Scenes/ForestLvl.tscn"
 
 [node name="optionsButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 3 )]
-margin_top = 29.0
-margin_right = 52.0
-margin_bottom = 58.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 16.0
+margin_top = 8.0
+margin_right = 35.0
+margin_bottom = 16.0
 focus_neighbour_top = NodePath("../startButton")
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -150,7 +154,7 @@ text = "Options"
 align = 0
 
 [node name="VersionLabel" type="Label" parent="Menu"]
-margin_top = 66.0
+margin_top = 61.0
 margin_right = 320.0
 margin_bottom = 115.0
 size_flags_vertical = 7
