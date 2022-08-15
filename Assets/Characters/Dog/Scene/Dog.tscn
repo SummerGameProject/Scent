@@ -80,8 +80,6 @@ stream = ExtResource( 5 )
 
 [connection signal="body_entered" from="HidingRadius" to="." method="_on_HidingRadius_body_entered"]
 [connection signal="body_exited" from="HidingRadius" to="." method="_on_HidingRadius_body_exited"]
-[connection signal="body_shape_entered" from="HidingRadius" to="." method="_on_HidingRadius_body_shape_entered"]
-[connection signal="body_shape_exited" from="HidingRadius" to="." method="_on_HidingRadius_body_shape_exited"]
 [connection signal="area_entered" from="InteractBox" to="." method="_on_InteractBox_area_entered"]
 [connection signal="area_exited" from="InteractBox" to="." method="_on_InteractBox_area_exited"]
 [connection signal="body_entered" from="PickupRadius" to="Mouth" method="_on_PickupRadius_body_entered"]
