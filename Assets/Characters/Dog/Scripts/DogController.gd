@@ -31,9 +31,10 @@ enum {
 
 export( float ) var sprint_speed : float = 350
 
-export( float ) var tracking_time : float = 20
+export( float ) var tracking_time : float = 10
 var is_tracking : bool = false
 var tracking_timer : float = 0
+var saved_tracking_time : float = 0
 
 var can_hide : bool = false
 
@@ -86,6 +87,7 @@ func _process( _delta : float ) -> void:
 	
 	if tracking_timer > 0:
 		
+		saved_tracking_time = tracking_timer
 		tracking_timer -= _delta
 		print( "Time left to track: ", tracking_timer )
 		
@@ -93,7 +95,7 @@ func _process( _delta : float ) -> void:
 		
 		start_tracking()
 		
-	else: # assume tracking is finished
+	elif saved_tracking_time > tracking_timer:
 		
 		stop_tracking()
 
@@ -171,6 +173,13 @@ func start_tracking() -> void:
 
 
 func stop_tracking() -> void:
+	
+	var bodies : Array = tracking_radius.get_overlapping_bodies()
+	var body_count : int = bodies.size()
+	
+	for i in range( body_count ):
+		
+		bodies[ i ].cover()
 	
 	is_tracking = false
 	print( "Stopped Tracking" )
