@@ -46,11 +46,11 @@ collision_mask = 16
 [node name="Collision" type="CollisionShape2D" parent="PickupRadius"]
 shape = SubResource( 4 )
 
-[node name="SmellRadius" type="Area2D" parent="."]
+[node name="TrackingRadius" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 32
 
-[node name="Collision" type="CollisionShape2D" parent="SmellRadius"]
+[node name="Collision" type="CollisionShape2D" parent="TrackingRadius"]
 shape = SubResource( 5 )
 
 [node name="DogCollider2D" type="CollisionShape2D" parent="."]
@@ -62,7 +62,7 @@ shape = SubResource( 1 )
 position = Vector2( 0, -9 )
 frames = ExtResource( 3 )
 animation = "idle_r"
-frame = 3
+frame = 2
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -94,5 +94,5 @@ stream = ExtResource( 5 )
 [connection signal="area_exited" from="InteractBox" to="." method="_on_InteractBox_area_exited"]
 [connection signal="body_entered" from="PickupRadius" to="Mouth" method="_on_PickupRadius_body_entered"]
 [connection signal="body_exited" from="PickupRadius" to="Mouth" method="_on_PickupRadius_body_exited"]
-[connection signal="body_entered" from="SmellRadius" to="." method="_on_SmellRadius_body_entered"]
-[connection signal="body_exited" from="SmellRadius" to="." method="_on_SmellRadius_body_exited"]
+[connection signal="body_entered" from="TrackingRadius" to="." method="_on_TrackingRadius_body_entered"]
+[connection signal="body_exited" from="TrackingRadius" to="." method="_on_TrackingRadius_body_exited"]

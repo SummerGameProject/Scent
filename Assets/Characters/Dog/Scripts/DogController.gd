@@ -26,18 +26,14 @@ enum {
 
 
 ##
-# public attributes
+# attributes
 ##
 
 export( float ) var sprint_speed : float = 350
 
-export( float ) var smell_time : float = 20
-var smell_timer : float = 0
-
-
-##
-# private attributes
-##
+export( float ) var tracking_time : float = 20
+var is_tracking : bool = false
+var tracking_timer : float = 0
 
 var can_hide : bool = false
 
@@ -64,6 +60,7 @@ var state = IDLE
 
 
 onready var hide_radius : Area2D = $HidingRadius
+onready var tracking_radius : Area2D = $TrackingRadius
 onready var foot_step : AudioStreamPlayer2D = $FootStep
 onready var hide_sound : AudioStreamPlayer2D = $HidingSound
 onready var timer : Timer = $Timer
@@ -79,13 +76,27 @@ func _ready() -> void:
 	walk_speed *= GameManager.TILE_SIZE
 	
 	anim_sprite = $AnimatedSprite
-	
-	smell_timer = smell_time
 
 
 ##
 # updaters
 ##
+
+func _process( _delta : float ) -> void:
+	
+	if tracking_timer > 0:
+		
+		tracking_timer -= _delta
+		print( "Time left to track: ", tracking_timer )
+		
+	elif not is_tracking and Input.is_action_just_pressed( "smell" ):
+		
+		start_tracking()
+		
+	else: # assume tracking is finished
+		
+		stop_tracking()
+
 
 func _physics_process( _delta : float ) -> void:
 	
@@ -143,6 +154,26 @@ func start_hiding() -> void:
 	global_position = hiding_pos
 	
 	state = HIDING
+
+
+func start_tracking() -> void:
+	
+	var bodies : Array = tracking_radius.get_overlapping_bodies()
+	var body_count : int = bodies.size()
+	
+	for i in range( body_count ):
+		
+		bodies[ i ].uncover()
+	
+	is_tracking = true
+	tracking_timer = tracking_time
+	print( "Tracking" )
+
+
+func stop_tracking() -> void:
+	
+	is_tracking = false
+	print( "Stopped Tracking" )
 
 
 ##
@@ -296,11 +327,14 @@ func _on_InteractBox_area_exited(area):
 		Global.can_read = false
 
 
-func _on_SmellRadius_body_entered( body : Footprints ) -> void:
-	body.uncover()
+func _on_TrackingRadius_body_entered( body : Footprints ) -> void:
+	
+	if is_tracking:
+		
+		body.uncover()
 
 
-func _on_SmellRadius_body_exited( body : Footprints ) -> void:
+func _on_TrackingRadius_body_exited( body : Footprints ) -> void:
 	body.cover()
 
 
