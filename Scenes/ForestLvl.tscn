@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Assets/TileSets/forest_ground_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Assets/Objects/CampFire/Campfire.tscn" type="PackedScene" id=2]
@@ -14,7 +14,6 @@
 [ext_resource path="res://Assets/Objects/Enviroment/Tree/tree-day/Tree-Day.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Assets/Characters/Dog/Scene/Dog.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Assets/Objects/Sock/Sock.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Assets/Objects/Footprints/Footprints.tscn" type="PackedScene" id=15]
 
 [node name="ForestLvl" type="YSort"]
 script = ExtResource( 6 )
@@ -216,6 +215,3 @@ position = Vector2( 163, 311 )
 
 [node name="Sock" parent="." instance=ExtResource( 14 )]
 position = Vector2( 325, 370 )
-
-[node name="Footprints" parent="." instance=ExtResource( 15 )]
-position = Vector2( 491, 203 )

@@ -89,7 +89,6 @@ func _process( _delta : float ) -> void:
 		
 		saved_tracking_time = tracking_timer
 		tracking_timer -= _delta
-		print( "Time left to track: ", tracking_timer )
 		
 	elif not is_tracking and Input.is_action_just_pressed( "smell" ):
 		
@@ -182,7 +181,6 @@ func stop_tracking() -> void:
 		bodies[ i ].cover()
 	
 	is_tracking = false
-	print( "Stopped Tracking" )
 
 
 ##
