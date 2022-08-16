@@ -24,12 +24,15 @@ enum {
 	READING = 4,
 }
 
+
 ##
 # public attributes
 ##
 
-# sprinting
 export( float ) var sprint_speed : float = 350
+
+export( float ) var smell_time : float = 20
+var smell_timer : float = 0
 
 
 ##
@@ -59,14 +62,11 @@ var sprint_pitch_range : Vector2 = Vector2(1.8, 2)
 # state control
 var state = IDLE
 
+
 onready var hide_radius : Area2D = $HidingRadius
 onready var foot_step : AudioStreamPlayer2D = $FootStep
 onready var hide_sound : AudioStreamPlayer2D = $HidingSound
 onready var timer : Timer = $Timer
-
-
-# signals
-# signal sprinting( position )
 
 
 ##
@@ -79,6 +79,8 @@ func _ready() -> void:
 	walk_speed *= GameManager.TILE_SIZE
 	
 	anim_sprite = $AnimatedSprite
+	
+	smell_timer = smell_time
 
 
 ##
@@ -284,6 +286,7 @@ func _on_InteractBox_area_entered(area):
 		# set global can read to true
 		Global.can_read = true
 
+
 # function for when the hiding area of the dog exits another area
 func _on_InteractBox_area_exited(area):
 	# check to see if the area it entered is a Note area
@@ -291,6 +294,14 @@ func _on_InteractBox_area_exited(area):
 		
 		# set global can read to false
 		Global.can_read = false
+
+
+func _on_SmellRadius_body_entered( body : Footprints ) -> void:
+	body.uncover()
+
+
+func _on_SmellRadius_body_exited( body : Footprints ) -> void:
+	body.cover()
 
 
 ##
