@@ -50,6 +50,3 @@ hframes = 5
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 2 )
 anims/trap = SubResource( 3 )
-
-[connection signal="body_entered" from="." to="." method="_on_BearTrap_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_BearTrap_body_exited"]

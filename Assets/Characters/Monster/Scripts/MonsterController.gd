@@ -18,7 +18,8 @@ class_name MonsterController
 enum {
 	IDLE = 0,
 	WANDER = 1,
-	CHASE = 2
+	CHASE = 2,
+	STOP = 3
 }
 
 
@@ -195,7 +196,6 @@ func play_foot_step(step_timing):
 	# starts timer
 	timer.start(step_timing)
 
-
 func update_path() -> Vector2:
 	
 	var move_direct : Vector2 = Vector2.ZERO
@@ -247,6 +247,20 @@ func idle_state():
 	
 	anim_sprite.play( "mon_idle" )
 	state = WANDER
+	
+func stop_state(stop, bear_trap_pos):
+	# check if the monster is suppouse to be stopped
+	if stop:
+	
+		# set monsters state to stopped
+		state = STOP
+		
+		# set monsters position to bear trap
+		position = bear_trap_pos
+	
+	# otherwise the monster should be able to move again
+	else:
+		state = IDLE
 
 
 func wander_state( time_step : float ) -> void:
@@ -281,9 +295,4 @@ func _on_Area2D_body_entered( body ):
 		scene_root.goto_game_over_screen()
 
 
-func _on_BearTrap_stop_monster():
-	# stop movement 
-	
-	
-	# wait for watch tower fire to be done
-	pass # Replace with function body.
+

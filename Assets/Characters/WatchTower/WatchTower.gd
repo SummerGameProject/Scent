@@ -1,9 +1,7 @@
 extends StaticBody2D
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+signal tower_finished()
 
 
 # Called when the node enters the scene tree for the first time.
@@ -22,3 +20,6 @@ func _on_BearTrap_wacth_tower_fire():
 	
 	#wait until the animation is done
 	yield($AnimationPlayer, "animation_finished")
+	
+	# signal the antimation is done
+	emit_signal("tower_finished")
