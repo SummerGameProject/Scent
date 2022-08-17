@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/Lighting/test-light.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Characters/Dog/Scripts/DogController.gd" type="Script" id=2]
@@ -14,6 +14,9 @@ radius = 24.0832
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 30.2655
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 80.025
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 6.07143 )
@@ -43,6 +46,13 @@ collision_mask = 16
 [node name="Collision" type="CollisionShape2D" parent="PickupRadius"]
 shape = SubResource( 4 )
 
+[node name="TrackingRadius" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 32
+
+[node name="Collision" type="CollisionShape2D" parent="TrackingRadius"]
+shape = SubResource( 5 )
+
 [node name="DogCollider2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -1.75 )
 scale = Vector2( 0.7, 0.7 )
@@ -52,7 +62,7 @@ shape = SubResource( 1 )
 position = Vector2( 0, -9 )
 frames = ExtResource( 3 )
 animation = "idle_r"
-frame = 5
+frame = 7
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -84,3 +94,5 @@ stream = ExtResource( 5 )
 [connection signal="area_exited" from="InteractBox" to="." method="_on_InteractBox_area_exited"]
 [connection signal="body_entered" from="PickupRadius" to="Mouth" method="_on_PickupRadius_body_entered"]
 [connection signal="body_exited" from="PickupRadius" to="Mouth" method="_on_PickupRadius_body_exited"]
+[connection signal="body_entered" from="TrackingRadius" to="." method="_on_TrackingRadius_body_entered"]
+[connection signal="body_exited" from="TrackingRadius" to="." method="_on_TrackingRadius_body_exited"]

@@ -24,17 +24,17 @@ enum {
 	READING = 4,
 }
 
+
 ##
-# public attributes
+# attributes
 ##
 
-# sprinting
 export( float ) var sprint_speed : float = 350
 
-
-##
-# private attributes
-##
+export( float ) var tracking_time : float = 10
+var is_tracking : bool = false
+var tracking_timer : float = 0
+var saved_tracking_time : float = 0
 
 var can_hide : bool = false
 
@@ -59,14 +59,12 @@ var sprint_pitch_range : Vector2 = Vector2(1.8, 2)
 # state control
 var state = IDLE
 
+
 onready var hide_radius : Area2D = $HidingRadius
+onready var tracking_radius : Area2D = $TrackingRadius
 onready var foot_step : AudioStreamPlayer2D = $FootStep
 onready var hide_sound : AudioStreamPlayer2D = $HidingSound
 onready var timer : Timer = $Timer
-
-
-# signals
-# signal sprinting( position )
 
 
 ##
@@ -84,6 +82,22 @@ func _ready() -> void:
 ##
 # updaters
 ##
+
+func _process( _delta : float ) -> void:
+	
+	if tracking_timer > 0:
+		
+		saved_tracking_time = tracking_timer
+		tracking_timer -= _delta
+		
+	elif not is_tracking and Input.is_action_just_pressed( "smell" ):
+		
+		start_tracking()
+		
+	elif saved_tracking_time > tracking_timer:
+		
+		stop_tracking()
+
 
 func _physics_process( _delta : float ) -> void:
 	
@@ -141,6 +155,32 @@ func start_hiding() -> void:
 	global_position = hiding_pos
 	
 	state = HIDING
+
+
+func start_tracking() -> void:
+	
+	var bodies : Array = tracking_radius.get_overlapping_bodies()
+	var body_count : int = bodies.size()
+	
+	for i in range( body_count ):
+		
+		bodies[ i ].uncover()
+	
+	is_tracking = true
+	tracking_timer = tracking_time
+	print( "Tracking" )
+
+
+func stop_tracking() -> void:
+	
+	var bodies : Array = tracking_radius.get_overlapping_bodies()
+	var body_count : int = bodies.size()
+	
+	for i in range( body_count ):
+		
+		bodies[ i ].cover()
+	
+	is_tracking = false
 
 
 ##
@@ -284,6 +324,7 @@ func _on_InteractBox_area_entered(area):
 		# set global can read to true
 		Global.can_read = true
 
+
 # function for when the hiding area of the dog exits another area
 func _on_InteractBox_area_exited(area):
 	# check to see if the area it entered is a Note area
@@ -291,6 +332,17 @@ func _on_InteractBox_area_exited(area):
 		
 		# set global can read to false
 		Global.can_read = false
+
+
+func _on_TrackingRadius_body_entered( body : Footprints ) -> void:
+	
+	if is_tracking:
+		
+		body.uncover()
+
+
+func _on_TrackingRadius_body_exited( body : Footprints ) -> void:
+	body.cover()
 
 
 ##
