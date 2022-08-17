@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Assets/TileSets/Forest_ground_tileset_night.tres" type="TileSet" id=1]
 [ext_resource path="res://Assets/Characters/Dog/Scene/Dog.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Assets/Objects/Lantern/Lantern2.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Assets/Objects/Enviroment/Tree/tree-night/Tree-Night.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Assets/Objects/Torch/Torch.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Assets/Objects/BearTrap/BearTrap.tscn" type="PackedScene" id=14]
 
 [node name="ForestLvl_Night" type="YSort"]
 script = ExtResource( 6 )
@@ -202,3 +203,6 @@ color = Color( 0.0470588, 0.0470588, 0.0470588, 1 )
 
 [node name="Torch" parent="." instance=ExtResource( 13 )]
 position = Vector2( 218, 96 )
+
+[node name="BearTrap" parent="." instance=ExtResource( 14 )]
+position = Vector2( 443, 201 )
