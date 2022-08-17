@@ -287,3 +287,11 @@ func _on_Area2D_body_entered( body ):
 	
 	if body.name == "Dog":
 		scene_root.goto_game_over_screen()
+
+
+func _on_BearTrap_stop_monster():
+	# stop movement 
+	
+	
+	# wait for watch tower fire to be done
+	pass # Replace with function body.
