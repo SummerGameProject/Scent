@@ -1,4 +1,4 @@
-extends Node2D
+extends GameManager
 
 
 # Declare member variables here. Examples:

@@ -81,10 +81,6 @@ var foot_step_timing : int = 0.6
 onready var stinger : AudioStreamPlayer = $ChaseStinger
 
 
-##
-# initializers
-##
-
 func _ready() -> void:
 	
 	if scene_root.name == name:
@@ -120,17 +116,13 @@ func _ready() -> void:
 		run_scene = false
 
 
-##
-# updaters
-##
-
-func _process( delta ) -> void:
+func _process( _delta : float ) -> void:
 	
 	if chase_timer > 0:
-		chase_timer -= delta
+		chase_timer -= _delta
 
 
-func _physics_process( delta ) -> void:
+func _physics_process( _delta : float ) -> void:
 	
 	if not run_scene:
 		return
@@ -143,11 +135,11 @@ func _physics_process( delta ) -> void:
 		
 		WANDER:
 			
-			wander_state( delta )
+			wander_state( _delta )
 		
 		CHASE:
 			
-			chase_state( delta )
+			chase_state( _delta )
 	
 	path = get_path_to_destination()
 	check_foot_step()
@@ -185,13 +177,13 @@ func check_foot_step():
 
 func get_interest_point() -> Vector2:
 	
-	var rand_interest_point = rn_gener.randi_range( 0, interest_points.size() - 1 )
+	var rand_interest_point : int = rn_gener.randi_range( 0,
+											interest_points.size() - 1 )
 	
 	return interest_points[ rand_interest_point ]
 
 
 func get_path_to_destination() -> PoolVector2Array:
-	
 	return nav_agent.get_simple_path( global_position, destination, false )
 
 
