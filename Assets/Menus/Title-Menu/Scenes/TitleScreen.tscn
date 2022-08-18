@@ -7,7 +7,7 @@
 [ext_resource path="res://Assets/Themes/SilverTheme-menu.tres" type="Theme" id=5]
 [ext_resource path="res://Assets/Menus/Title-Menu/Scenes/FadeIn.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/Menus/Title-Menu/Scripts/title_screen.gd" type="Script" id=7]
-[ext_resource path="res://Assets/Menus/Title-Menu/Assets/NDKG_CreepyAtmosphere_Looped.wav" type="AudioStream" id=8]
+[ext_resource path="res://Assets/Music/Scent_Titlescreen_0_Loop_2022-08-17.wav" type="AudioStream" id=8]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
