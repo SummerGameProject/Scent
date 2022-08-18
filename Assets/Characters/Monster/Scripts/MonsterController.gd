@@ -70,7 +70,7 @@ var rn_gener : RandomNumberGenerator = RandomNumberGenerator.new()
 
 # searching
 var chase_timer : float = 0
-onready var attack_area : Area2D = $Area2D
+onready var attack_radius : Area2D = $AttackRadius
 onready var los_arrow : RayCast2D = $LOSArrow
 
 # foot steps
@@ -289,10 +289,7 @@ func wander_state( time_step : float ) -> void:
 # events
 ##
 
-func _on_Area2D_body_entered( body ):
+func _on_AttackRadius_body_entered( body ):
 	
 	if body.name == "Dog":
 		scene_root.goto_game_over_screen()
-
-
-

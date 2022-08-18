@@ -63,5 +63,3 @@ func goto_game_over_screen() -> void:
 func set_monster_state_wander() -> void:
 	monster.state = 1 # code for WANDER state
 	monster.destination = monster.get_interest_point()
-	
-	print( "Monster state = ", monster.state )
