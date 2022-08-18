@@ -144,6 +144,7 @@ func _physics_process( _delta : float ) -> void:
 	
 	path = get_path_to_destination()
 	check_foot_step()
+	print( "Velocity -> ", velocity )
 
 
 ##
@@ -216,14 +217,13 @@ func update_path() -> Vector2:
 
 func chase_state( time_step : float ) -> void:
 	
-	var dog_position : Vector2 = scene_root.get_dog_position()
 	var move_direct : Vector2 = Vector2.ZERO
 	
 	# check chase_timer greater than 0
 	if chase_timer > 0:
 		
 		# update destination with dog's current position
-		destination = dog_position
+		destination = scene_root.get_dog_position()
 		
 		if path.size() > 0:
 			
