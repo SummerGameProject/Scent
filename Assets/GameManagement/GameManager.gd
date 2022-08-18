@@ -27,12 +27,17 @@ const GAME_OVER_SCREEN_PATH = "res://Scenes/GameOverScreen.tscn"
 # private attributes
 ##
 
+onready var dog := $Dog
+onready var monster := $Monster
+
 
 ##
 # initializers
 ##
 
-onready var dog := $Dog
+func _ready() -> void:
+	
+	dog.connect( "hiding", self, "set_monster_state_wander" )
 
 
 ##
@@ -53,3 +58,10 @@ func goto_game_over_screen() -> void:
 	var error_code = get_tree().change_scene( GAME_OVER_SCREEN_PATH )
 	if error_code != 0:
 		print("ERROR: ", error_code)
+
+
+func set_monster_state_wander() -> void:
+	monster.state = 1 # code for WANDER state
+	monster.destination = monster.get_interest_point()
+	
+	print( "Monster state = ", monster.state )

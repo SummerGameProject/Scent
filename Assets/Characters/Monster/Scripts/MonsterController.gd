@@ -144,7 +144,6 @@ func _physics_process( _delta : float ) -> void:
 	
 	path = get_path_to_destination()
 	check_foot_step()
-	print( "Velocity -> ", velocity )
 
 
 ##
@@ -247,7 +246,8 @@ func idle_state():
 	
 	anim_sprite.play( "mon_idle" )
 	state = WANDER
-	
+
+
 func stop_state(stop, bear_trap_pos):
 	# check if the monster is suppouse to be stopped
 	if stop:
