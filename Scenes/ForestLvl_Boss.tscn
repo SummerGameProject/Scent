@@ -64,5 +64,9 @@ position = Vector2( 609, -22 )
 [node name="WatchTower" parent="." instance=ExtResource( 7 )]
 position = Vector2( 828, -68 )
 
-[connection signal="stop_monster" from="BearTrap" to="Monster" method="_on_BearTrap_stop_monster"]
-[connection signal="wacth_tower_fire" from="BearTrap" to="WatchTower" method="_on_BearTrap_wacth_tower_fire"]
+[connection signal="body_entered" from="BearTrap" to="BearTrap" method="_on_BearTrap_body_entered"]
+[connection signal="stop_monster" from="BearTrap" to="." method="_on_BearTrap_stop_monster"]
+[connection signal="body_entered" from="BearTrap2" to="BearTrap2" method="_on_BearTrap2_body_entered"]
+[connection signal="stop_monster" from="BearTrap2" to="." method="_on_BearTrap2_stop_monster"]
+[connection signal="body_entered" from="BearTrap3" to="BearTrap3" method="_on_BearTrap3_body_entered"]
+[connection signal="stop_monster" from="BearTrap3" to="." method="_on_BearTrap3_stop_monster"]
