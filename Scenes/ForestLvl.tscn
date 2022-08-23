@@ -288,14 +288,17 @@ text = "Hold 'shift' to sprint
 "
 
 [node name="Footprints2" parent="." instance=ExtResource( 23 )]
+visible = false
 position = Vector2( 790, 178 )
 rotation = 1.5708
 
 [node name="Footprints3" parent="." instance=ExtResource( 23 )]
+visible = false
 position = Vector2( 790, 213 )
 rotation = 1.5708
 
 [node name="Footprints4" parent="." instance=ExtResource( 23 )]
+visible = false
 position = Vector2( 788, 255 )
 rotation = 1.5708
 
@@ -327,5 +330,6 @@ visible = false
 position = Vector2( 990, 409 )
 
 [node name="Footprints" parent="." instance=ExtResource( 23 )]
+visible = false
 position = Vector2( 789, 148 )
 rotation = 1.5708
