@@ -53,8 +53,8 @@ position = Vector2( -1.52588e-05, 3.8147e-06 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -7.62939e-06, -3.8147e-06 )
-scale = Vector2( 1.25, 1.25 )
+position = Vector2( -2.50001, -2 )
+scale = Vector2( 1.5625, 1.5 )
 texture = ExtResource( 4 )
 
 [node name="LabelContainer" type="Control" parent="."]
