@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 25.0799
+radius = 17.0294
 
 [node name="Monster" type="KinematicBody2D"]
 position = Vector2( 163, 83 )
@@ -30,7 +30,7 @@ collision_mask = 5
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 1 )
 animation = "mon_idle"
-frame = 3
+frame = 1
 playing = true
 
 [node name="FootStep" type="AudioStreamPlayer2D" parent="."]
@@ -44,10 +44,10 @@ one_shot = true
 [node name="ChaseStinger" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="AttackRadius" type="Area2D" parent="."]
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="Collision" type="CollisionShape2D" parent="AttackRadius"]
 shape = SubResource( 2 )
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="AttackRadius" to="." method="_on_AttackRadius_body_entered"]

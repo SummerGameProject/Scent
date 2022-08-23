@@ -70,7 +70,7 @@ var rn_gener : RandomNumberGenerator = RandomNumberGenerator.new()
 
 # searching
 var chase_timer : float = 0
-onready var attack_area : Area2D = $Area2D
+onready var attack_radius : Area2D = $AttackRadius
 onready var los_arrow : RayCast2D = $LOSArrow
 
 # foot steps
@@ -216,14 +216,13 @@ func update_path() -> Vector2:
 
 func chase_state( time_step : float ) -> void:
 	
-	var dog_position : Vector2 = scene_root.get_dog_position()
 	var move_direct : Vector2 = Vector2.ZERO
 	
 	# check chase_timer greater than 0
 	if chase_timer > 0:
 		
 		# update destination with dog's current position
-		destination = dog_position
+		destination = scene_root.get_dog_position()
 		
 		if path.size() > 0:
 			
@@ -247,7 +246,8 @@ func idle_state():
 	
 	anim_sprite.play( "mon_idle" )
 	state = WANDER
-	
+
+
 func stop_state(stop, bear_trap_pos):
 	# check if the monster is suppouse to be stopped
 	if stop:
@@ -289,10 +289,7 @@ func wander_state( time_step : float ) -> void:
 # events
 ##
 
-func _on_Area2D_body_entered( body ):
+func _on_AttackRadius_body_entered( body ):
 	
 	if body.name == "Dog":
 		scene_root.goto_game_over_screen()
-
-
-

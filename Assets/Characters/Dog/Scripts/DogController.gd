@@ -66,6 +66,8 @@ onready var foot_step : AudioStreamPlayer2D = $FootStep
 onready var hide_sound : AudioStreamPlayer2D = $HidingSound
 onready var timer : Timer = $Timer
 
+signal hiding
+
 
 ##
 # initializers
@@ -154,6 +156,7 @@ func start_hiding() -> void:
 	
 	global_position = hiding_pos
 	
+	emit_signal( "hiding" )
 	state = HIDING
 
 
