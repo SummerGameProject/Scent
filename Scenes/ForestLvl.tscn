@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Assets/TileSets/forest_ground_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Assets/Objects/CampFire/Campfire.tscn" type="PackedScene" id=2]
@@ -13,7 +13,7 @@
 [ext_resource path="res://Scenes/GUI.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Assets/Objects/Enviroment/Tree/tree-day/Tree-Day.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Assets/Characters/Dog/Scene/Dog.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Assets/Objects/Camp_Stuff/BigTree.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Assets/Objects/Sock/Sock.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Assets/Objects/Camp_Stuff/picnicTable.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Assets/Objects/Camp_Stuff/logVertical.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Assets/Objects/Camp_Stuff/sittingLog2.tscn" type="PackedScene" id=17]
@@ -21,6 +21,8 @@
 [ext_resource path="res://Assets/Objects/Camp_Stuff/nakedTree.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Assets/Objects/Camp_Stuff/treeStump.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Assets/Themes/SilverTheme-menu.tres" type="Theme" id=21]
+[ext_resource path="res://Assets/Objects/Camp_Stuff/BigTree.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Assets/Objects/Footprints/Footprints.tscn" type="PackedScene" id=23]
 
 [node name="ForestLvl" type="YSort"]
 script = ExtResource( 6 )
@@ -85,7 +87,7 @@ collision_mask = 3
 [node name="LongBushs" type="YSort" parent="."]
 
 [node name="LongBush" parent="LongBushs" instance=ExtResource( 7 )]
-position = Vector2( 609, 62 )
+position = Vector2( 576, 62 )
 collision_mask = 3
 
 [node name="LongBush2" parent="LongBushs" instance=ExtResource( 7 )]
@@ -104,6 +106,7 @@ collision_mask = 3
 
 [node name="Tree-Day" parent="Trees" instance=ExtResource( 12 )]
 position = Vector2( 657, 188 )
+collision_layer = 12
 
 [node name="Tree-Day37" parent="Trees" instance=ExtResource( 12 )]
 position = Vector2( 637, 445 )
@@ -233,21 +236,28 @@ position = Vector2( 149, 285 )
 
 [node name="medTent" parent="." instance=ExtResource( 18 )]
 position = Vector2( 113, 224 )
+collision_layer = 12
 
 [node name="picnicTable" parent="." instance=ExtResource( 15 )]
 position = Vector2( 307, 307 )
+collision_layer = 12
 
 [node name="basket" parent="picnicTable" instance=ExtResource( 3 )]
 position = Vector2( -8, 16 )
 
 [node name="nakedTree" parent="." instance=ExtResource( 19 )]
 position = Vector2( 406, 342 )
+collision_layer = 12
 
 [node name="treeStump" parent="." instance=ExtResource( 20 )]
 position = Vector2( 354, 220 )
 
-[node name="BigTree" parent="." instance=ExtResource( 14 )]
+[node name="BigTree" parent="." instance=ExtResource( 22 )]
+light_mask = 12
 position = Vector2( 569, 205 )
+
+[node name="Sock" parent="." instance=ExtResource( 14 )]
+position = Vector2( 789, 123 )
 
 [node name="hideText" type="RichTextLabel" parent="."]
 margin_left = 564.0
@@ -276,3 +286,46 @@ theme = ExtResource( 21 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "Hold 'shift' to sprint
 "
+
+[node name="Footprints2" parent="." instance=ExtResource( 23 )]
+position = Vector2( 790, 178 )
+rotation = 1.5708
+
+[node name="Footprints3" parent="." instance=ExtResource( 23 )]
+position = Vector2( 790, 213 )
+rotation = 1.5708
+
+[node name="Footprints4" parent="." instance=ExtResource( 23 )]
+position = Vector2( 788, 255 )
+rotation = 1.5708
+
+[node name="Footprints5" parent="." instance=ExtResource( 23 )]
+visible = false
+position = Vector2( 788, 293 )
+rotation = 1.5708
+
+[node name="Footprints6" parent="." instance=ExtResource( 23 )]
+visible = false
+position = Vector2( 789, 348 )
+rotation = 1.5708
+
+[node name="Footprints7" parent="." instance=ExtResource( 23 )]
+visible = false
+position = Vector2( 812, 392 )
+rotation = 0.785398
+
+[node name="Footprints8" parent="." instance=ExtResource( 23 )]
+visible = false
+position = Vector2( 863, 408 )
+
+[node name="Footprints9" parent="." instance=ExtResource( 23 )]
+visible = false
+position = Vector2( 925, 409 )
+
+[node name="Footprints10" parent="." instance=ExtResource( 23 )]
+visible = false
+position = Vector2( 990, 409 )
+
+[node name="Footprints" parent="." instance=ExtResource( 23 )]
+position = Vector2( 789, 148 )
+rotation = 1.5708

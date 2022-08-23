@@ -13,7 +13,6 @@ func _on_Note_body_entered(body):
 	
 	# checks if the body that enters the Pages body is the dog
 	if body.name == "Dog":
-		print("page should be visable")
 		PageLabel.visible = true
 		
 		can_interact = true
