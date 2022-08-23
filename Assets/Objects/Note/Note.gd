@@ -2,6 +2,7 @@ extends Area2D
 onready var PageLabel = $LabelContainer
 onready var PageBox = $Page/PageOutline
 var can_interact = false
+export var PagePath = ""
 
 # Called when the node enters the scene tree for the first time.
 #func _ready():

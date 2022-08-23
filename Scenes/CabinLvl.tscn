@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/TileSets/Cabin_Floor_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Assets/TileSets/Cabin_wall_tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://Scenes/SceneChangeArea.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Characters/Dog/Scene/Dog.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Objects/Note/Note.tscn" type="PackedScene" id=5]
 
 [node name="CabinLvl" type="Node2D"]
 
@@ -35,3 +36,7 @@ position = Vector2( 186, 220 )
 [node name="SceneChangeArea" parent="." instance=ExtResource( 3 )]
 position = Vector2( 2605, 452 )
 next_level = "res://Scenes/ForestLvl_Boss.tscn"
+
+[node name="Note" parent="." instance=ExtResource( 5 )]
+position = Vector2( 589, 231 )
+PagePath = "res://Dialog1.json"
