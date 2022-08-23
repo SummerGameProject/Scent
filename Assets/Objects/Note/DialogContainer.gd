@@ -1,6 +1,6 @@
 extends Node2D
 
-export var PagePath = ""
+onready var PagePath = get_parent().PagePath
 export(float) var textSpeed = 0.05
 
 var Page
@@ -17,6 +17,8 @@ onready var PagePortrait = $Portrait
 onready var animationPlayer = $PageOutline/Indicator/AnimationPlayer
 onready var PageTurningAudio = $PageTurningAudio
 func _ready():
+	print(get_parent().PagePath)
+	print("hi")
 	PageTimer.wait_time = textSpeed
 	Page = getPage()
 	assert(Page, "Page not found")

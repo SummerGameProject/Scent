@@ -46,6 +46,7 @@ tracks/0/keys = {
 [node name="Note" type="Area2D"]
 position = Vector2( 160, 90 )
 script = ExtResource( 5 )
+PagePath = "res://Dialog0.json"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -1.52588e-05, 3.8147e-06 )
@@ -85,7 +86,6 @@ visible = false
 position = Vector2( -30, -28 )
 z_index = 1
 script = ExtResource( 3 )
-PagePath = "res://Dialog0.json"
 
 [node name="PageOutline" type="ColorRect" parent="Page"]
 margin_left = -37.0
