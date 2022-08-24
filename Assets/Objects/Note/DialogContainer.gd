@@ -26,7 +26,7 @@ func _process(_delta):
 	PageIndicator.visible = phrase_finished
 	
 	# check if we are reading and the user is clicking space
-	if Input.is_action_just_pressed("ui_accept") && Global.can_read:
+	if Input.is_action_just_pressed("read") && Global.can_read:
 		
 		# make the Pagebox visible
 		visible = true
