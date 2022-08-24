@@ -31,7 +31,7 @@ func _on_Note_body_exited(body):
 func _input(_event):
 	#checking if the space button is pressed and can be interacted with
 
-	if Input.is_action_just_pressed("ui_accept") and can_interact:
+	if Input.is_action_just_pressed("read") and can_interact:
 
 		# turns the Pages label to invisible
 		PageLabel.visible = false
