@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/Sounds/Turning pages.wav" type="AudioStream" id=1]
 [ext_resource path="res://Assets/Themes/SilverTheme-16px.tres" type="Theme" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Assets/Objects/Note/Note.gd" type="Script" id=5]
 [ext_resource path="res://Assets/Themes/SilverTheme-10px.tres" type="Theme" id=6]
 [ext_resource path="res://Assets/Themes/SilverTheme-menu.tres" type="Theme" id=7]
+[ext_resource path="res://Assets/Objects/Note/light-note.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 9.75, 9.875 )
@@ -147,6 +148,15 @@ position = Vector2( -37, -59 )
 [node name="PageTurningAudio" type="AudioStreamPlayer2D" parent="Page"]
 position = Vector2( 30, 28 )
 stream = ExtResource( 1 )
+
+[node name="Light2D" type="Light2D" parent="Page"]
+position = Vector2( 28, 35.0343 )
+scale = Vector2( 1.0511, 1.40686 )
+texture = ExtResource( 8 )
+offset = Vector2( 0, -5 )
+texture_scale = 7.73
+mode = 2
+shadow_enabled = true
 
 [connection signal="body_entered" from="." to="." method="_on_Note_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_Note_body_exited"]
