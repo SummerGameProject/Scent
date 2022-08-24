@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Assets/Animations/Monster_Animations/Mon_movement.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Assets/Characters/Monster/Scripts/MonsterController.gd" type="Script" id=2]
-[ext_resource path="res://Assets/Sounds/Retro FootStep Metal 01.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Sounds/Monster walk.wav" type="AudioStream" id=3]
 [ext_resource path="res://Assets/Sounds/horror_01_stinger_violin_01.wav" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
