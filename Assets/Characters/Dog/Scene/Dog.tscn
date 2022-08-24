@@ -3,8 +3,8 @@
 [ext_resource path="res://Assets/Lighting/test-light.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Characters/Dog/Scripts/DogController.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Animations/dog_anim/Dog_movement.tres" type="SpriteFrames" id=3]
-[ext_resource path="res://Assets/Sounds/Retro FootStep 03.wav" type="AudioStream" id=4]
-[ext_resource path="res://Assets/Sounds/Retro FootStep Grass 01.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Sounds/dog walk.wav" type="AudioStream" id=4]
+[ext_resource path="res://Assets/Sounds/Hiding.wav" type="AudioStream" id=5]
 [ext_resource path="res://Assets/Characters/Dog/Scripts/Mouth.gd" type="Script" id=6]
 
 [sub_resource type="CircleShape2D" id=2]
@@ -62,7 +62,7 @@ shape = SubResource( 1 )
 position = Vector2( 0, -9 )
 frames = ExtResource( 3 )
 animation = "idle_r"
-frame = 6
+frame = 4
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]

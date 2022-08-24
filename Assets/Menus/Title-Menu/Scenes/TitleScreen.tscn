@@ -131,6 +131,7 @@ valign = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
+autoplay = true
 
 [node name="FadeIn" parent="." instance=ExtResource( 6 )]
 
