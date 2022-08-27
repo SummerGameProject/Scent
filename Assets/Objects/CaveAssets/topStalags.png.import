@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/medRock2.png-15ca89d827f758388dfdd6ceaa178460.stex"
+path="res://.import/topStalags.png-6cda25b2a0266bdad38a1d3fdf53c4fa.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Objects/medRock2.png"
-dest_files=[ "res://.import/medRock2.png-15ca89d827f758388dfdd6ceaa178460.stex" ]
+source_file="res://Assets/Objects/CaveAssets/topStalags.png"
+dest_files=[ "res://.import/topStalags.png-6cda25b2a0266bdad38a1d3fdf53c4fa.stex" ]
 
 [params]
 

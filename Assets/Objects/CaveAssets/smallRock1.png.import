@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/medRock1.png-da06ddf95d77d86bafbaee73a8fe2628.stex"
+path="res://.import/smallRock1.png-67f727c345a0922adfe53c311450d02b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Objects/medRock1.png"
-dest_files=[ "res://.import/medRock1.png-da06ddf95d77d86bafbaee73a8fe2628.stex" ]
+source_file="res://Assets/Objects/CaveAssets/smallRock1.png"
+dest_files=[ "res://.import/smallRock1.png-67f727c345a0922adfe53c311450d02b.stex" ]
 
 [params]
 

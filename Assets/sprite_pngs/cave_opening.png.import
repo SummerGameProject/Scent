@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/largeRock2.png-572a4d0b41942d9ff2953bffdf8d7386.stex"
+path="res://.import/cave_opening.png-3ea065c9712389ed00b8c6b4765d2499.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Objects/largeRock2.png"
-dest_files=[ "res://.import/largeRock2.png-572a4d0b41942d9ff2953bffdf8d7386.stex" ]
+source_file="res://Assets/sprite_pngs/cave_opening.png"
+dest_files=[ "res://.import/cave_opening.png-3ea065c9712389ed00b8c6b4765d2499.stex" ]
 
 [params]
 
