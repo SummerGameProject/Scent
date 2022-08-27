@@ -185,6 +185,7 @@ scale = Vector2( 3.16938, 2.12684 )
 next_level = "res://Scenes/CaveLvl.tscn"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color( 0.0509804, 0.0509804, 0.0509804, 1 )
 
 [node name="Torch" parent="." instance=ExtResource( 13 )]

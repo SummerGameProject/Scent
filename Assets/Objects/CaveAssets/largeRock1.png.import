@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/topStalags.png-7a5d32a987f15de2fddfdaa9fee6ab29.stex"
+path="res://.import/largeRock1.png-19d595353ae26b4771bef1ad35b8d06d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Objects/topStalags.png"
-dest_files=[ "res://.import/topStalags.png-7a5d32a987f15de2fddfdaa9fee6ab29.stex" ]
+source_file="res://Assets/Objects/CaveAssets/largeRock1.png"
+dest_files=[ "res://.import/largeRock1.png-19d595353ae26b4771bef1ad35b8d06d.stex" ]
 
 [params]
 
