@@ -12,7 +12,7 @@ class_name Mouth
 
 # variables
 
-export( float ) var drop_radius : float = 5
+export( float ) var drop_radius : float = 1
 
 var item : Node2D = null
 var nearby_item : Node2D = null

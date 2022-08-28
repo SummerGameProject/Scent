@@ -109,6 +109,46 @@ collision_mask = 3
 position = Vector2( 657, 188 )
 collision_layer = 12
 
+[node name="Tree-Day41" parent="Trees" instance=ExtResource( 12 )]
+position = Vector2( 657, 199 )
+collision_layer = 12
+
+[node name="Tree-Day42" parent="Trees" instance=ExtResource( 12 )]
+position = Vector2( 657, 210 )
+collision_layer = 12
+
+[node name="Tree-Day43" parent="Trees" instance=ExtResource( 12 )]
+position = Vector2( 647, 220 )
+collision_layer = 12
+
+[node name="Tree-Day44" parent="Trees" instance=ExtResource( 12 )]
+position = Vector2( 658, 231 )
+collision_layer = 12
+
+[node name="Tree-Day45" parent="Trees" instance=ExtResource( 12 )]
+position = Vector2( 640, 237 )
+collision_layer = 12
+
+[node name="Tree-Day46" parent="Trees" instance=ExtResource( 12 )]
+position = Vector2( 647, 246 )
+collision_layer = 12
+
+[node name="Tree-Day47" parent="Trees" instance=ExtResource( 12 )]
+position = Vector2( 624, 257 )
+collision_layer = 12
+
+[node name="Tree-Day48" parent="Trees" instance=ExtResource( 12 )]
+position = Vector2( 635, 268 )
+collision_layer = 12
+
+[node name="Tree-Day49" parent="Trees" instance=ExtResource( 12 )]
+position = Vector2( 617, 279 )
+collision_layer = 12
+
+[node name="Tree-Day50" parent="Trees" instance=ExtResource( 12 )]
+position = Vector2( 623, 290 )
+collision_layer = 12
+
 [node name="Tree-Day37" parent="Trees" instance=ExtResource( 12 )]
 position = Vector2( 637, 445 )
 
@@ -244,7 +284,7 @@ position = Vector2( 307, 307 )
 collision_layer = 12
 
 [node name="basket" parent="picnicTable" instance=ExtResource( 3 )]
-position = Vector2( -8, 16 )
+position = Vector2( -3, 20 )
 
 [node name="nakedTree" parent="." instance=ExtResource( 19 )]
 position = Vector2( 406, 342 )
@@ -261,9 +301,9 @@ position = Vector2( 569, 205 )
 position = Vector2( 789, 123 )
 
 [node name="hideText" type="RichTextLabel" parent="."]
-margin_left = 564.0
+margin_left = 571.0
 margin_top = 77.0
-margin_right = 709.0
+margin_right = 716.0
 margin_bottom = 129.0
 theme = ExtResource( 21 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
