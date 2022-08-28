@@ -31,7 +31,7 @@ enum {
 
 export( float ) var sprint_speed : float = 350
 
-export( float ) var tracking_time : float = 10
+export( float ) var tracking_time : float = 100000
 var is_tracking : bool = false
 var tracking_timer : float = 0
 var saved_tracking_time : float = 0
