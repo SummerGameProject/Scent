@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/TileSets/cave_ground_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Assets/TileSets/Cave_bounds_tileset.tres" type="TileSet" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Assets/Characters/Monster/Scene/Monster.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Objects/CaveRocks/LargeRock_1.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/Objects/CaveRocks/LargeRock_2.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/Sounds/cave_music.mp3" type="AudioStream" id=8]
 
 [node name="CaveLvl" type="Node2D"]
 
@@ -46,3 +47,8 @@ position = Vector2( 234, 604 )
 
 [node name="Node2D" parent="Rocks" instance=ExtResource( 7 )]
 position = Vector2( 258, -73 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -4.782
+autoplay = true
