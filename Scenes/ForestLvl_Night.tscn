@@ -44,36 +44,45 @@ position = Vector2( 127, 432 )
 position = Vector2( 1716, 432 )
 
 [node name="Footprints" parent="footprints" instance=ExtResource( 15 )]
+visible = false
 position = Vector2( 105, -186 )
 rotation = -1.5708
 
 [node name="Footprints2" parent="footprints" instance=ExtResource( 15 )]
+visible = false
 position = Vector2( 100, -248 )
 rotation = -1.20079
 
 [node name="Footprints3" parent="footprints" instance=ExtResource( 15 )]
+visible = false
 position = Vector2( 153, -297 )
 rotation = -0.785398
 
 [node name="Footprints4" parent="footprints" instance=ExtResource( 15 )]
+visible = false
 position = Vector2( 200, -312 )
 rotation = -1.00706
 
 [node name="Footprints5" parent="footprints" instance=ExtResource( 15 )]
+visible = false
 position = Vector2( 249, -345 )
 
 [node name="Footprints7" parent="footprints" instance=ExtResource( 15 )]
+visible = false
 position = Vector2( 324, -345 )
 
 [node name="Footprints9" parent="footprints" instance=ExtResource( 15 )]
+visible = false
 position = Vector2( 385, -337 )
 rotation = 1.30202
 
 [node name="Footprints11" parent="footprints" instance=ExtResource( 15 )]
+visible = false
 position = Vector2( 420, -261 )
 rotation = 1.5708
 
 [node name="Footprints12" parent="footprints" instance=ExtResource( 15 )]
+visible = false
 position = Vector2( 429, -176 )
 rotation = 1.5708
 
@@ -399,7 +408,7 @@ visible = false
 position = Vector2( 1595, 233 )
 
 [node name="Sock" parent="." instance=ExtResource( 14 )]
-position = Vector2( 1812, 290 )
+position = Vector2( 1924, 144 )
 
 [node name="Note" parent="." instance=ExtResource( 8 )]
 position = Vector2( 3411, 95 )
@@ -834,7 +843,13 @@ position = Vector2( 750, 421 )
 position = Vector2( 1360, 436 )
 
 [node name="Torch4" parent="." instance=ExtResource( 13 )]
-position = Vector2( 1519, 514 )
+position = Vector2( 1519, 541 )
+
+[node name="Torch" parent="Torch4" instance=ExtResource( 13 )]
+position = Vector2( 87, 40 )
+
+[node name="Torch2" parent="Torch4" instance=ExtResource( 13 )]
+position = Vector2( 8, 43 )
 
 [node name="Torch11" parent="." instance=ExtResource( 13 )]
 position = Vector2( 1539, 620 )
@@ -849,7 +864,19 @@ position = Vector2( 1768, 467 )
 position = Vector2( 1816, 381 )
 
 [node name="Torch7" parent="." instance=ExtResource( 13 )]
-position = Vector2( 1836, 294 )
+position = Vector2( 1869, 290 )
+
+[node name="Torch16" parent="." instance=ExtResource( 13 )]
+position = Vector2( 1901, 228 )
+
+[node name="Torch17" parent="." instance=ExtResource( 13 )]
+position = Vector2( 1924, 170 )
+
+[node name="Torch18" parent="." instance=ExtResource( 13 )]
+position = Vector2( 1901, 145 )
+
+[node name="Torch19" parent="." instance=ExtResource( 13 )]
+position = Vector2( 1956, 148 )
 
 [node name="Torch8" parent="." instance=ExtResource( 13 )]
 position = Vector2( 2200, 411 )
@@ -873,3 +900,15 @@ position = Vector2( 1587, 1137 )
 
 [node name="InterestPoint4" type="Node2D" parent="InterestPoints"]
 position = Vector2( 1790, 508 )
+
+[node name="Torch2" parent="." instance=ExtResource( 13 )]
+position = Vector2( 3300, 207 )
+
+[node name="Torch13" parent="." instance=ExtResource( 13 )]
+position = Vector2( 3362, 222 )
+
+[node name="Torch14" parent="." instance=ExtResource( 13 )]
+position = Vector2( 3371, 165 )
+
+[node name="Torch15" parent="." instance=ExtResource( 13 )]
+position = Vector2( 3388, 93 )
