@@ -1,9 +1,7 @@
 extends Area2D
 
-
-signal wacth_tower_fire()
 signal stop_monster()
-signal move_monster()
+
 
 var pos = position
 
