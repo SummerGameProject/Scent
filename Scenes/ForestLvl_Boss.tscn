@@ -40,10 +40,6 @@ tile_data = PoolIntArray( -1966034, 0, 0, -1966033, 0, 0, -1966032, 0, 0, -19004
 [node name="Dog" parent="." instance=ExtResource( 3 )]
 position = Vector2( 497, 42 )
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
-color = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
-
 [node name="Monster" parent="." instance=ExtResource( 5 )]
 position = Vector2( 399, 13 )
 
