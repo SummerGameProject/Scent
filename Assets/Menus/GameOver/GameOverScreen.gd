@@ -1,10 +1,10 @@
 extends Node
 
-##
-# Provides the backend functionality for the Game Over Screen
-#
-# Author(s): Num0Programmer
-##
+"""
+Provides the backend functionality for the Game Over Screen
+
+Author(s): Num0Programmer
+"""
 
 
 class_name GameOverScreen

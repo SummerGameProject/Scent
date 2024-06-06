@@ -1,12 +1,18 @@
 extends GameManager
 
+"""
+Logic for the final level. Uses the watcher tower, monsterm, and bear trap nodes
+to put together the final boss fight
+
+Author(s): zksx
+"""
+
 onready var Monster = $Monster
 var call_once = true
 export(String) var next_level
 
 var monster_hits = 0
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if monster_hits >= 3 && call_once:
 		call_once = false
@@ -15,7 +21,6 @@ func _process(delta):
 
 func _on_BearTrap_stop_monster(bear_trap_pos,bear_trap_name):
 	activate_bear_trap(bear_trap_pos,bear_trap_name)
-
 
 
 func _on_BearTrap2_stop_monster(bear_trap_pos,bear_trap_name):
@@ -40,37 +45,21 @@ func activate_bear_trap(bear_trap_pos, bear_trap_name):
 	bear_trap_pos.y += y_adjust
 	bear_trap_pos.x += x_adjust
 	
-	# stop the monster from moving
 	Monster.stop_state(true, bear_trap_pos)
-	
-	# play monster idle animation
 	Monster.anim_sprite.play( "mon_idle" )
-	
-	# play bear trap animation
 	get_node(bear_trap_anim).play("trap")
-	
-	# wait for bear trap animation to finish
 	yield(get_node(bear_trap_anim), "animation_finished")
 	
-	# fire from watch tower
 	watch_tower_anim.play("Fire")
-	
-	# wait for watch tower to get done firing
 	yield(watch_tower_anim, "animation_finished")
-	
 	watch_tower_anim.play("Idle")
 	
-	# free the trap
 	get_node(bear_trap_path).queue_free()
-	
-	# allow the monster to move again
 	Monster.stop_state(false, bear_trap_pos)
 	
-	# add one hit to the monster
 	monster_hits += 1
-	
 
-# this is what we are going to use to call a new scene or end the game
+
 func end_game():
 	var error_code
 	error_code = get_tree().change_scene(next_level)

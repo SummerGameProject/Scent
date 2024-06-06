@@ -1,5 +1,11 @@
 extends Control
 
+"""
+Allows the player to pause the game and takes them to a pause screen
+
+Author(s): zksx
+"""
+
 var is_paused = false setget set_is_paused
 
 func _unhandled_input(event):
