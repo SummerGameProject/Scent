@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Assets/Characters/WatchTower/WatchTower-Sheet.png" type="Texture" id=1]
+[ext_resource path="res://WatchTower.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Characters/WatchTower/Retro Impact LoFi 09.wav" type="AudioStream" id=2]
 [ext_resource path="res://Assets/Characters/WatchTower/WatchTower.gd" type="Script" id=3]
 
@@ -74,6 +74,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 54, 8.5 )
 
 [node name="WatchTower" type="StaticBody2D"]
 script = ExtResource( 3 )
@@ -92,5 +93,5 @@ anims/RESET = SubResource( 2 )
 stream = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 17, 54 )
+position = Vector2( 30, 119.5 )
 shape = SubResource( 4 )

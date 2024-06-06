@@ -61,6 +61,8 @@ func activate_bear_trap(bear_trap_pos, bear_trap_name):
 	# wait for watch tower to get done firing
 	yield(watch_tower_anim, "animation_finished")
 	
+	watch_tower_anim.play("Idle")
+	
 	# free the trap
 	get_node(bear_trap_path).queue_free()
 	

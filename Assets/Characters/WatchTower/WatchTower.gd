@@ -21,5 +21,6 @@ func _on_BearTrap_wacth_tower_fire():
 	#wait until the animation is done
 	yield($AnimationPlayer, "animation_finished")
 	
+	
 	# signal the antimation is done
 	emit_signal("tower_finished")

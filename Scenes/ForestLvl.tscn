@@ -35,7 +35,8 @@ autoplay = true
 
 [node name="SceneChangeArea" parent="." instance=ExtResource( 10 )]
 position = Vector2( 861, 336 )
-next_level = "res://Scenes/ForestLvl_Night.tscn"
+monitoring = false
+next_level = "res://Scenes/CabinLvl.tscn"
 
 [node name="GUI" parent="." instance=ExtResource( 11 )]
 
