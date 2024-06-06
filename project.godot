@@ -195,4 +195,5 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 environment/default_environment="res://Assets/default_env.tres"
