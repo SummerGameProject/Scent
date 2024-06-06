@@ -10,6 +10,7 @@
 
 [node name="ForestLvl_Boss" type="Node2D"]
 script = ExtResource( 6 )
+next_level = "res://Assets/Menus/Title-Menu/Scenes/TitleScreen.tscn"
 
 [node name="Navigation" type="Navigation2D" parent="."]
 

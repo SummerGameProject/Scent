@@ -2,10 +2,7 @@ extends GameManager
 
 onready var Monster = $Monster
 var call_once = true
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
+export(String) var next_level
 
 var monster_hits = 0
 
@@ -75,4 +72,7 @@ func activate_bear_trap(bear_trap_pos, bear_trap_name):
 
 # this is what we are going to use to call a new scene or end the game
 func end_game():
-	print("You win!")
+	var error_code
+	error_code = get_tree().change_scene(next_level)
+	if error_code != 0:
+		print("ERROR: ", error_code)
