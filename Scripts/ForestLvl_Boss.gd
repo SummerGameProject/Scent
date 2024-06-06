@@ -13,7 +13,7 @@ export(String) var next_level
 
 var monster_hits = 0
 
-func _process(delta):
+func _process(_delta):
 	if monster_hits >= 3 && call_once:
 		call_once = false
 		end_game()
