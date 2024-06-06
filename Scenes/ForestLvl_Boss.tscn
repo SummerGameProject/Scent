@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/TileSets/Forest_ground_tileset_night.tres" type="TileSet" id=1]
 [ext_resource path="res://Assets/Objects/Enviroment/Boundary_Tree_Night/BoundTreeNight.tres" type="TileSet" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Assets/Characters/Monster/Scene/Monster.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scripts/ForestLvl_Boss.gd" type="Script" id=6]
 [ext_resource path="res://Assets/Characters/WatchTower/WatchTower.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/Music/Scent_Titlescreen_0_Loop_2022-08-17.wav" type="AudioStream" id=8]
 
 [node name="ForestLvl_Boss" type="Node2D"]
 script = ExtResource( 6 )
@@ -68,6 +69,10 @@ position = Vector2( 609, -22 )
 
 [node name="WatchTower" parent="." instance=ExtResource( 7 )]
 position = Vector2( 828, -68 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+autoplay = true
 
 [connection signal="body_entered" from="BearTrap" to="BearTrap" method="_on_BearTrap_body_entered"]
 [connection signal="stop_monster" from="BearTrap" to="." method="_on_BearTrap_stop_monster"]
