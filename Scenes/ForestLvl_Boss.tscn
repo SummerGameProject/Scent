@@ -61,7 +61,7 @@ position = Vector2( 971, -133 )
 position = Vector2( 698, 52 )
 
 [node name="BearTrap2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 867, 101 )
+position = Vector2( 777, 152 )
 
 [node name="BearTrap3" parent="." instance=ExtResource( 4 )]
 position = Vector2( 609, -22 )
