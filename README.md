@@ -16,7 +16,7 @@
 - Here's a video about github issues in general https://youtu.be/TKJ4RdhyB5Y
 
 ### Milanote
-- Milnote is a tool that can allow us to easily share and visualuize ideas with each other. It can be greta for meetings to easily explain ideas and soultions to problems. As well as using it to archive and reference soultions for other memebers to easily view.
+- Milnote is a tool that can allow us to easily share and visualize ideas with each other. It can be great for meetings to easily explain ideas and solutions to problems. As well as using it to archive and reference solutions for other members to easily view.
 - https://app.milanote.com/1NP1ad1KQM0g5R/summer-project?p=SEp1YHdTt1l
 
 
