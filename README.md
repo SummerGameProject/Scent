@@ -15,6 +15,10 @@
 - I've set up the github project board to automatically close issues if you include the issue in your pull request. E.g: "fixes #5" will close issue 5 and put it in the closed column. You have to use the word "fixes'' in your pull request to send the issue to the closed column. Here's a video explaining it https://www.youtube.com/watch?v=ff5cBkPg-bQ
 - Here's a video about github issues in general https://youtu.be/TKJ4RdhyB5Y
 
+### Milanote
+- Milnote is a tool that can allow us to easily share and visualuize ideas with each other. It can be greta for meetings to easily explain ideas and soultions to problems. As well as using it to archive and reference soultions for other memebers to easily view.
+- https://app.milanote.com/1NP1ad1KQM0g5R/summer-project?p=SEp1YHdTt1l
+
 
 ### Art
 - Pix2d (free): https://pix2d.com/
